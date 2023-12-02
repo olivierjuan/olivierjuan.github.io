@@ -15,7 +15,7 @@ Conferences
 - Z Alès, M Etheve, C Bissuel, O Juan, S Kedad-Sidhoum. (2020). "Reinforcement learning for variable selection in a branch and bound algorithm." Conference CPAIOR 2020. [Download](https://arxiv.org/pdf/2005.10026)
 - M Etheve, Z Alès, C Bissuel, O Juan, S Kedad-Sidhoum. (2019). "A Graph-based Heuristic for Variable Selection in Mixed Integer Linear Programming." Conference PGMO 2019
 - O Juan. (2018). "Smart Charging of Electric Car using Deep Reinforcement Learning." Conference PGMO Days 2018
-- S Dal Secco, O Juan, M Louis-Louisy, JY Lucas, P Plion, L Porcheron. (2015). "Using a genetic algorithm and CFD to identify low NOx configurations in an industrial boiler." Journal Fuel 2015
+- S Dal Secco, O Juan, M Louis-Louisy, JY Lucas, P Plion, L Porcheron. (2015). "Using a genetic algorithm and CFD to identify low NOx configurations in an industrial boiler." Journal Fuel 2015. [Download](/papers/j.fuel.2015.06.021.pdf)
 - Y Liu, O Veksler, O Juan. (2010). "Generating classic mosaics with graph cuts." Conference Computer graphics forum 2010
 - S Dal Secco, O Juan, JY Lucas, P Plion. (2010). "Evolutionary algorithm for pollutant emission minimization in coal power plants." Conference META 2010
 - M Porcheron, A Gorge, O Juan, T Simovic, G Dereu. (2010). "Challenge ROADEF/EURO 2010: A large-scale energy management problem with varied constraints." Challenge ROADEF/EURO 2010. [Download](https://challenge.roadef.org/2010/files/sujetEDFv22.pdf)
