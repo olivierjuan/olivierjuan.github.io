@@ -22,6 +22,7 @@ author: Olivier Juan
 navbar-links:
   About Me: "aboutme"
   Publications: "https://scholar.google.com/citations?user=Ay-ul4AAAAAJ"
+  Papers: "papers"
   #Resources:
   #  - Beautiful Jekyll: "https://beautifuljekyll.com"
   #  - Learn markdown: "https://www.markdowntutorial.com/"
