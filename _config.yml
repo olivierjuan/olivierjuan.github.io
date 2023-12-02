@@ -21,10 +21,11 @@ author: Olivier Juan
 
 navbar-links:
   About Me: "aboutme"
-  Resources:
-    - Beautiful Jekyll: "https://beautifuljekyll.com"
-    - Learn markdown: "https://www.markdowntutorial.com/"
-  Author's home: "https://deanattali.com"
+  Publications: "https://scholar.google.com/citations?user=Ay-ul4AAAAAJ"
+  #Resources:
+  #  - Beautiful Jekyll: "https://beautifuljekyll.com"
+  #  - Learn markdown: "https://www.markdowntutorial.com/"
+  #Author's home: "https://deanattali.com"
 
 ################
 # --- Logo --- #
