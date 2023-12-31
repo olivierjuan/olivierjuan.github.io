@@ -23,6 +23,8 @@ navbar-links:
   About Me: "aboutme"
   Publications: "https://scholar.google.com/citations?user=Ay-ul4AAAAAJ"
   Papers: "papers"
+  Teaching:
+    - Athens 2023 : "teaching/Athens 2023: Planning the European electricity system: a serious game"
   #Resources:
   #  - Beautiful Jekyll: "https://beautifuljekyll.com"
   #  - Learn markdown: "https://www.markdowntutorial.com/"
