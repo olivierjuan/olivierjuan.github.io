@@ -38,7 +38,7 @@ Since 2019, I am Research Engineer Expert and my research activities are splitte
 
 In 2012, I became project manager to conduct a complete rebuild of the software Apogée (short term unit commitment software of EDF). This work took a few years with the contribution of a bunch of smart and talented people. And in 2018, past and current contributors gathered to celebrate the successful commissioning of Apogène V2. This new version improved the overall operating cost of powerplant of EDF by a few percent.
 
-    It now continues its journey with the commissioning of Apogène V3 in 2020 and Apogène V4 in 2021. In June 2022, Apogène won the IndusRO'2022 prize [See it here](https://www.linkedin.com/feed/update/urn:li:activity:6962864243234742273/) and on youtube [short version](https://www.youtube.com/watch?v=WJRD5C2Kjug&ab_channel=ROADEF), [long version](https://www.youtube.com/watch?v=tBM6r-B8H8o&ab_channel=ROADEF)
+It now continues its journey with the commissioning of Apogène V3 in 2020 and Apogène V4 in 2021. In June 2022, Apogène won the IndusRO'2022 prize [See it here](https://www.linkedin.com/feed/update/urn:li:activity:6962864243234742273/) and on youtube [short version](https://www.youtube.com/watch?v=WJRD5C2Kjug&ab_channel=ROADEF), [long version](https://www.youtube.com/watch?v=tBM6r-B8H8o&ab_channel=ROADEF)
 
 
 In 2008, I joined the OSIRIS department to work on operational research topics such as : Task Scheduling for maintenance planning, LNG Terminal Planning & Scheduling, Coal power plant combustion & polutant emission optimization. Later, I started working on short term unit commitment on the software Apogène V1. 
