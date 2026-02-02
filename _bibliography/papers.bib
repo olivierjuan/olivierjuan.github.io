@@ -1,27 +1,3 @@
-@InProceedings{Juan2006,
-  author       = {Juan, Olivier and Boykov, Yuri},
-  booktitle    = {Computer Vision and Pattern Recognition (CVPR)},
-  title        = {Active graph cuts},
-  year         = {2006},
-  organization = {IEEE},
-  pages        = {1023--1029},
-  volume       = {1},
-  selected  = {true},
-}
-
-@Article{Juan2006a,
-  author    = {Juan, Olivier and Keriven, Renaud and Postelnicu, Gheorghe},
-  journal   = {International Journal of Computer Vision (IJCV)},
-  title     = {Stochastic motion and the level set method in computer vision: Stochastic active contours},
-  year      = {2006},
-  number    = {1},
-  pages     = {7--25},
-  volume    = {69},
-  fjournal  = {International Journal of Computer Vision},
-  publisher = {Kluwer Academic Publishers Boston},
-  selected  = {true},
-}
-
 @InProceedings{Juan2005,
   author       = {Juan, Olivier and Keriven, Renaud},
   booktitle    = {Variational, Geometric, and Level Set Methods in Computer Vision (VLSM)},
@@ -29,6 +5,7 @@
   year         = {2005},
   organization = {Springer Berlin Heidelberg Berlin, Heidelberg},
   pages        = {186--197},
+  abstract     = {Given an image, digital matting consists in extracting a foreground element from the background. Standard methods are initialized with a trimap, a partition of the image into three regions: a definite foreground, a definite background, and a blended region where pixels are considered as a mixture of foreground and background colors. Recovering these colors and the proportion of mixture between both is an under-constrained inverse problem, sensitive to its initialization: one has to specify an accurate trimap, leaving undetermined as few pixels as possible. First, we propose a new segmentation scheme to extract an accurate trimap from just a coarse indication of some background and/or foreground pixels. Standard statistical models are used for the foreground and the background, while a specific one is designed for the blended region. The segmentation of the three regions is conducted simultaneously by an iterative Graph Cut based optimization scheme. This user-friendly trimap is similar to carefully hand specified ones. As a second step, we take advantage of our blended region model to design an improved matting method coherent. Based on global statistics rather than on local ones, our method is much faster than standard Bayesian matting, without quality loss, and also usable with manual trimaps.},
 }
 
 @InProceedings{Dupont2006,
@@ -39,6 +16,8 @@
   organization = {IEEE},
   pages        = {75--78},
   volume       = {3},
+  abstract     = {In this paper, we propose a novel and robust method for extracting motion layers in video sequences. Taking advantage of temporal continuity, our framework considers both the visible and the hidden parts of each layer in order to increase robustness. Moreover, the hidden parts of the layers are recovered, which could be of great help in many high level vision tasks. Modeling the problem as a labeling task, we state it in a MRF-optimization framework and solve it with a graph-cut algorithm. Both synthetic and real video sequences show a visible layers extraction comparable to the one usually performed by state of the art methods, as well as a novel and successful segmentation of hidden layers},
+  doi          = {10.1109/ICPR.2006.1016},
 }
 
 @InProceedings{Liu2007,
@@ -48,17 +27,21 @@
   year         = {2007},
   organization = {Springer Berlin Heidelberg Berlin, Heidelberg},
   pages        = {55--70},
+  abstract     = {Classic mosaic is one of the oldest and most durable art forms. There has been a growing interest in simulating classic mosaics from digital images recently. To be visually pleasing, a mosaic should satisfy the following constraints: tiles should be non-overlapping, tiles should align to the perceptually important edges in the underlying digital image, and orientation of the neighbouring tiles should vary smoothly across the mosaic. Most of the existing approaches operate in two steps: first they generate tile orientation field and then pack the tiles according to this field. However, previous methods perform these two steps based on heuristics or local optimisation which, in some cases, is not guaranteed to converge. Some other major disadvantages of previous approaches are: (i) either substantial user interaction or hard decision making such as edge detection is required before mosaicing starts (ii) the number of tiles per mosaic must be fixed beforehand, which may cause either undesired overlap or gap space between the tiles. In this work, we propose a novel approach by formulating the mosaic simulating problem in a global energy optimisation framework. Our algorithm also follows the two-step approach, but each step is performed with global optimisation. For the first step, we observe that the tile orientation constraints can be naturally formulated in an energy function that can be optimised with the α-expansion algorithm. For the second step of tightly packing the tiles, we develop a novel graph cuts based algorithm. Our approach does not require user interaction, explicit edge detection, or fixing the number of tiles, while producing results that are visually pleasing.},
+  doi          = {10.1007/978-3-540-74198-5_5},
 }
 
-@InProceedings{Liu2010,
+@Article{Liu2010,
   author       = {Liu, Yu and Veksler, Olga and Juan, Olivier},
-  booktitle    = {Computer graphics forum (CGF)},
+  journal      = {Computer graphics forum (CGF)},
   title        = {Generating classic mosaics with graph cuts},
   year         = {2010},
   number       = {8},
-  organization = {Blackwell Publishing Ltd Oxford, UK},
   pages        = {2387--2399},
   volume       = {29},
+  abstract     = {Classic mosaic is an old and durable art form. Generating artificial classic mosaics from digital images is an interesting problem that has attracted attention in recent years. Previous approaches to mosaic generation are largely based on heuristics, and therefore it is harder to analyse, predict and improve their performance. In addition, previous methods have a number of disadvantages, such as requiring that the number of tiles in a mosaic is known a priori, or relying on extensive user interaction, or using heuristics for tile placement that lead to visible artefacts. We propose a classic mosaic generation algorithm that is based on a principled global optimization. Our approach is fully automatic. We design and optimize an objective function that incorporates the desired mosaic properties, such as tile alignment to significant image edges, prohibiting tile overlap, etc. Our optimization method is based on graph cuts, which proved to be a powerful optimization tool in graphics and computer vision. Experimental comparison to previous work demonstrate the advantages of our approach.},
+  doi          = {10.1111/j.1467-8659.2010.01752.x},
+  organization = {Blackwell Publishing Ltd Oxford, UK},
 }
 
 @TechReport{Juan2004,
@@ -75,6 +58,8 @@
   year         = {2007},
   organization = {IEEE},
   pages        = {1--8},
+  abstract     = {Capacity scaling is a hierarchical approach to graph representation that can improve theoretical complexity and practical efficiency of max-flow/min-cut algorithms. Introduced by Edmonds, Karp, and Dinic in 1972, capacity scaling is well known in the combinatorial optimization community. Surprisingly, this major performance improving technique is overlooked in computer vision where graph cut methods typically solve energy minimization problems on huge N-D grids and algorithms' efficiency is a widely studied issue. Unlike some earlier hierarchical methods addressing efficiency of graph cuts in imaging, e.g. (H. Lombaert, 2005), capacity scaling preserves global optimality of the solution. This is the main motivation for our work studying capacity scaling in the context of vision. We show that capacity scaling significantly reduces non-polynomial theoretical time complexity of the max-flow algorithm in (Y. Boykov and V. Kolmorogorov, 2004) to weakly polynomial O(m2n2log(U)) where U is the largest edge weight. While (Y. Boykov and V. Kolmorogorov, 2004) is the fastest method for many applications in vision, capacity scaling gives several folds speed-ups for problems with large number of local minima. The effect is particularly strong in 3D applications with denser neighborhoods.},
+  doi          = {10.1109/ICCV.2007.4408970},
 }
 
 @TechReport{Juan2005a,
@@ -92,10 +77,11 @@
 }
 
 @PhdThesis{Juan2006c,
-  author = {Juan, Olivier},
-  school = {Ecole des Ponts ParisTech},
-  title  = {On some extensions of the level sets and the graph cuts towards their application to image and video segmentation},
-  year   = {2006},
+  author   = {Juan, Olivier},
+  school   = {Ecole des Ponts ParisTech},
+  title    = {On some extensions of the level sets and the graph cuts towards their application to image and video segmentation},
+  year     = {2006},
+  abstract = {Image processing techniques are now widely spread out over a large quantity of domains: like medical imaging, movies post-production, games... Automatic detection and extraction of regions of interest inside an image, a volume or a video is challenging problem since it is a starting point for many applications in image processing. However many techniques were developed during the last years and the state of the art methods suffer from some drawbacks: The Level Sets method only provides a local minimum while the Graph Cuts method comes from Combinatorial Community and could take advantage of the specificity of image processing problems. In this thesis, we propose two extensions of the previously cited methods in order to soften or remove these drawbacks. We first discuss the existing methods and show how they are related to the segmentation problem through an energy formulation. Then we introduce stochastic perturbations to the Level Sets method and we build a more generic framework: the Stochastic Level Sets (SLS). Later we provide a direct application of the SLS to image segmentation that provides a better minimization of energies. Basically, it allows the contours to escape from local minimum. Then we propose a new formulation of an existing algorithm of Graph Cuts in order to introduce some interesting concept for image processing community: like initialization of the algorithm for speed improvement. We also provide a new approach for layer extraction from video sequence that retrieves both visible and hidden layers in it.},
 }
 
 @Article{DalSecco2015,
@@ -105,6 +91,8 @@
   year      = {2015},
   pages     = {672--683},
   volume    = {158},
+  abstract  = {This paper focuses on a computational intelligence approach used for minimizing NOx emissions in a 600 MW tangentially-fired pulverized-coal boiler. Genetic Algorithms (GA) were used to correlate operating parameters to significant output data predicted by CFD simulations of the boiler. The operating parameters include the opening or closing of air dampers, changing the coal distribution through mill selection and feed rate and vertical tilting of the burners. A target function was introduced to estimate for each boiler settings defined by given operating parameters, the costs associated with corrosion on the water-wall tubes, heterogeneous heat flux distribution along the walls, unburned carbon in fly ash and NOx emissions. The GA was able to automatically generate innovative boiler configurations among thousands of CFD calculations performed. The target function allowed the search space to be explored to establish configurations offering a good compromise between NOx reduction and the cost associated with corrosion in particular. Moreover, the predicted NOx emissions from the GA model are consistent with the NOx levels measured during test campaigns.},
+  doi       = {10.1016/j.fuel.2015.06.021},
   publisher = {Elsevier},
 }
 
@@ -120,6 +108,13 @@
   booktitle = {International conference on metaheuristics and nature inspired computing},
   title     = {Evolutionary algorithm for pollutant emission minimization in coal power plants},
   year      = {2010},
+  abstract  = {In order to limit the impact of thermal electrical power plants on environment (nitrogen and
+sulphur oxides, flying ashes; effect of green house gas is, so far, out of the scope), producers
+can use secondary exhaust gas treatment (catalytic removal, washing) or primary measures (fuel
+composition, air staging). EDF as the largest electricity producer in Europe, manages some thermal
+plants fed with pulverised coal, heavy fuel oil or natural gas. Nitrogen oxides (NOx) reduction can
+be obtained using recently designed burners (inducing expansive investment) or using suitable fuel
+and air staging mimicking their behaviour. This study is devoted to pulverised coal boiler settings.},
 }
 
 @InProceedings{Etheve2019,
@@ -127,6 +122,85 @@
   booktitle = {PGMO Days},
   title     = {A Graph-based Heuristic for Variable Selection in Mixed Integer Linear Programming},
   year      = {2019},
+  abstract  = {Over the past decades, Branch and Bound (B&B) and its variants have become the most
+commonly used algorithms to solve Mixed Integer Linear Programming (MILP). Despite the
+efficiency of such methods, state-of-the-art solvers still rely on generic heuristics due to a lack
+of mathematical understanding of the underlying mechanics of the B&B algorithm. Amongst
+all the decisions made heuristically in a B&B tree, the most elementary are variable selection
+(branching) and node selection. As pointed out in [1], branching is crucial in controlling the size
+of a B&B tree and a plethora of heuristics has been put forward in the literature.},
+}
+
+@InProceedings{Ales2021,
+  author    = {Etheve, Marc and Al{\`e}s, Zacharie and Bissuel, C{\^o}me and Juan, Olivier and Kedad-Sidhoum, Safia},
+  booktitle = {Conférence ROADEF},
+  title     = {On learning node selection in a branch and bound algorithm},
+  year      = {2021},
+  abstract  = {Over the past few years, the study of interactions between Combinatorial Optimization and
+Machine Learning has been a growing field of research. In particular, learning the heuristically
+made choices along a Branch and Bound algorithm has been targeted by the literature (see [1]
+for a survey). The majority of the approaches is dedicated to learning to imitate the behaviour
+of solver’s heuristics (see for instance [2, 3, 4, 5, 6]), using imitation learning.
+On the contrary, quite few address the task of discovering new policies, undoubtedly due to
+the difficulty of the challenge. [7] learns a cutting strategy amongst Gomory’s cutting planes,
+In this preliminary work, we extend the methodology presented in [8] to the node selection
+strategy, using reinforcement learning to discover such strategy. An alternative approach, using
+supervised learning, is also proposed.},
+}
+
+@Misc{Porcheron,
+  author       = {Porcheron, Marc and Gorge, Agn{\`e}s and Juan, Olivier and Simovic, Thomas and Dereu, Guillaume},
+  howpublished = {https://challenge.roadef.org/2010/files/sujetEDFv22.pdf},
+  title        = {Challenge roadef/euro 2010: A large-scale energy management problem with varied constraints},
+  year         = {2010},
+}
+
+@Misc{Strang2025a,
+  author        = {Strang, Paul and Al{\`e}s, Zacharie and Bissuel, C{\^o}me and Juan, Olivier and Kedad-Sidhoum, Safia and Rachelson, Emmanuel},
+  title         = {Influence branching for learning to solve mixed-integer programs online},
+  year          = {2025},
+  abstract      = {On the occasion of the 20th Mixed Integer Program Workshop's computational competition, this work introduces a new approach for learning to solve MIPs online. Influence branching, a new graph-oriented variable selection strategy, is applied throughout the first iterations of the branch and bound algorithm. This branching heuristic is optimized online with Thompson sampling, which ranks the best graph representations of MIP's structure according to computational speed up over SCIP. We achieve results comparable to state of the art online learning methods. Moreover, our results indicate that our method generalizes well to more general online frameworks, where variations in constraint matrix, constraint vector and objective coefficients can all occur and where more samples are available.},
+  archiveprefix = {arXiv},
+  doi           = {10.48550/arxiv.2510.04273},
+  eprint        = {2510.04273},
+  eprinttype    = {arxiv},
+  primaryclass  = {cs.LG},
+}
+
+@InProceedings{Strang2023a,
+  author  = {Strang, Paul and Ales, Zacharie and Bissuel, Come and Juan, Olivier and Kedad-Sidhoum, Safia},
+  title   = {Hyperbolic deep reinforcement learning for repeated exact combinatorial optimization},
+  year    = {2023},
+  pages   = {104},
+  journal = {PGMO Days},
+}
+
+@InProceedings{Juan2006,
+  author       = {Juan, Olivier and Boykov, Yuri},
+  booktitle    = {Computer Vision and Pattern Recognition (CVPR)},
+  title        = {Active graph cuts},
+  year         = {2006},
+  organization = {IEEE},
+  pages        = {1023--1029},
+  volume       = {1},
+  abstract     = {This paper adds a number of novel concepts into global s/t cut methods improving their efficiency and making them relevant for a wider class of applications in vision where algorithms should ideally run in real-time. Our new Active Cuts (AC) method can effectively use a good approximate solution (initial cut) that is often available in dynamic, hierarchical, and multi-label optimization problems in vision. In many problems AC works faster than the state-of-the-art max-flow methods [2] even if initial cut is far from the optimal one. Moreover, empirical speed improves several folds when initial cut is spatially close to the optima. Before converging to a global minima, Active Cuts outputs a multitude of intermediate solutions (intermediate cuts) that, for example, can be used be accelerate iterative learning-based methods or to improve visual perception of graph cuts realtime performance when large volumetric data is segmented. Finally, it can also be combined with many previous methods for accelerating graph cuts.},
+  doi          = {10.1109/CVPR.2006.47},
+  selected     = {true},
+}
+
+@Article{Juan2006a,
+  author    = {Juan, Olivier and Keriven, Renaud and Postelnicu, Gheorghe},
+  journal   = {International Journal of Computer Vision (IJCV)},
+  title     = {Stochastic motion and the level set method in computer vision: Stochastic active contours},
+  year      = {2006},
+  number    = {1},
+  pages     = {7--25},
+  volume    = {69},
+  abstract  = {Based on recent work on Stochastic Partial Differential Equations (SPDEs), this paper presents a simple and well-founded method to implement the stochastic evolution of a curve. First, we explain why great care should be taken when considering such an evolution in a Level Set framework. To guarantee the well-posedness of the evolution and to make it independent of the implicit representation of the initial curve, a Stratonovich differential has to be introduced. To implement this differential, a standard Ito plus drift approximation is proposed to turn an implicit scheme into an explicit one. Subsequently, we consider shape optimization techniques, which are a common framework to address various applications in Computer Vision, like segmentation, tracking, stereo vision etc. The objective of our approach is to improve these methods through the introduction of stochastic motion principles. The extension we propose can deal with local minima and with complex cases where the gradient of the objective function with respect to the shape is impossible to derive exactly. Finally, as an application, we focus on image segmentation methods, leading to what we call Stochastic Active Contours.},
+  doi       = {10.1007/s11263-006-6849-5},
+  fjournal  = {International Journal of Computer Vision},
+  publisher = {Kluwer Academic Publishers Boston},
+  selected  = {true},
 }
 
 @InProceedings{Etheve2020,
@@ -137,28 +211,20 @@
   organization = {Springer International Publishing Cham},
   pages        = {176--185},
   abstract     = {Mixed integer linear programs are commonly solved by Branch and Bound algorithms. A key factor of the efficiency of the most successful commercial solvers is their fine-tuned heuristics. In this paper, we leverage patterns in real-world instances to learn from scratch a new branching strategy optimised for a given problem and compare it with a commercial solver. We propose FMSTS, a novel Reinforcement Learning approach specifically designed for this task. The strength of our method lies in the consistency between a local value function and a global metric of interest. In addition, we provide insights for adapting known RL techniques to the Branch and Bound setting, and present a new neural network architecture inspired from the literature. To our knowledge, it is the first time Reinforcement Learning has been used to fully optimise the branching strategy. Computational experiments show that our method is appropriate and able to generalise well to new instances.},
-  selected  = {true},
-}
-
-@InProceedings{Ales2021,
-  author    = {Etheve, Marc and Al{\`e}s, Zacharie and Bissuel, C{\^o}me and Juan, Olivier and Kedad-Sidhoum, Safia},
-  booktitle = {Conférence ROADEF},
-  title     = {On learning node selection in a branch and bound algorithm},
-  year      = {2021},
-}
-
-@Misc{Porcheron,
-  author       = {Porcheron, Marc and Gorge, Agn{\`e}s and Juan, Olivier and Simovic, Thomas and Dereu, Guillaume},
-  howpublished = {https://challenge.roadef.org/2010/files/sujetEDFv22.pdf},
-  title        = {Challenge roadef/euro 2010: A large-scale energy management problem with varied constraints},
-  year         = {2010},
+  doi          = {10.1007/978-3-030-58942-4_12},
+  selected     = {true},
 }
 
 @InProceedings{Juan2018,
-  author  = {Juan, Olivier},
-  title   = {Smart Charging of Electric Car using Deep Reinforcement Learning},
-  year    = {2018},
-  journal = {PGMO Days},
+  author   = {Juan, Olivier},
+  title    = {Smart Charging of Electric Car using Deep Reinforcement Learning},
+  year     = {2018},
+  abstract = {This work addresses the problem of sending an efficient strategy for charging an electric
+vehicule (EV). This problem can be solved by a greey approach (i.e. charging the vehicule as
+soon as it arrives) but the more EVs penetrate the car market, the more this strategy might
+overload the electric distribution grid at commuting hours. To overcome this, one can postpone
+the charging during night or during low prices period of the electric market.},
+  journal  = {PGMO Days},
 }
 
 @InProceedings{Strang2025,
@@ -166,19 +232,9 @@
   booktitle = {Neural Information Processing Systems (NeurIPS)},
   title     = {A {Markov Decision Process} for {Variable Selection} in {Branch \& Bound}},
   year      = {2025},
+  abstract  = {Mixed-Integer Linear Programming (MILP) is a powerful framework used to address a wide range of NP-hard combinatorial optimization problems, often solved by Branch and Bound (B&B). A key factor influencing the performance of B&B solvers is the variable selection heuristic governing branching decisions. Recent contributions have sought to adapt reinforcement learning (RL) algorithms to the B&B setting to learn optimal branching policies, through Markov Decision Processes (MDP) inspired formulations, and ad hoc convergence theorems and algorithms. In this work, we introduce BBMDP, a principled vanilla MDP formulation for variable selection in B&B, allowing to leverage a broad range of RL algorithms for the purpose of learning optimal B\&B heuristics. Computational experiments validate our model empirically, as our branching agent outperforms prior state-of-the-art RL agents on four standard MILP benchmarks.},
   selected  = {true},
   url       = {https://openreview.net/forum?id=05Svr0k5C9},
-}
-
-@Misc{Strang2025a,
-  author        = {Strang, Paul and Al{\`e}s, Zacharie and Bissuel, C{\^o}me and Juan, Olivier and Kedad-Sidhoum, Safia and Rachelson, Emmanuel},
-  title         = {Influence branching for learning to solve mixed-integer programs online},
-  year          = {2025},
-  archiveprefix = {arXiv},
-  doi           = {10.48550/arxiv.2510.04273},
-  eprint        = {2510.04273},
-  eprinttype    = {arxiv},
-  primaryclass  = {cs.LG},
 }
 
 @InProceedings{Strang2026,
@@ -186,16 +242,9 @@
   booktitle = {Association for the Advancement of Artificial Intelligence (AAAI)},
   title     = {Planning in {Branch-and-Bound}: {Model-Based} {Reinforcement Learning} for {Exact Combinatorial Optimization}},
   year      = {2026},
+  abstract  = {Mixed-Integer Linear Programming (MILP) lies at the core of many real-world combinatorial optimization (CO) problems, traditionally solved by branch-and-bound (B&B). A key driver influencing B&B solvers efficiency is the variable selection heuristic that guides branching decisions. Looking to move beyond static, hand-crafted heuristics, recent work has explored adapting traditional reinforcement learning (RL) algorithms to the B&B setting, aiming to learn branching strategies tailored to specific MILP distributions. In parallel, RL agents have achieved remarkable success in board games, a very specific type of combinatorial problems, by leveraging environment simulators to plan via Monte Carlo Tree Search (MCTS). Building on these developments, we introduce Plan-and-Branch-and-Bound (PlanB&B), a model-based reinforcement learning (MBRL) agent that leverages a learned internal model of the B&B dynamics to discover improved branching strategies. Computational experiments empirically validate our approach, with our MBRL branching agent outperforming previous state-of-the-art RL methods across four standard MILP benchmarks.},
   selected  = {true},
   url       = {https://openreview.net/forum?id=8481hfKVsr},
-}
-
-@InProceedings{Strang2023a,
-  author  = {Strang, Paul and Ales, Zacharie and Bissuel, Come and Juan, Olivier and Kedad-Sidhoum, Safia},
-  title   = {Hyperbolic deep reinforcement learning for repeated exact combinatorial optimization},
-  year    = {2023},
-  pages   = {104},
-  journal = {PGMO Days},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}
