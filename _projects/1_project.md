@@ -4,7 +4,7 @@ title: A Markov Decision Process for Variable Selection in Branch & Bound
 description: A principled reinforcement learning formulation for learning optimal branching heuristics in MILP solvers.
 img: assets/img/bbmdp/teaser.png
 importance: 1
-category: Machine Learning & Optimization
+category: Machine Learning
 related_publications: true
 ---
 
@@ -23,7 +23,7 @@ related_publications: true
 
 # The Innovation: BBMDP
 
-In our paper presented at NeurIPS 2025, we introduce BBMDP (Branch & Bound MDP), a "vanilla" and rigorous MDP formulation for the variable selection process.
+In our paper {% cite Strang2025 %} presented at NeurIPS 2025, we introduce BBMDP (Branch & Bound MDP), a "vanilla" and rigorous MDP formulation for the variable selection process.
 
 Unlike previous approaches that attempted to minimize the size of independent subtrees, BBMDP models the complete state of the search tree $s_t=(V_t, E_t, x_t)$. This allows us to:
 
