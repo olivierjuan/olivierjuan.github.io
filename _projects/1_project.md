@@ -1,13 +1,106 @@
 ---
 layout: page
-title: project 1
-description: with background image
-img: assets/img/12.jpg
+title: A Markov Decision Process for Variable Selection in Branch & Bound
+description: A principled reinforcement learning formulation for learning optimal branching heuristics in MILP solvers.
+img: assets/img/bbmdp_teaser.png
 importance: 1
-category: work
+category: Machine Learning & Optimization
 related_publications: true
 ---
 
+Context: The Branching Challenge
+Mixed-Integer Linear Programming (MILP) is central to many critical industrial problems, from nuclear reactor management to complex logistics. Modern solvers rely on the Branch & Bound (B&B) algorithm, the performance of which depends crucially on the variable selection heuristic (branching).
+
+Until now, Reinforcement Learning (RL) approaches suffered from a major theoretical limitation: the use of approximate formulations like TreeMDP, which do not respect standard Markov properties.
+
+The Innovation: BBMDP
+In our paper presented at NeurIPS 2025, we introduce BBMDP (Branch & Bound MDP), a "vanilla" and rigorous MDP formulation for the variable selection process.
+
+Unlike previous approaches that attempted to minimize the size of independent subtrees, BBMDP models the complete state of the search tree $s_t=(V_t, E_t, x_t)$. This allows us to:
+
+1. Define a theoretically valid value function $Q^π$.
+
+1. Use standard RL algorithms (like DQN with k-step returns) without ad-hoc approximations.
+
+1. Guarantee convergence towards a global optimal policy $π^∗$.
+
+$$π^∗=argmin_{π} E_{P∼p_0} (∣BB_{(π,ρ)}(P)∣)$$
+
+Technical Architecture
+Our agent, DQN-BBMDP, uses a problem representation in the form of a bipartite graph (Variables/Constraints) processed by a Graph Convolutional Network (GCN). It overcomes the limitations of TreeMDP models by taking into account the real sequential dynamics of the solver.
+
+<div class="row"> <div class="col-sm mt-3 mt-md-0"> {% include figure.liquid loading="eager" path="assets/img/bbmdp_structure.png" title="BBMDP Structure" class="img-fluid rounded z-depth-1" %} </div> </div> <div class="caption"> Trajectory comparison: Unlike TreeMDP which approximates the tree, BBMDP tracks the actual evolution of the Pareto frontier in the SCIP solver. </div>
+
+Results and Impact
+Experiments conducted on standard benchmarks (Set Covering, Auctions, Maximum Independent Set) demonstrate that our approach establishes a new state-of-the-art for RL agents.
+
+Performance: DQN-BBMDP reduces the number of nodes by 27% and solving time by 38% compared to the previous state-of-the-art (DQN-Retro).
+
+Generalization: The agent shows superior capability to generalize on larger dimension instances (Transfer Learning) compared to methods based on Imitation Learning.
+
+| Method	     | Set Covering (Nodes) | Combinatorial Auction (Nodes) |
+-------------------------------------------------------------------------
+| SCIP (Default) | 62.0                 | 19.5                          |
+| DQN-BBMDP      | 152.3                | 97.9                          |
+-------------------------------------------------------------------------
+
+Note: Results show a significant reduction in the gap with the expert (Strong Branching), while being much faster to execute.
+
+Resources
+The source code for the implementation and pre-trained models are available to the scientific community to foster reproducibility.
+
+<div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center"> {% include repository/repo.liquid repository="abfariah/bbmdp" %} </div>
+
+Citation
+If you use this work, please cite our paper:bibtex @inproceedings{strang2025bbmdp, title={A Markov Decision Process for Variable Selection in Branch & Bound}, author={Strang, Paul and Alès, Zacharie and Juan, Olivier and Bissuel, Côme and Kedad-Sidhoum, Safia and Rachelson, Emmanuel}, booktitle={Advances in Neural Information Processing Systems (NeurIPS)}, year={2025} }
+
+
+### Visual Assets to Add
+
+To make the page visually complete, I suggest extracting two images from the PDF  and placing them in your `assets/img/` folder:
+
+1.  **`bbmdp_teaser.png`**: **Figure 2** from the paper (the search tree showing the node selection policy), which illustrates the concept well.
+2.  **`bbmdp_structure.png`**: **Figure 3** (visual comparison between Bellman equations for TreeMDP and BBMDP), as it summarizes the theoretical contribution.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**********************************
 Every project has a beautiful feature showcase page.
 It's easy to include images in a flexible 3-column grid format.
 Make your photos 1/3, 2/3, or full width.
