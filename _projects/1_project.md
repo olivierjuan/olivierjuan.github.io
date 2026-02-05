@@ -51,17 +51,17 @@ Experiments conducted on standard benchmarks (Set Covering, Auctions, Maximum In
 | Benchmarks | **Set Covering** |  | **Comb. Auction** |  | **Max. Ind. Set** |  | **Mult. Knapsack** |  | **Norm. Score** |  |
 | Method | Node | Time | Node | Time | Node | Time | Node | Time | Node | Time |
 | ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:|
-| Presolve | - | <span style="color: green;">12.3</span> | - | <span style="color: green;">2.67</span> | - | <span style="color: green;">5.16</span> | - | <span style="color: green;">0.46</span> | - | - |
-| Random | 271632 | 842 | 317235 | 749 | 215879 | 2102 | 93452 | 70.6 | <span style="color: green;">5555</span> | <span style="color: green;">2737</span> |
-| SB | 672.1 | 398 | 389.6 | 255 | 169.9 | 2172 | <span style="color: purple;"><strong>1709</strong></span> | <span style="color: purple;"><strong>12.5</strong></span> | <span style="color: green;">9</span> | <span style="color: green;">1425</span> |
-| SCIP | 3309 | 48.4 | 1376 | 14.77 | 3368 | 90.0 | 30620 | 22.1 | <span style="color: green;">62</span> | <span style="color: green;">90</span> |
-| IL | <span style="color: purple;"><strong>2610</strong></span> | 23.1 | <span style="color: purple;"><strong>1309</strong></span> | <span style="color: purple;"><strong>9.8</strong></span> | <span style="color: purple;"><strong>1882.0</strong></span> | <span style="color: purple;"><strong>37.6</strong></span> | 9747 | 46.5 | <span style="color: purple;"><strong>39</strong></span> | <span style="color: purple;"><strong>55</strong></span> |
-| IL-DFS | 3103 | <span style="color: purple;"><strong>22.5</strong></span> | 1802 | 11.1 | 3501 | 55.5 | 43224 | 177 | <span style="color: green;">75</span> | <span style="color: green;">93</span> |
+| Presolve | - | 12.3 | - | 2.67 | - | 5.16 | - | 0.46 | - | - |
+| Random | 271632 | 842 | 317235 | 749 | 215879 | 2102 | 93452 | 70.6 | 5555 | 2737 |
+| SB | 672.1 | 398 | 389.6 | 255 | 169.9 | 2172 | <span style="color: purple;"><b>1709</b></span> | <span style="color: purple;"><b>12.5</b></span> | 9 | 1425 |
+| SCIP | 3309 | 48.4 | 1376 | 14.77 | 3368 | 90.0 | 30620 | 22.1 | 62 | 90 |
+| IL | <span style="color: purple;"><b>2610</b></span> | 23.1 | <span style="color: purple;"><b>1309</b></span> | <span style="color: purple;"><b>9.8</b></span> | <span style="color: purple;"><b>1882.0</b></span> | <span style="color: purple;"><b>37.6</b></span> | 9747 | 46.5 | <span style="color: purple;"><b>39</b></span> | <span style="color: purple;"><b>55</b></span> |
+| IL-DFS | 3103 | <span style="color: purple;"><b>22.5</b></span> | 1802 | 11.1 | 3501 | 55.5 | 43224 | 177 | 75 | 93 |
 | ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:|
-| PG-tMDP | 44649 | 221 | 6001 | 30.7 | <span style="color: blue;"><strong>3133</strong></span> | <span style="color: blue;"><strong>39.5</strong></span> | 35614 | 123 | <span style="color: green;">298</span> | <span style="color: green;">223</span> |
-| DQN-tMDP | 8632 | 71.3 | 20553 | 116 | 45634 | 477 | <span style="color: blue;"><strong>22631</strong></span> | <span style="color: blue;"><strong>65.1</strong></span> | <span style="color: green;">439</span> | <span style="color: green;">445</span> |
-| DQN-Retro | 6100 | 59.4 | 2908 | 18.4 | 119478 | 1863 | 27077 | 79.5 | <span style="color: green;">494</span> | <span style="color: green;">662</span> |
-| DQN-BBMDP | <span style="color: blue;"><strong>5651</strong></span> | <span style="color: blue;"><strong>46.4</strong></span> | <span style="color: blue;"><strong>2273</strong></span> | <span style="color: blue;"><strong>11.8</strong></span> | 7168 | 81.3 | 37098 | 109 | <span style="color: blue;"><strong>100</strong></span> | <span style="color: blue;"><strong>100</strong></span> |
+| PG-tMDP | 44649 | 221 | 6001 | 30.7 | <span style="color: blue;"><b>3133</b></span> | <span style="color: blue;"><b>39.5</b></span> | 35614 | 123 | 298 | 223 |
+| DQN-tMDP | 8632 | 71.3 | 20553 | 116 | 45634 | 477 | <span style="color: blue;"><b>22631</b></span> | <span style="color: blue;"><b>65.1</b></span> | 439 | 445 |
+| DQN-Retro | 6100 | 59.4 | 2908 | 18.4 | 119478 | 1863 | 27077 | 79.5 | 494 | 662 |
+| DQN-BBMDP | <span style="color: blue;"><b>5651</b></span> | <span style="color: blue;"><b>46.4</b></span> | <span style="color: blue;"><b>2273</b></span> | <span style="color: blue;"><b>11.8</b></span> | 7168 | 81.3 | 37098 | 109 | <span style="color: blue;"><b>100</b></span> | <span style="color: blue;"><b>100</b></span> |
 | ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:|
 
 Note: Results show a significant reduction in the gap with the expert (Strong Branching), while being much faster to execute.
