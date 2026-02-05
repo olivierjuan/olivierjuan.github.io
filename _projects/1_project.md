@@ -50,14 +50,14 @@ Experiments conducted on standard benchmarks (Set Covering, Auctions, Maximum In
 | ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:|
 | Benchmarks | **Set Covering** |  | **Comb. Auction** |  | **Max. Ind. Set** |  | **Mult. Knapsack** |  | **Norm. Score** |  |
 | Method | Node | Time | Node | Time | Node | Time | Node | Time | Node | Time |
-| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:|
+| ===:| ===:| ===:| ===:| ===:| ===:| ===:| ===:| ===:| ===:| ===:|
 | Presolve | - | 12.3 | - | 2.67 | - | 5.16 | - | 0.46 | - | - |
 | Random | 271632 | 842 | 317235 | 749 | 215879 | 2102 | 93452 | 70.6 | 5555 | 2737 |
-| SB | 672.1 | 398 | 389.6 | 255 | 169.9 | 2172 | <span style="color: purple;"><b>1709</b></span> | <span style="color: purple;"><b>12.5</b></span> | 9 | 1425 |
+| SB | 672.1 | 398 | 389.6 | 255 | 169.9 | 2172 | <span style="color: red;"><b>1709</b></span> | <span style="color: red;"><b>12.5</b></span> | 9 | 1425 |
 | SCIP | 3309 | 48.4 | 1376 | 14.77 | 3368 | 90.0 | 30620 | 22.1 | 62 | 90 |
-| IL | <span style="color: purple;"><b>2610</b></span> | 23.1 | <span style="color: purple;"><b>1309</b></span> | <span style="color: purple;"><b>9.8</b></span> | <span style="color: purple;"><b>1882.0</b></span> | <span style="color: purple;"><b>37.6</b></span> | 9747 | 46.5 | <span style="color: purple;"><b>39</b></span> | <span style="color: purple;"><b>55</b></span> |
-| IL-DFS | 3103 | <span style="color: purple;"><b>22.5</b></span> | 1802 | 11.1 | 3501 | 55.5 | 43224 | 177 | 75 | 93 |
-| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:|
+| IL | <span style="color: red;"><b>2610</b></span> | 23.1 | <span style="color: red;"><b>1309</b></span> | <span style="color: red;"><b>9.8</b></span> | <span style="color: red;"><b>1882.0</b></span> | <span style="color: red;"><b>37.6</b></span> | 9747 | 46.5 | <span style="color: red;"><b>39</b></span> | <span style="color: red;"><b>55</b></span> |
+| IL-DFS | 3103 | <span style="color: red;"><b>22.5</b></span> | 1802 | 11.1 | 3501 | 55.5 | 43224 | 177 | 75 | 93 |
+| ===:| ===:| ===:| ===:| ===:| ===:| ===:| ===:| ===:| ===:| ===:|
 | PG-tMDP | 44649 | 221 | 6001 | 30.7 | <span style="color: blue;"><b>3133</b></span> | <span style="color: blue;"><b>39.5</b></span> | 35614 | 123 | 298 | 223 |
 | DQN-tMDP | 8632 | 71.3 | 20553 | 116 | 45634 | 477 | <span style="color: blue;"><b>22631</b></span> | <span style="color: blue;"><b>65.1</b></span> | 439 | 445 |
 | DQN-Retro | 6100 | 59.4 | 2908 | 18.4 | 119478 | 1863 | 27077 | 79.5 | 494 | 662 |
@@ -74,16 +74,7 @@ The source code for the implementation and pre-trained models are available to t
 # Citation
 If you use this work, please cite our paper:
 
-    bibtex @inproceedings{strang2025bbmdp, title={A Markov Decision Process for Variable Selection in Branch & Bound}, author={Strang, Paul and Alès, Zacharie and Juan, Olivier and Bissuel, Côme and Kedad-Sidhoum, Safia and Rachelson, Emmanuel}, booktitle={Advances in Neural Information Processing Systems (NeurIPS)}, year={2025} }
-
-
-### Visual Assets to Add
-
-To make the page visually complete, I suggest extracting two images from the PDF  and placing them in your `assets/img/` folder:
-
-1.  **`bbmdp_teaser.png`**: **Figure 2** from the paper (the search tree showing the node selection policy), which illustrates the concept well.
-2.  **`bbmdp_structure.png`**: **Figure 3** (visual comparison between Bellman equations for TreeMDP and BBMDP), as it summarizes the theoretical contribution.
-
+    @inproceedings{strang2025bbmdp, title={A Markov Decision Process for Variable Selection in Branch & Bound}, author={Strang, Paul and Alès, Zacharie and Juan, Olivier and Bissuel, Côme and Kedad-Sidhoum, Safia and Rachelson, Emmanuel}, booktitle={Advances in Neural Information Processing Systems (NeurIPS)}, year={2025} }
 
 
 
