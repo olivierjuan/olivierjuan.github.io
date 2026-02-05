@@ -12,7 +12,7 @@ Context: The Branching Challenge
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-    Mixed-Integer Linear Programming (MILP) is central to many critical industrial problems, from nuclear reactor management to complex logistics. Modern solvers rely on the Branch & Bound (B&B) algorithm, the performance of which depends crucially on the variable selection heuristic (branching).
+    Mixed-Integer Linear Programming (MILP) is central to many critical industrial problems, from nuclear reactor management to complex logistics. Modern solvers rely on the Branch & Bound (B&B) algorithm, the performance of which depends crucially on the variable selection heuristic (branching).<br/>
 
     Until now, Reinforcement Learning (RL) approaches suffered from a major theoretical limitation: the use of approximate formulations like TreeMDP, which do not respect standard Markov properties.
     </div>
