@@ -33,7 +33,7 @@ Unlike previous approaches that attempted to minimize the size of independent su
 
 1. Guarantee convergence towards a global optimal policy $π^∗$.
 
-$$π^∗=argmin_{π} E_{P∼p_0} (∣BB_{(π,ρ)}(P)∣)$$
+$$π^∗=\displaystyle argmin_{π} E_{P∼p_0} (∣BB_{(π,ρ)}(P)∣)$$
 
 # Technical Architecture
 Our agent, DQN-BBMDP, uses a problem representation in the form of a bipartite graph (Variables/Constraints) processed by a Graph Convolutional Network (GCN). It overcomes the limitations of TreeMDP models by taking into account the real sequential dynamics of the solver.
