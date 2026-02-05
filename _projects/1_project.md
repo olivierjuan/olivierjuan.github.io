@@ -38,7 +38,7 @@ $$π^∗=argmin_{π} E_{P∼p_0} (∣BB_{(π,ρ)}(P)∣)$$
 # Technical Architecture
 Our agent, DQN-BBMDP, uses a problem representation in the form of a bipartite graph (Variables/Constraints) processed by a Graph Convolutional Network (GCN). It overcomes the limitations of TreeMDP models by taking into account the real sequential dynamics of the solver.
 
-<div class="row"> <div class="col-sm mt-3 mt-md-0"> {% include figure.liquid loading="eager" path="assets/img/bbmdp/structure.png" title="BBMDP Structure" class="img-fluid rounded z-depth-1" %} </div> </div> <div class="caption"> Trajectory comparison: Unlike TreeMDP which approximates the tree, BBMDP tracks the actual evolution of the Pareto frontier in the SCIP solver. </div>
+<div class="row"> <div class="col-sm mt-3 mt-md-0"> {% include figure.liquid loading="eager" path="assets/img/bbmdp/structure.png" title="BBMDP Structure" class="img-fluid rounded z-depth-1" %} </div> </div> <div class="caption"> Trajectory comparison: When applying TD(0), TreeMDP and BBMDP yield equivalent results, see a, b. However, when minimizing k-step temporal difference, the two methods diverge as exemplified in c, d. </div>
 
 # Results and Impact
 Experiments conducted on standard benchmarks (Set Covering, Auctions, Maximum Independent Set) demonstrate that our approach establishes a new state-of-the-art for RL agents.
