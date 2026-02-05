@@ -8,7 +8,7 @@ category: Machine Learning & Optimization
 related_publications: true
 ---
 
-Context: The Branching Challenge
+# Context: The Branching Challenge
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -21,7 +21,8 @@ Context: The Branching Challenge
     </div>
 </div>
 
-The Innovation: BBMDP
+# The Innovation: BBMDP
+
 In our paper presented at NeurIPS 2025, we introduce BBMDP (Branch & Bound MDP), a "vanilla" and rigorous MDP formulation for the variable selection process.
 
 Unlike previous approaches that attempted to minimize the size of independent subtrees, BBMDP models the complete state of the search tree $s_t=(V_t, E_t, x_t)$. This allows us to:
@@ -34,17 +35,17 @@ Unlike previous approaches that attempted to minimize the size of independent su
 
 $$π^∗=argmin_{π} E_{P∼p_0} (∣BB_{(π,ρ)}(P)∣)$$
 
-Technical Architecture
+# Technical Architecture
 Our agent, DQN-BBMDP, uses a problem representation in the form of a bipartite graph (Variables/Constraints) processed by a Graph Convolutional Network (GCN). It overcomes the limitations of TreeMDP models by taking into account the real sequential dynamics of the solver.
 
 <div class="row"> <div class="col-sm mt-3 mt-md-0"> {% include figure.liquid loading="eager" path="assets/img/bbmdp/structure.png" title="BBMDP Structure" class="img-fluid rounded z-depth-1" %} </div> </div> <div class="caption"> Trajectory comparison: Unlike TreeMDP which approximates the tree, BBMDP tracks the actual evolution of the Pareto frontier in the SCIP solver. </div>
 
-Results and Impact
+# Results and Impact
 Experiments conducted on standard benchmarks (Set Covering, Auctions, Maximum Independent Set) demonstrate that our approach establishes a new state-of-the-art for RL agents.
 
-Performance: DQN-BBMDP reduces the number of nodes by 27% and solving time by 38% compared to the previous state-of-the-art (DQN-Retro).
+* Performance: DQN-BBMDP reduces the number of nodes by 27% and solving time by 38% compared to the previous state-of-the-art (DQN-Retro).
 
-Generalization: The agent shows superior capability to generalize on larger dimension instances (Transfer Learning) compared to methods based on Imitation Learning.
+* Generalization: The agent shows superior capability to generalize on larger dimension instances (Transfer Learning) compared to methods based on Imitation Learning.
 
 | ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:|
 | Benchmarks | **Set Covering** |  | **Comb. Auction** |  | **Max. Ind. Set** |  | **Mult. Knapsack** |  | **Norm. Score** |  |
@@ -65,13 +66,15 @@ Generalization: The agent shows superior capability to generalize on larger dime
 
 Note: Results show a significant reduction in the gap with the expert (Strong Branching), while being much faster to execute.
 
-Resources
+# Resources
 The source code for the implementation and pre-trained models are available to the scientific community to foster reproducibility.
 
 <div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center"> {% include repository/repo.liquid repository="abfariah/bbmdp" %} </div>
 
-Citation
-If you use this work, please cite our paper:bibtex @inproceedings{strang2025bbmdp, title={A Markov Decision Process for Variable Selection in Branch & Bound}, author={Strang, Paul and Alès, Zacharie and Juan, Olivier and Bissuel, Côme and Kedad-Sidhoum, Safia and Rachelson, Emmanuel}, booktitle={Advances in Neural Information Processing Systems (NeurIPS)}, year={2025} }
+# Citation
+If you use this work, please cite our paper:
+
+    bibtex @inproceedings{strang2025bbmdp, title={A Markov Decision Process for Variable Selection in Branch & Bound}, author={Strang, Paul and Alès, Zacharie and Juan, Olivier and Bissuel, Côme and Kedad-Sidhoum, Safia and Rachelson, Emmanuel}, booktitle={Advances in Neural Information Processing Systems (NeurIPS)}, year={2025} }
 
 
 ### Visual Assets to Add
