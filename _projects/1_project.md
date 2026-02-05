@@ -38,11 +38,12 @@ Performance: DQN-BBMDP reduces the number of nodes by 27% and solving time by 38
 
 Generalization: The agent shows superior capability to generalize on larger dimension instances (Transfer Learning) compared to methods based on Imitation Learning.
 
+|----------------|----------------------|-------------------------------|
 | Method	     | Set Covering (Nodes) | Combinatorial Auction (Nodes) |
--------------------------------------------------------------------------
+|----------------|----------------------|-------------------------------|
 | SCIP (Default) | 62.0                 | 19.5                          |
 | DQN-BBMDP      | 152.3                | 97.9                          |
--------------------------------------------------------------------------
+|----------------|----------------------|-------------------------------|
 
 Note: Results show a significant reduction in the gap with the expert (Strong Branching), while being much faster to execute.
 
