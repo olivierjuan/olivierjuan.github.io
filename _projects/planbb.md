@@ -1,10 +1,11 @@
 ---
 layout: page
 title: "PlanB&B: Model-Based RL for Branch-and-Bound"
-description: MuZero for CO. First MBRL agent for exact combinatorial optimization, achieving state-of-the-art performance on MILP benchmarks
+description: "MuZero for CO: First MBRL agent for exact combinatorial optimization, achieving state-of-the-art performance on MILP benchmarks"
 img: /assets/img/planbb/teaser.jpg
 importance: 1
 category: Machine Learning
+related_publications: true
 ---
 
 **Authors:** Paul Strang, Zacharie Alès, Côme Bissuel, Olivier Juan, Safia Kedad-Sidhoum, Emmanuel Rachelson
@@ -43,7 +44,7 @@ PlanB&B consists of three interconnected neural networks:
 
 The model learns to simulate subtree trajectories in latent space, enabling planning without expensive LP solves.
 
-<div class="row"> <div class="col-sm mt-3 mt-md-0"> {% include figure.liquid loading="eager" path="assets/img/planbb/teaser.png" title="PlanBB Structure" class="img-fluid rounded z-depth-1" %} </div> </div> <div class="caption"> Planning in B&B over a learned model. The combined use of h, f, and g allows simulating subtree rollouts starting from the current B&B node. Here, we show how the planning is done 3 steps ahead. </div>
+<div class="row"> <div class="mx-auto d-block"> {% include figure.liquid loading="eager" path="assets/img/planbb/teaser.png" title="PlanBB Structure" class="img-fluid rounded z-depth-1" %} </div> </div> <div class="caption"> Planning in B&B over a learned model. The combined use of h, f, and g allows simulating subtree rollouts starting from the current B&B node. Here, we show how the planning is done 3 steps ahead. </div>
 
 
 #### Planning with Gumbel Search
