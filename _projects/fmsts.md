@@ -2,7 +2,7 @@
 layout: page
 title: "FMSTS: Reinforcement Learning for Variable Selection in Branch and Bound"
 description: First RL approach to fully optimize branching strategy from scratch. Novel value function using subtree size for learning efficient MILP variable selection.
-img: /assets/img/fmsts/archtecture.jpg
+img: /assets/img/fmsts/architecture.png
 importance: 2
 category: Machine Learning
 related_publications: true
