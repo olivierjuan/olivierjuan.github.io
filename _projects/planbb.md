@@ -1,13 +1,11 @@
 ---
 layout: page
 title: "PlanB&B: Model-Based RL for Branch-and-Bound"
-description: First MBRL agent for exact combinatorial optimization, achieving state-of-the-art performance on MILP benchmarks
+description: MuZero for CO. First MBRL agent for exact combinatorial optimization, achieving state-of-the-art performance on MILP benchmarks
 img: /assets/img/planbb/teaser.jpg
 importance: 1
 category: Machine Learning
 ---
-
-## Planning in Branch-and-Bound: Model-Based Reinforcement Learning for Exact Combinatorial Optimization
 
 **Authors:** Paul Strang, Zacharie Alès, Côme Bissuel, Olivier Juan, Safia Kedad-Sidhoum, Emmanuel Rachelson
 

@@ -8,8 +8,6 @@ category: Machine Learning
 related_publications: true
 ---
 
-## A Markov Decision Process for Variable Selection in Branch & Bound
-
 **Authors:** Paul Strang, Zacharie Alès, Côme Bissuel, Olivier Juan, Safia Kedad-Sidhoum, Emmanuel Rachelson
 
 **Published:** arXiv:2510.19348v1 [cs.LG] 22 Oct 2025
