@@ -2,7 +2,7 @@
 layout: page
 title: "PlanB&B: Model-Based RL for Branch-and-Bound"
 description: "MuZero for CO: First MBRL agent for exact combinatorial optimization, achieving state-of-the-art performance on MILP benchmarks"
-img: /assets/img/planbb/teaser.jpg
+img: /assets/img/planbb/teaser.png
 importance: 1
 category: Machine Learning
 related_publications: true
