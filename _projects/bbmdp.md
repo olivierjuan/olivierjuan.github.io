@@ -8,7 +8,16 @@ category: Machine Learning
 related_publications: true
 ---
 
-# Context: The Branching Challenge
+## A Markov Decision Process for Variable Selection in Branch & Bound
+
+**Authors:** Paul Strang, Zacharie Alès, Côme Bissuel, Olivier Juan, Safia Kedad-Sidhoum, Emmanuel Rachelson
+
+**Published:** arXiv:2510.19348v1 [cs.LG] 22 Oct 2025
+
+**Affiliations:** EDF R&D, ENSTA Paris, CNAM Paris, ISAE-SUPAERO
+
+---
+### Abstract
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -21,9 +30,9 @@ related_publications: true
     </div>
 </div>
 
-# The Innovation: BBMDP
+### The Innovation: BBMDP
 
-In our paper {% cite Strang2025 %} presented at NeurIPS 2025, we introduce BBMDP (Branch & Bound MDP), a "vanilla" and rigorous MDP formulation for the variable selection process.
+In our paper **A Markov Decision Process for Variable Selection in Branch & Bound** {% cite Strang2025 %} presented at **NeurIPS 2025**, we introduce BBMDP (Branch & Bound MDP), a "vanilla" and rigorous MDP formulation for the variable selection process.
 
 Unlike previous approaches that attempted to minimize the size of independent subtrees, BBMDP models the complete state of the search tree $s_t=(V_t, E_t, x_t)$. This allows us to:
 
@@ -35,12 +44,12 @@ Unlike previous approaches that attempted to minimize the size of independent su
 
 $$π^∗=\displaystyle arg\min_{π} E_{P∼p_0} (∣BB_{(π,ρ)}(P)∣)$$
 
-# Technical Architecture
+### Technical Architecture
 Our agent, DQN-BBMDP, uses a problem representation in the form of a bipartite graph (Variables/Constraints) processed by a Graph Convolutional Network (GCN). It overcomes the limitations of TreeMDP models by taking into account the real sequential dynamics of the solver.
 
 <div class="row"> <div class="col-sm mt-3 mt-md-0"> {% include figure.liquid loading="eager" path="assets/img/bbmdp/structure.png" title="BBMDP Structure" class="img-fluid rounded z-depth-1" %} </div> </div> <div class="caption"> Trajectory comparison: When applying TD(0), TreeMDP and BBMDP yield equivalent results, see a, b. However, when minimizing k-step temporal difference, the two methods diverge as exemplified in c, d. </div>
 
-# Results and Impact
+### Results and Impact
 Experiments conducted on standard benchmarks (Set Covering, Auctions, Maximum Independent Set) demonstrate that our approach establishes a new state-of-the-art for RL agents.
 
 * Performance: DQN-BBMDP reduces the number of nodes by 27% and solving time by 38% compared to the previous state-of-the-art (DQN-Retro).
@@ -66,12 +75,22 @@ Experiments conducted on standard benchmarks (Set Covering, Auctions, Maximum In
 
 Note: Results show a significant reduction in the gap with the expert (Strong Branching), while being much faster to execute.
 
-# Resources
-The source code for the implementation and pre-trained models are available to the scientific community to foster reproducibility.
+### Resources
+
+- **arXiv**: [arXiv:2510.19348](https://arxiv.org/abs/2510.19348)
+
+- **Github repository**: The source code for the implementation and pre-trained models are available to the scientific community to foster reproducibility.
 
 <div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center"> {% include repository/repo.liquid repository="abfariah/bbmdp" %} </div>
 
-# Citation
+### Citation
 If you use this work, please cite our paper:
 
-    @inproceedings{strang2025bbmdp, title={A Markov Decision Process for Variable Selection in Branch & Bound}, author={Strang, Paul and Alès, Zacharie and Juan, Olivier and Bissuel, Côme and Kedad-Sidhoum, Safia and Rachelson, Emmanuel}, booktitle={Advances in Neural Information Processing Systems (NeurIPS)}, year={2025} }
+```bibtex
+@inproceedings{strang2025bbmdp,
+  title={A Markov Decision Process for Variable Selection in Branch & Bound},
+  author={Strang, Paul and Alès, Zacharie and Juan, Olivier and Bissuel, Côme and Kedad-Sidhoum, Safia and Rachelson, Emmanuel},
+  booktitle={Advances in Neural Information Processing Systems (NeurIPS)},
+  year={2025}
+}
+````
