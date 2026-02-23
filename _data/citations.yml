@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-02-11'
+  last_updated: '2026-02-23'
 papers:
   Ay-ul4AAAAAJ:0EnyYjriUFMC:
     citations: 0
@@ -26,7 +26,7 @@ papers:
     title: Robust segmentation of hidden layers in video sequences
     year: '2006'
   Ay-ul4AAAAAJ:IjCSPb-OGe4C:
-    citations: 25
+    citations: 24
     title: Capacity scaling for graph cuts in vision
     year: '2007'
   Ay-ul4AAAAAJ:KlAtU1dfN6UC:
@@ -34,7 +34,7 @@ papers:
     title: Planning in branch-and-bound
     year: Unknown Year
   Ay-ul4AAAAAJ:LkGwnXOMwfcC:
-    citations: 89
+    citations: 92
     title: Reinforcement learning for variable selection in a branch and bound algorithm
     year: '2020'
   Ay-ul4AAAAAJ:MXK_kJrjxJIC:
@@ -62,7 +62,7 @@ papers:
     title: On some extensions of the level sets and the graph cuts towards their application to image and video segmentation
     year: '2006'
   Ay-ul4AAAAAJ:WF5omc3nYNoC:
-    citations: 29
+    citations: 32
     title: 'Challenge ROADEF/EURO 2010: A large-scale energy management problem with varied constraints'
     year: '2010'
   Ay-ul4AAAAAJ:Y0pCki6q_DkC:
@@ -78,11 +78,11 @@ papers:
     title: A Graph-based Heuristic for Variable Selection in Mixed Integer Linear Programming
     year: '2019'
   Ay-ul4AAAAAJ:d1gkVwhDpl0C:
-    citations: 62
+    citations: 59
     title: Trimap segmentation for fast and user-friendly alpha matting
     year: '2005'
   Ay-ul4AAAAAJ:eQOLeE2rZwMC:
-    citations: 71
+    citations: 72
     title: Using a genetic algorithm and CFD to identify low NOx configurations in an industrial boiler
     year: '2015'
   Ay-ul4AAAAAJ:hqOjcs7Dif8C:
@@ -102,7 +102,7 @@ papers:
     title: 'Stochastic Motion and the Level Set Method in Computer Vision: Stochastic Active Contours'
     year: '2006'
   Ay-ul4AAAAAJ:u5HHmVD_uO8C:
-    citations: 190
+    citations: 187
     title: Active graph cuts
     year: '2006'
   Ay-ul4AAAAAJ:ufrVoPGSRksC:
