@@ -5,7 +5,7 @@ description: >
   Coupling a genetic algorithm with CFD simulations (Code_Saturne) to automatically discover
   optimal operating configurations for a 600 MW tangentially-fired pulverized-coal boiler,
   minimizing NOx emissions while controlling corrosion risk.
-img: assets/img/projects/low_nox_boiler.png   # replace with an actual image path
+img: assets/img/fuel/teaser.png   # replace with an actual image path
 importance: 2
 category: Optimization               # adapt to your own categories
 related_publications: dalsecco2015          # must match your BibTeX key in _bibliography/papers.bib
