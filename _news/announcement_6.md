@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Honorable Mention at MIPcc23 for Paul Strang"
+title: "Congrats Paul Strang for you Honorable Mention at MIPcc23"
 date: 2023-05-22 09:00:00+0100
 inline: false
 related_posts: false
