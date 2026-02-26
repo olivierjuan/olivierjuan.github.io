@@ -1,10 +1,15 @@
 cv:
   name: Olivier Juan
-  label: Research Scientist Expert
+  label: Research Engineer Expert
   email: olivier.juan@edf.fr
   location: Palaiseau, France
   image: https://olivierjuan.github.io/mal-folio.github.io/assets/img/picture-800.webp
-  summary: I am a research scientist expert at EDF Lab, working on the development of optimization algorithms for the short term unit commitment problem and decentralized energy systems. My research focuses on machine learning and optimization. I have a PhD in Computer Science and Mathematics from Ecole des Ponts ParisTech, and I have published several papers in international conferences and journals on these topics.
+  summary: >
+    Research Engineer Expert at EDF R&D (OSIRIS department) with over 15 years of experience
+    at the intersection of combinatorial optimization, machine learning, and energy systems.
+    Architect of Apogène, EDF's short-term unit commitment software (IndusRO'2022 prize).
+    PhD in Computer Science and Mathematics from École des Ponts ParisTech, with postdoctoral
+    experience in computer vision at the University of Western Ontario and École Centrale de Paris.
 
   social_networks:
     - network: GitHub
@@ -16,12 +21,12 @@ cv:
     street: 7 boulevard Gaspard Monge
     city: Palaiseau
     region: Île-de-France
-    postalCode: 91120
+    postalCode: "91120"
     countryCode: FR
 
   sections:
     Education:
-      - institution: Ecole des Ponts ParisTech
+      - institution: École des Ponts ParisTech (ENPC)
         location: Marne-la-Vallée, France
         url: https://www.enpc.fr
         area: Computer Science & Mathematics
@@ -30,130 +35,232 @@ cv:
         end_date: 2006
         score: with distinction
         highlights:
-          - Level Sets Method
-          - Stochastic PDE
-          - Graph Cuts
-          - Stochastic Optimization
-          - Discrete Optimization
-          - Computer Vision
+          - "Thesis: On Some Extensions of Level Sets and Graph Cuts & Their Applications to Image and Video Segmentation"
+          - Level Sets methods and Stochastic PDEs
+          - Graph Cuts and combinatorial optimization
+          - Image and video segmentation
 
-      - institution: ENS Cachan
+      - institution: École Normale Supérieure de Cachan (ENS Cachan)
         location: Cachan, France
-        area: Computer Science
-        studyType: Master Degree
+        url: https://ens-paris-saclay.fr
+        area: Mathematics, Vision and Learning (MVA)
+        studyType: Master's degree
         start_date: 2001
         end_date: 2002
         highlights:
-          - Master MVA
+          - Master MVA (Mathématiques, Vision et Apprentissage)
           - Machine Learning
           - Computer Vision
+          - Variational methods and PDEs
 
     Experience:
-      - company: EDF Lab
+      - company: EDF R&D — OSIRIS Department
         url: https://www.edf.fr/en/the-edf-group/innovating-for-the-future/rd-global-expertise/our-activities
-        position: Research Scientist Expert
+        position: Research Engineer Expert
         location: Palaiseau, France
         start_date: 2019
+        summary: >
+          Leading research at the intersection of machine learning and combinatorial optimization,
+          with applications to energy systems and smart EV charging. Co-authoring publications
+          at top ML and OR venues (NeurIPS 2025, AAAI 2026).
         highlights:
-          - Machine Learning
-          - Optimization
-          - Decentralized Energy Systems
-          - Smart EV Charging
+          - Model-based reinforcement learning for branch-and-bound (PlanB&B — AAAI 2026)
+          - Rigorous MDP formulation for variable selection in B&B (BBMDP — NeurIPS 2025)
+          - Smart EV charging optimization for DREEV (EDF/Nuvve joint venture)
+          - Continuous development and improvement of Apogène (V3 in 2020, V4 in 2021)
 
-      - company: EDF Lab
+      - company: EDF R&D — OSIRIS Department
         url: https://www.edf.fr/en/the-edf-group/innovating-for-the-future/rd-global-expertise/our-activities
         position: Research Project Manager
         location: Clamart, France
         start_date: 2015
         end_date: 2019
-        summary: I managed a research project on the development for the short term unit commitment problem of new optimization algorithms, more efficient mathematical formulations and addressing new complex evolutions needed by the operational teams. I coordinated a team of researchers and engineers to adapt the existing algorithms to new european rules for balancing the electric system.
+        summary: >
+          Led the development of new optimization algorithms and mathematical formulations for
+          the short-term unit commitment problem, and coordinated adaptation to new European
+          balancing market rules.
         highlights:
-          - Short Term Unit Commitment
-          - Mixed Integer Programming
-          - Lagrangian Decomposition
-          - Alternated Direction Method of Multipliers
-          - Electric Systems
+          - Commissioning of Apogène V2 (2018) — reduced EDF power plant operating costs by several percent
+          - Short-term unit commitment and Mixed Integer Programming
+          - Lagrangian decomposition and ADMM
+          - European electricity balancing market regulations
 
-      - company: EDF Lab
+      - company: EDF R&D — OSIRIS Department
         url: https://www.edf.fr/en/the-edf-group/innovating-for-the-future/rd-global-expertise/our-activities
         position: Research Project Manager
         location: Clamart, France
         start_date: 2012
         end_date: 2015
-        summary: I managed a research project on the development of optimization algorithms for the short term unit commitment problem. In particular, I coordinated a team of engineers and developpers to do a complete reimplementation in C++ of a legacy Fortran code. I also contributed to the implementation of a CI ensuring no regression errors and showing significant improvements in terms of solution quality and computational time compared to existing methods.
+        summary: >
+          Managed the complete redesign and reimplementation of Apogée (EDF's legacy Fortran
+          unit commitment solver) into a modern C++ codebase, with a full CI pipeline ensuring
+          no regressions and significant improvements in solution quality and runtime.
         highlights:
-          - Short Term Unit Commitment
-          - Mixed Integer Programming
-          - Lagrangian Decomposition
-          - Alternated Direction Method of Multipliers
-          - Electric Systems
+          - Full C++ reimplementation of legacy Fortran code (Apogène V1 → V2)
+          - Continuous integration and regression testing infrastructure
+          - Mixed Integer Programming and Lagrangian decomposition
+          - Team coordination across engineers and researchers
 
-      - company: EDF Lab
+      - company: EDF R&D — OSIRIS Department
         url: https://www.edf.fr/en/the-edf-group/innovating-for-the-future/rd-global-expertise/our-activities
         position: Research Scientist
         location: Clamart, France
         start_date: 2008
         end_date: 2012
-        summary: I worked on the development of optimization algorithms for the short term unit commitment problem. I took part in the implementation of mixed interger programming formulation of hydraulic valley optimization. And I contributed to testing of these algorithms on real-world instances, showing significant improvements in terms of solution quality compared to existing methods.
+        summary: >
+          Worked on a broad range of operational research topics before focusing on short-term
+          unit commitment. Contributed to MIP formulations for hydraulic valley optimization
+          and to early development of Apogène V1.
         highlights:
-          - Mixed Integer Programming
-          - Lagrangian Decomposition
-          - Electric Systems
+          - Task scheduling for maintenance planning
+          - LNG terminal planning & scheduling
+          - Coal power plant combustion and pollutant emission optimization (genetic algorithms + CFD)
+          - Mixed Integer Programming for hydraulic valley optimization
 
-      - company: INRIA/Ecole Centrale
+      - company: École Centrale de Paris (now CentraleSupélec)
         url: https://www.mics.centralesupelec.fr/
-        position: Post doctoral researcher
-        location: Chatenay Malabry, France
-        summary: I worked on applying primal-dual optimization methods for medical imaging and tomography in particular.
+        position: Postdoctoral Researcher
+        location: Châtenay-Malabry, France
         start_date: 2007
         end_date: 2008
+        summary: >
+          Conducted research on combinatorial and primal-dual optimization methods for medical
+          imaging, under the supervision of Prof. Nikos Paragios.
+        highlights:
+          - Combinatorial algorithms for medical imaging
+          - Primal-dual optimization methods
+          - Tomography reconstruction
 
       - company: University of Western Ontario
         url: https://www.csd.uwo.ca/
-        position: Post doctoral researcher
+        position: Postdoctoral Researcher
         location: London, Ontario, Canada
-        summary: I worked on applying discrete optimization methods such as graph cuts for various problems in computer vision.
         start_date: 2006
         end_date: 2007
+        summary: >
+          Worked on discrete optimization methods for computer vision under the supervision of
+          Prof. Yuri Boykov (now at the University of Waterloo).
+        highlights:
+          - Graph cuts and max-flow algorithms for computer vision
+          - Capacity scaling for graph cuts (ICCV 2007)
+          - Energy minimization in computer vision
 
-      - company: INRIA Odyssee Team (now Athena Team)
+      - company: INRIA Odyssée Team (now Athena)
         url: https://team.inria.fr/athena/team-members/
-        position: Master Intern
-        location: Sophia-antipolis, France
-        summary: I worked on the development of a 3D reconstruction method from texture-warping using wavelet transformation.
+        position: Research Intern
+        location: Sophia Antipolis, France
         start_date: 2002
         end_date: 2002
+        summary: >
+          Developed a 3D reconstruction method from texture warping using wavelet transformations.
+
+    Awards:
+      - title: IndusRO'2022 Prize
+        date: 2022-06-01
+        awarder: ROADEF (French Society for Operations Research and Decision Aid)
+        url: https://www.linkedin.com/feed/update/urn:li:activity:6962864243234742273/
+        summary: >
+          Awarded to Apogène, EDF's short-term unit commitment software, in recognition of
+          its industrial impact and the quality of the underlying operations research.
 
     Publications:
-      - title: Zur Elektrodynamik bewegter Körper
+      - title: "Planning in Branch-and-Bound: Model-Based Reinforcement Learning for Exact Combinatorial Optimization"
         authors:
-          - Albert Einstein
-        publisher: Annalen der Physik
-        releaseDate: 1905-06-30
-        url: https://en.wikisource.org/wiki/Translation:On_the_Electrodynamics_of_Moving_Bodies
-        summary: It concerned an interpretation of the Michelson–Morley experiment and the properties of light and time. Special relativity incorporates the principle that the speed of light is the same for all inertial observers regardless of the state of motion of the source.
+          - Paul Strang
+          - Zacharie Alès
+          - Côme Bissuel
+          - Olivier Juan
+          - Safia Kedad-Sidhoum
+          - Emmanuel Rachelson
+        publisher: "AAAI 2026"
+        releaseDate: 2026-01-01
+        url: https://openreview.net/forum?id=8481hfKVsr
+        summary: >
+          Introduces PlanB&B, the first model-based RL agent for exact combinatorial optimization,
+          using MCTS over a learned B&B dynamics model to surpass prior RL and imitation learning baselines.
 
-      - title: Über einen die Erzeugung und Verwandlung des Lichtes betreffenden heuristischen Gesichtspunkt
+      - title: "A Markov Decision Process for Variable Selection in Branch & Bound"
         authors:
-          - Albert Einstein
-        publisher: Annalen der Physik
-        releaseDate: 1905-03-18
-        url: https://de.wikisource.org/wiki/Über_einen_die_Erzeugung_und_Verwandlung_des_Lichtes_betreffenden_heuristischen_Gesichtspunkt
-        summary: In the second paper, he applied the quantum theory to light to explain the photoelectric effect. In particular, he used the idea of light quanta (photons) to explain experimental results, but stressed the importance of the experimental results. The importance of his work on the photoelectric effect earned him the Nobel Prize in Physics in 1921.
+          - Paul Strang
+          - Zacharie Alès
+          - Côme Bissuel
+          - Olivier Juan
+          - Safia Kedad-Sidhoum
+          - Emmanuel Rachelson
+        publisher: "NeurIPS 2025"
+        releaseDate: 2025-12-01
+        url: https://openreview.net/forum?id=05Svr0k5C9
+        summary: >
+          Introduces BBMDP, a principled vanilla MDP formulation for variable selection in
+          branch-and-bound, enabling standard RL algorithms to learn optimal branching policies.
 
-      - title: Die Grundlage der allgemeinen Relativitätstheorie
+      - title: "Reinforcement Learning for Variable Selection in a Branch and Bound Algorithm"
         authors:
-          - Albert Einstein
-        publisher: Annalen der Physik
-        releaseDate: 1916-03-20
-        url: https://de.wikisource.org/wiki/Die_Grundlage_der_allgemeinen_Relativitätstheorie
-        summary: The publication of the theory of general relativity made him internationally famous. He was professor of physics at the universities of Zurich (1909–1911) and Prague (1911–1912), before he returned to ETH Zurich (1912–1914).
+          - Marc Ethève
+          - Zacharie Alès
+          - Côme Bissuel
+          - Olivier Juan
+          - Safia Kedad-Sidhoum
+        publisher: "CPAIOR 2020"
+        releaseDate: 2020-09-01
+        url: https://doi.org/10.1007/978-3-030-58942-4_12
+        summary: >
+          Proposes FMSTS, the first RL approach to fully optimize the branching strategy in B&B,
+          demonstrating strong generalization on new MILP instances.
+
+      - title: "Using a Genetic Algorithm and CFD to Identify Low NOx Configurations in an Industrial Boiler"
+        authors:
+          - Sandro Dal Secco
+          - Olivier Juan
+          - Myriam Louis-Louisy
+          - Jean-Yves Lucas
+          - Pierre Plion
+          - Lynda Porcheron
+        publisher: "Fuel, Elsevier (vol. 158)"
+        releaseDate: 2015-10-15
+        url: https://doi.org/10.1016/j.fuel.2015.06.021
+        summary: >
+          Combines genetic algorithms with CFD simulations to minimize NOx emissions in a 600 MW
+          tangentially-fired pulverized-coal boiler at EDF.
+
+      - title: "Stochastic Motion and the Level Set Method in Computer Vision: Stochastic Active Contours"
+        authors:
+          - Olivier Juan
+          - Renaud Keriven
+          - Gheorghe Postelnicu
+        publisher: "International Journal of Computer Vision (IJCV), vol. 69"
+        releaseDate: 2006-07-01
+        url: https://doi.org/10.1007/s11263-006-6849-5
+        summary: >
+          Introduces stochastic perturbations to the level set framework via Stratonovich differentials,
+          enabling segmentation methods to escape local minima.
+
+      - title: Active Graph Cuts
+        authors:
+          - Olivier Juan
+          - Yuri Boykov
+        publisher: "CVPR 2006"
+        releaseDate: 2006-06-01
+        url: https://doi.org/10.1109/CVPR.2006.47
+        summary: >
+          Introduces Active Cuts, a method that exploits good approximate solutions to accelerate
+          global s/t cut computation, enabling near real-time performance for dynamic vision problems.
 
     Skills:
-      - name: Computer Science
-        level: PhD
-        icon: fa-solid fa-hashtag
-        keywords: "C/C++, Python, Machine Learning, Optimization, Mixed Integer Programming, High Performance Computing, Parallel Programming, Git, CI/CD"
+      - name: Programming
+        level: Expert
+        icon: fa-solid fa-code
+        keywords: "C/C++, Python, Git, CI/CD"
+
+      - name: Machine Learning & Optimization
+        level: Expert
+        icon: fa-solid fa-brain
+        keywords: "Reinforcement Learning, Graph Neural Networks, Mixed Integer Programming, Lagrangian Decomposition, Branch & Bound, Metaheuristics"
+
+      - name: Tools & Frameworks
+        level: Expert
+        icon: fa-solid fa-wrench
+        keywords: "SCIP, Gurobi, PyTorch, Ecole, High Performance Computing, Parallel Programming"
 
     Languages:
       - name: French
@@ -163,27 +270,53 @@ cv:
         summary: "Fluent"
 
     Interests:
-      - name: Physics
-        icon: fa-solid fa-tag
-        keywords: "Quantum Mechanics, Quantum Computing, Quantum Information, Quantum Cryptography, Quantum Communication, Quantum Teleportation"
+      - name: Combinatorial Optimization & Machine Learning
+        icon: fa-solid fa-diagram-project
+        keywords: "Branch & Bound, Reinforcement Learning, Graph Neural Networks, MILP, Metaheuristics"
+
+      - name: Energy Systems
+        icon: fa-solid fa-bolt
+        keywords: "Unit Commitment, Smart EV Charging, Electric Markets, Demand Response"
+
+      - name: Computer Vision
+        icon: fa-solid fa-eye
+        keywords: "Graph Cuts, Level Sets, Image Segmentation, Medical Imaging"
 
     Projects:
-      - name: Machine Learning for Discrete Optimization
-        summary: I am interested in enhancing optimization methods with machine learning, specifically in the case of repeated optimization problem which arise in industrial applications. I am currently working on the development of a new method for learning to optimize combinatorial problems, which is based on the idea of learning a branching heuristics that can guide the search process of an optimization algorithm. This method has shown promising results on a variety of combinatorial problems, and I am currently working on further improving its performance and scalability.
+      - name: "PlanB&B — Model-Based RL for Branch-and-Bound"
+        summary: >
+          First model-based reinforcement learning agent for exact combinatorial optimization.
+          PlanB&B learns an internal model of B&B dynamics and uses Monte Carlo Tree Search
+          to discover branching strategies that surpass both imitation learning and prior RL baselines.
         url: https://olivierjuan.github.io/mal-folio.github.io/projects/planbb/
         highlights:
-          - Machine learning
-          - Combinatorial Optimization
-          - Branching Heuristics
-          - Reinforcement Learning
+          - Model-based reinforcement learning
+          - Monte Carlo Tree Search (Gumbel Search)
+          - Mixed Integer Linear Programming
           - Graph Neural Networks
-        start_date: 2018-01-01
+        start_date: 2023-01-01
 
-    References:
-      - name: Professor John Doe
-        icon: fa-solid fa-laptop
-        reference: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum, diam quis convallis euismod, arcu mi ullamcorper lorem, a vestibulum nunc magna at sem. Sed in risus ac felis varius blandit.
+      - name: "BBMDP — A Principled MDP for Variable Selection in B&B"
+        summary: >
+          Introduces a rigorous vanilla MDP formulation for the branching problem in B&B,
+          removing theoretical limitations of prior TreeMDP approximations and enabling
+          standard RL algorithms to learn optimal policies.
+        url: https://olivierjuan.github.io/mal-folio.github.io/projects/bbmdp/
+        highlights:
+          - Markov Decision Processes
+          - Deep Q-Network (DQN)
+          - Branch & Bound
+          - Combinatorial Optimization
+        start_date: 2022-01-01
 
-      - name: Professor Jane Smith
-        icon: fa-solid fa-thumbtack
-        reference: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum, diam quis convallis euismod, arcu mi ullamcorper lorem, a vestibulum nunc magna at sem. Sed in risus ac felis varius blandit.
+      - name: "Apogène — Short-Term Unit Commitment Software"
+        summary: >
+          Led the complete redesign and continuous development of EDF's flagship production
+          scheduling software over more than a decade. Apogène V2 (2018) reduced overall
+          power plant operating costs by several percent; awarded the IndusRO'2022 prize.
+        highlights:
+          - Short-term unit commitment
+          - Mixed Integer Programming
+          - Lagrangian decomposition & ADMM
+          - Industrial software engineering
+        start_date: 2012-01-01
