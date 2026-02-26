@@ -116,14 +116,14 @@ Most high-performing configurations share a common pattern:
   near active burners; the GA found non-intuitive asymmetric patterns (e.g. opening nozzles
   only at two diagonally opposite corners).
 
-<div class="row">
-  <div class="col-sm-6 mt-3 mt-md-0">
+<div class="row justify-content-sm-center">
+  <div class="col-sm-3 mt-3 mt-md-0">
     {% include figure.liquid
        path="assets/img/fuel/low_corrosion.png"
        title="Low corrosion risk – case 610"
        class="img-fluid rounded z-depth-1" %}
   </div>
-  <div class="col-sm-6 mt-3 mt-md-0">
+  <div class="col-sm-3 mt-3 mt-md-0">
     {% include figure.liquid
        path="assets/img/fuel/high_corrosion.png"
        title="High corrosion risk – case 962"
@@ -137,8 +137,7 @@ Most high-performing configurations share a common pattern:
 </div>
 
 
-<div class="container">
-<div class="row justify-content-center">
+<div class="row justify-content-sm-center">
   <div class="col-sm-6 mt-3 mt-md-0">
     {% include figure.liquid
        path="assets/img/fuel/low_nox.png"
@@ -154,7 +153,6 @@ Most high-performing configurations share a common pattern:
 </div>
 <div class="caption">
   NO<sub>x</sub> concentration in the boiler for two GA individuals: case 624 (low NO<sub>x</sub>) vs. reference case (high NO<sub>x</sub> emission).
-</div>
 </div>
 
 
