@@ -119,13 +119,13 @@ Most high-performing configurations share a common pattern:
 <div class="row">
   <div class="col-sm-6 mt-3 mt-md-0">
     {% include figure.liquid
-       path="assets/img/projects/low_nox_case610.jpg"
+       path="assets/img/fuel/low_corrosion.png"
        title="Low corrosion risk – case 610"
        class="img-fluid rounded z-depth-1" %}
   </div>
   <div class="col-sm-6 mt-3 mt-md-0">
     {% include figure.liquid
-       path="assets/img/projects/high_nox_case962.jpg"
+       path="assets/img/fuel/high_corrosion.jpg"
        title="High corrosion risk – case 962"
        class="img-fluid rounded z-depth-1" %}
   </div>
@@ -135,6 +135,26 @@ Most high-performing configurations share a common pattern:
   low corrosion) vs. case 962 (deep staging, high corrosion risk despite maximum NO<sub>x</sub>
   abatement of 54 %).
 </div>
+
+
+<div class="row">
+  <div class="col-sm-6 mt-3 mt-md-0">
+    {% include figure.liquid
+       path="assets/img/fuel/low_nox.png"
+       title="Low NO<sub>x</sub> – case 624"
+       class="img-fluid rounded z-depth-1" %}
+  </div>
+  <div class="col-sm-6 mt-3 mt-md-0">
+    {% include figure.liquid
+       path="assets/img/fuel/high_nox.jpg"
+       title="High NO<sub>x</sub> – reference case"
+       class="img-fluid rounded z-depth-1" %}
+  </div>
+</div>
+<div class="caption">
+  NO<sub>x</sub> concentration in the boiler for two GA individuals: case 624 (low NO<sub>x</sub>) vs. reference case (high NO<sub>x</sub> emission).
+</div>
+
 
 ### NO<sub>x</sub> vs. Corrosion Trade-off
 
