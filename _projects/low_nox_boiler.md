@@ -137,6 +137,7 @@ Most high-performing configurations share a common pattern:
 </div>
 
 
+<div class="container">
 <div class="row">
   <div class="col-sm-6 mt-3 mt-md-0">
     {% include figure.liquid
@@ -154,6 +155,8 @@ Most high-performing configurations share a common pattern:
 <div class="caption">
   NO<sub>x</sub> concentration in the boiler for two GA individuals: case 624 (low NO<sub>x</sub>) vs. reference case (high NO<sub>x</sub> emission).
 </div>
+</div>
+
 
 
 ### NO<sub>x</sub> vs. Corrosion Trade-off
