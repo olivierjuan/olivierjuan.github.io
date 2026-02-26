@@ -29,7 +29,6 @@ cv:
         start_date: 2002
         end_date: 2006
         score: with distinction
-        courses: On some extensions of the level sets and the graph cuts towards their application to image and video segmentation
         highlights:
           - Level Sets Method
           - Stochastic PDE
@@ -151,10 +150,10 @@ cv:
         summary: The publication of the theory of general relativity made him internationally famous. He was professor of physics at the universities of Zurich (1909–1911) and Prague (1911–1912), before he returned to ETH Zurich (1912–1914).
 
     Skills:
-      - name: Physics
-        level: Master
+      - name: Computer Science
+        level: PhD
         icon: fa-solid fa-hashtag
-        keywords: "Quantum Mechanics, Quantum Computing, Quantum Information, Quantum Cryptography, Quantum Communication, Quantum Teleportation"
+        keywords: "C++, Python, Machine Learning, Optimization, Mixed Integer Programming, High Performance Computing, Parallel Programming, Git, CI/CD"
 
     Languages:
       - name: French
@@ -170,7 +169,8 @@ cv:
 
     Projects:
       - name: Machine Learning for Discrete Optimization
-        summary: I am interested in enhancing optimization methods with machine learning, specifically in the case of repeated optimization problem which arise in industrial applications. I am currently working on the development of a new method for learning to optimize combinatorial problems, which is based on the idea of learning a branching heuristics that can guide the search process of an optimization algorithm. This method has shown promising results on a variety of combinatorial problems, and I am currently working on further improving its performance and scalability. https://olivierjuan.github.io/mal-folio.github.io/projects/planbb/
+        summary: I am interested in enhancing optimization methods with machine learning, specifically in the case of repeated optimization problem which arise in industrial applications. I am currently working on the development of a new method for learning to optimize combinatorial problems, which is based on the idea of learning a branching heuristics that can guide the search process of an optimization algorithm. This method has shown promising results on a variety of combinatorial problems, and I am currently working on further improving its performance and scalability.
+        url: https://olivierjuan.github.io/mal-folio.github.io/projects/planbb/
         highlights:
           - Machine learning
           - Combinatorial Optimization
