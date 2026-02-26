@@ -207,7 +207,8 @@ deep staging — fully consistent with GA/CFD predictions.
 
 ## Citations
 
-'''bibtex
+
+```bibtex
 @Article{DalSecco2015,
   abbr         = {Article},
   author    = {Dal Secco, Sandro and Juan, Olivier and Louis-Louisy, Myriam and Lucas, Jean-Yves and Plion, Pierre and Porcheron, Lynda},
@@ -234,4 +235,4 @@ plants fed with pulverised coal, heavy fuel oil or natural gas. Nitrogen oxides 
 be obtained using recently designed burners (inducing expansive investment) or using suitable fuel
 and air staging mimicking their behaviour. This study is devoted to pulverised coal boiler settings.},
 }
-'''
+```
