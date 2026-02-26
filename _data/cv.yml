@@ -223,6 +223,18 @@ cv:
           Combines genetic algorithms with CFD simulations to minimize NOx emissions in a 600 MW
           tangentially-fired pulverized-coal boiler at EDF.
 
+      - title: "Capacity Scaling for Graph Cuts in Vision"
+        authors:
+          - Olivier Juan
+          - Yuri Boykov
+        publisher: "ICCV 2007"
+        releaseDate: 2007-10-01
+        url: https://doi.org/10.1109/ICCV.2007.4408970
+        summary: >
+          Shows that capacity scaling — a classical technique from combinatorial optimization —
+          significantly reduces the theoretical complexity of max-flow algorithms used in vision,
+          yielding several-fold speed-ups on 3D and multi-label problems.
+
       - title: "Stochastic Motion and the Level Set Method in Computer Vision: Stochastic Active Contours"
         authors:
           - Olivier Juan
@@ -255,12 +267,12 @@ cv:
       - name: Machine Learning & Optimization
         level: Expert
         icon: fa-solid fa-brain
-        keywords: "Reinforcement Learning, Graph Neural Networks, Mixed Integer Programming, Lagrangian Decomposition, Branch & Bound, Metaheuristics"
+        keywords: "Reinforcement Learning, Graph Neural Networks, Mixed Integer Programming, Lagrangian Decomposition, Branch & Bound"
 
       - name: Tools & Frameworks
         level: Expert
         icon: fa-solid fa-wrench
-        keywords: "SCIP, Gurobi, PyTorch, Ecole, High Performance Computing, Parallel Programming"
+        keywords: "SCIP, Gurobi, CPLEX, Fico Xpress, PyTorch, Ecole, High Performance Computing, Parallel Programming"
 
     Languages:
       - name: French
