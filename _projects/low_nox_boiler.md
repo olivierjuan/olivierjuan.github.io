@@ -144,7 +144,7 @@ Most high-performing configurations share a common pattern:
        title="Low NO<sub>x</sub> – case 624"
        class="img-fluid rounded z-depth-1" %}
   </div>
-  <div class="col-sm-6 mt-3 mt-md-0">
+  <div class="col-sm-3 mt-3 mt-md-0">
     {% include figure.liquid
        path="assets/img/fuel/high_nox.png"
        title="High NO<sub>x</sub> – reference case"
