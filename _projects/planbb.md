@@ -68,11 +68,14 @@ Evaluated on four standard MILP benchmarks from the Ecole library: **Set Coverin
 | Method | Norm. Node Count | Norm. Solving Time |
 |--------|----------------:|-------------------:|
 | **PlanB&B** | **100** | **100** |
-| IL★ (strong branching imitation) | 96 | 116 |
-| IL (DFS) | 130 | 131 |
 | DQN-tMDP | 207 | 188 |
 | DQN-Retro | 208 | 241 |
 | PG-tMDP | 272 | 254 |
+|--------|----------------:|-------------------:|
+| Non-RL  | | |
+|--------|----------------:|-------------------:|
+| IL★ (strong branching imitation) | 96 | 116 |
+| IL (DFS) | 130 | 131 |
 | SCIP (default) | 58 | 363 |
 
 > **Note:** SCIP has fewer nodes due to aggressive presolving, but is 3.6× slower in wall time.
