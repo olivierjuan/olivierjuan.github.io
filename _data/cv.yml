@@ -326,10 +326,11 @@ cv:
           Led the complete redesign and continuous development of EDF's flagship production
           scheduling software over more than a decade. Apogène V2 (2018) reduced overall
           power plant operating costs by several percent; awarded the IndusRO'2022 prize.
+        url: https://www.youtube.com/watch?v=tBM6r-B8H8o&ab_channel=ROADEF  
         highlights:
           - Short-term unit commitment
           - Mixed Integer Programming
           - Lagrangian decomposition & ADMM
           - Industrial software engineering
         start_date: 2012-01-01
-        url: https://www.youtube.com/watch?v=tBM6r-B8H8o&ab_channel=ROADEF
+  
