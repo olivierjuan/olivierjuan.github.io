@@ -72,8 +72,7 @@ Evaluated on four standard MILP benchmarks from the Ecole library: **Set Coverin
 | DQN-Retro | 208 | 241 |
 | PG-tMDP | 272 | 254 |
 
-| Non-RL | Norm. Node Count | Norm. Solving Time |
-|--------|----------------:|-------------------:|
+| **Non-RL** | **Norm. Node Count** | **Norm. Solving Time** |
 | IL★ (strong branching imitation) | 96 | 116 |
 | IL (DFS) | 130 | 131 |
 | SCIP (default) | 58 | 363 |
