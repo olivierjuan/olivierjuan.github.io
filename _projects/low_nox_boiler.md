@@ -138,7 +138,7 @@ Most high-performing configurations share a common pattern:
 
 
 <div class="container">
-<div class="row">
+<div class="row justify-content-md-center">
   <div class="col-sm-6 mt-3 mt-md-0">
     {% include figure.liquid
        path="assets/img/fuel/low_nox.png"
