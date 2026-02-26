@@ -5,7 +5,7 @@ description: >
   Coupling a genetic algorithm with CFD simulations (Code_Saturne) to automatically discover
   optimal operating configurations for a 600 MW tangentially-fired pulverized-coal boiler,
   minimizing NOx emissions while controlling corrosion risk.
-img: assets/img/projects/low_nox_boiler.jpg   # replace with an actual image path
+img: assets/img/projects/low_nox_boiler.png   # replace with an actual image path
 importance: 2
 category: Optimization               # adapt to your own categories
 related_publications: dalsecco2015          # must match your BibTeX key in _bibliography/papers.bib
@@ -40,7 +40,7 @@ Le Havre 4). Key characteristics:
 <div class="row justify-content-sm-center">
   <div class="col-sm-10 mt-3 mt-md-0">
     {% include figure.liquid
-       path="assets/img/projects/low_nox_boiler_schematic.jpg"
+       path="assets/img/fuel/boiler_schematic.png"
        title="Schematic of the 600 MW boiler"
        class="img-fluid rounded z-depth-1" %}
   </div>
@@ -125,7 +125,7 @@ Most high-performing configurations share a common pattern:
   </div>
   <div class="col-sm-6 mt-3 mt-md-0">
     {% include figure.liquid
-       path="assets/img/fuel/high_corrosion.jpg"
+       path="assets/img/fuel/high_corrosion.png"
        title="High corrosion risk – case 962"
        class="img-fluid rounded z-depth-1" %}
   </div>
@@ -146,7 +146,7 @@ Most high-performing configurations share a common pattern:
   </div>
   <div class="col-sm-6 mt-3 mt-md-0">
     {% include figure.liquid
-       path="assets/img/fuel/high_nox.jpg"
+       path="assets/img/fuel/high_nox.png"
        title="High NO<sub>x</sub> – reference case"
        class="img-fluid rounded z-depth-1" %}
   </div>
