@@ -8,7 +8,7 @@ description: >
 img: assets/img/fuel/teaser.png   # replace with an actual image path
 importance: 2
 category: Optimization               # adapt to your own categories
-related_publications: dalsecco2015          # must match your BibTeX key in _bibliography/papers.bib
+related_publications: DalSecco2015, DalSecco2010          # must match your BibTeX key in _bibliography/papers.bib
 ---
 
 ## Overview
@@ -205,9 +205,33 @@ deep staging — fully consistent with GA/CFD predictions.
 
 ---
 
-## Reference
+## Citations
 
-> S. Dal Secco, O. Juan, M. Louis-Louisy, J.-Y. Lucas, P. Plion, L. Porcheron,
-> *"Using a genetic algorithm and CFD to identify low NOx configurations in an industrial
-> boiler"*, **Fuel**, vol. 158, pp. 672–683, 2015.
-> [https://doi.org/10.1016/j.fuel.2015.06.021](https://doi.org/10.1016/j.fuel.2015.06.021)
+'''bibtex
+@Article{DalSecco2015,
+  abbr         = {Article},
+  author    = {Dal Secco, Sandro and Juan, Olivier and Louis-Louisy, Myriam and Lucas, Jean-Yves and Plion, Pierre and Porcheron, Lynda},
+  journal   = {Fuel},
+  title     = {Using a genetic algorithm and CFD to identify low NOx configurations in an industrial boiler},
+  year      = {2015},
+  pages     = {672--683},
+  volume    = {158},
+  abstract  = {This paper focuses on a computational intelligence approach used for minimizing NOx emissions in a 600 MW tangentially-fired pulverized-coal boiler. Genetic Algorithms (GA) were used to correlate operating parameters to significant output data predicted by CFD simulations of the boiler. The operating parameters include the opening or closing of air dampers, changing the coal distribution through mill selection and feed rate and vertical tilting of the burners. A target function was introduced to estimate for each boiler settings defined by given operating parameters, the costs associated with corrosion on the water-wall tubes, heterogeneous heat flux distribution along the walls, unburned carbon in fly ash and NOx emissions. The GA was able to automatically generate innovative boiler configurations among thousands of CFD calculations performed. The target function allowed the search space to be explored to establish configurations offering a good compromise between NOx reduction and the cost associated with corrosion in particular. Moreover, the predicted NOx emissions from the GA model are consistent with the NOx levels measured during test campaigns.},
+  doi       = {10.1016/j.fuel.2015.06.021},
+  publisher = {Elsevier},
+}
+@InProceedings{DalSecco2010,
+  abbr         = {Proceedings},
+  author    = {Dal Secco, Sandro and Juan, Olivier and Lucas, Jean-Yves and Plion, Pierre},
+  booktitle = {International conference on metaheuristics and nature inspired computing},
+  title     = {Evolutionary algorithm for pollutant emission minimization in coal power plants},
+  year      = {2010},
+  abstract  = {In order to limit the impact of thermal electrical power plants on environment (nitrogen and
+sulphur oxides, flying ashes; effect of green house gas is, so far, out of the scope), producers
+can use secondary exhaust gas treatment (catalytic removal, washing) or primary measures (fuel
+composition, air staging). EDF as the largest electricity producer in Europe, manages some thermal
+plants fed with pulverised coal, heavy fuel oil or natural gas. Nitrogen oxides (NOx) reduction can
+be obtained using recently designed burners (inducing expansive investment) or using suitable fuel
+and air staging mimicking their behaviour. This study is devoted to pulverised coal boiler settings.},
+}
+'''
