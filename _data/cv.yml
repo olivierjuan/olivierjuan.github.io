@@ -153,7 +153,7 @@ cv:
       - name: Computer Science
         level: PhD
         icon: fa-solid fa-hashtag
-        keywords: "C++, Python, Machine Learning, Optimization, Mixed Integer Programming, High Performance Computing, Parallel Programming, Git, CI/CD"
+        keywords: "C/C++, Python, Machine Learning, Optimization, Mixed Integer Programming, High Performance Computing, Parallel Programming, Git, CI/CD"
 
     Languages:
       - name: French
