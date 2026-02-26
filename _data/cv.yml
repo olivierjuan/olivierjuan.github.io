@@ -105,6 +105,7 @@ cv:
         url: https://www.mics.centralesupelec.fr/
         position: Post doctoral researcher
         location: Chatenay Malabry, France
+        summary: I worked on applying primal-dual optimization methods for medical imaging and tomography in particular.
         start_date: 2007
         end_date: 2008
 
@@ -112,6 +113,7 @@ cv:
         url: https://www.csd.uwo.ca/
         position: Post doctoral researcher
         location: London, Ontario, Canada
+        summary: I worked on applying discrete optimization methods such as graph cuts for various problems in computer vision.
         start_date: 2006
         end_date: 2007
 
@@ -119,6 +121,7 @@ cv:
         url: https://team.inria.fr/athena/team-members/
         position: Master Intern
         location: Sophia-antipolis, France
+        summary: I worked on the development of a 3D reconstruction method from texture-warping using wavelet transformation.
         start_date: 2002
         end_date: 2002
 
@@ -165,30 +168,16 @@ cv:
         icon: fa-solid fa-tag
         keywords: "Quantum Mechanics, Quantum Computing, Quantum Information, Quantum Cryptography, Quantum Communication, Quantum Teleportation"
 
-    Certificates:
-      - name: Machine Learning
-        date: 2018-01-01
-        issuer: Stanford University
-        icon: fa-solid fa-location-dot
-
-      - name: Quantum Computing
-        date: 2018-01-01
-        issuer: Stanford University
-        icon: fa-solid fa-tag
-
-      - name: Quantum Information
-        date: 2018-01-01
-        issuer: Stanford University
-        icon: fa-solid fa-envelope
-
     Projects:
-      - name: Quantum Computing
-        summary: Quantum computing is the use of quantum-mechanical phenomena such as superposition and entanglement to perform computation. Computers that perform quantum computations are known as quantum computers.
+      - name: Machine Learning for Discrete Optimization
+        summary: I am interested in enhancing optimization methods with machine learning, specifically in the case of repeated optimization problem which arise in industrial applications. I am currently working on the development of a new method for learning to optimize combinatorial problems, which is based on the idea of learning a branching heuristics that can guide the search process of an optimization algorithm. This method has shown promising results on a variety of combinatorial problems, and I am currently working on further improving its performance and scalability. https://olivierjuan.github.io/mal-folio.github.io/projects/planbb/
         highlights:
-          - Quantum Teleportation
-          - Quantum Cryptography
+          - Machine learning
+          - Combinatorial Optimization
+          - Branching Heuristics
+          - Reinforcement Learning
+          - Graph Neural Networks
         start_date: 2018-01-01
-        end_date: 2018-01-01
 
     References:
       - name: Professor John Doe
