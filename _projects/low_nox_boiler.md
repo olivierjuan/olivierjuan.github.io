@@ -5,10 +5,10 @@ description: >
   Coupling a genetic algorithm with CFD simulations (Code_Saturne) to automatically discover
   optimal operating configurations for a 600 MW tangentially-fired pulverized-coal boiler,
   minimizing NOx emissions while controlling corrosion risk.
-img: assets/img/fuel/teaser.png   # replace with an actual image path
+img: assets/img/fuel/teaser.png # replace with an actual image path
 importance: 2
-category: Optimization               # adapt to your own categories
-related_publications: DalSecco2015, DalSecco2010          # must match your BibTeX key in _bibliography/papers.bib
+category: Optimization # adapt to your own categories
+related_publications: DalSecco2015, DalSecco2010 # must match your BibTeX key in _bibliography/papers.bib
 ---
 
 ## Overview
@@ -56,20 +56,20 @@ Le Havre 4). Key characteristics:
 All boiler configurations are evaluated with **Code_Saturne**, EDF's in-house finite-volume
 solver, on a structured mesh of **470,000 cells**.
 
-| Sub-model | Approach |
-|-----------|----------|
-| Turbulence | Standard *k*–ε eddy-viscosity |
-| Devolatilization | Two-competing-reactions Kobayashi scheme |
-| Char burnout | Shrinking-core with external O₂ diffusion |
-| Gas-phase combustion | PDF mixture-fraction model (light & heavy volatiles + CO) |
-| Radiation | P1 model with local absorption coefficients |
-| NO<sub>x</sub> formation | De Soete (fuel NO) + Zeldovich (thermal NO) |
+| Sub-model                | Approach                                                  |
+| ------------------------ | --------------------------------------------------------- |
+| Turbulence               | Standard _k_–ε eddy-viscosity                             |
+| Devolatilization         | Two-competing-reactions Kobayashi scheme                  |
+| Char burnout             | Shrinking-core with external O₂ diffusion                 |
+| Gas-phase combustion     | PDF mixture-fraction model (light & heavy volatiles + CO) |
+| Radiation                | P1 model with local absorption coefficients               |
+| NO<sub>x</sub> formation | De Soete (fuel NO) + Zeldovich (thermal NO)               |
 
 ---
 
 ## Genetic Algorithm
 
-The GA is implemented with the **ParadisEO** library (INRIA). Each *individual* (chromosome)
+The GA is implemented with the **ParadisEO** library (INRIA). Each _individual_ (chromosome)
 encodes a complete boiler operating point:
 
 - **Binary genes** — on/off state of each air/secondary-air nozzle
@@ -90,14 +90,14 @@ Rather than optimising a single metric, a composite **economic cost** (€/year)
 
 ### Numerical Setup
 
-| Parameter | Value |
-|-----------|-------|
-| Initial population | 52 individuals (best-practice configurations) |
-| Population size (constant) | ~50 |
-| Generations | 50 |
-| CFD time per individual | ~14 h on 8-core node |
-| Cluster | 52 × 8-core nodes → **~15 min effective time per individual** |
-| Total CFD runs | thousands |
+| Parameter                  | Value                                                         |
+| -------------------------- | ------------------------------------------------------------- |
+| Initial population         | 52 individuals (best-practice configurations)                 |
+| Population size (constant) | ~50                                                           |
+| Generations                | 50                                                            |
+| CFD time per individual    | ~14 h on 8-core node                                          |
+| Cluster                    | 52 × 8-core nodes → **~15 min effective time per individual** |
+| Total CFD runs             | thousands                                                     |
 
 ---
 
@@ -136,7 +136,6 @@ Most high-performing configurations share a common pattern:
   abatement of 54 %).
 </div>
 
-
 <div class="row justify-content-sm-center">
   <div class="col-sm-6 mt-3 mt-md-0">
     {% include figure.liquid
@@ -154,8 +153,6 @@ Most high-performing configurations share a common pattern:
 <div class="caption">
   NO<sub>x</sub> concentration in the boiler for two GA individuals: case 624 (low NO<sub>x</sub>) vs. reference case (high NO<sub>x</sub> emission).
 </div>
-
-
 
 ### NO<sub>x</sub> vs. Corrosion Trade-off
 
@@ -184,10 +181,10 @@ Most high-performing configurations share a common pattern:
 
 Results were validated during two test campaigns:
 
-| Campaign | Boiler | Date | Key finding |
-|----------|--------|------|-------------|
-| Cordemais 4 | ABCD mills | Jan 2012 | 60 % NO<sub>x</sub> abatement (burners ~horizontal); GA-predicted trend confirmed |
-| Le Havre 4 | ABCDF mills | Apr 2011 | 36 % NO<sub>x</sub> abatement (GA predicted 35 %); 47 % ammonia saving |
+| Campaign    | Boiler      | Date     | Key finding                                                                       |
+| ----------- | ----------- | -------- | --------------------------------------------------------------------------------- |
+| Cordemais 4 | ABCD mills  | Jan 2012 | 60 % NO<sub>x</sub> abatement (burners ~horizontal); GA-predicted trend confirmed |
+| Le Havre 4  | ABCDF mills | Apr 2011 | 36 % NO<sub>x</sub> abatement (GA predicted 35 %); 47 % ammonia saving            |
 
 Both campaigns confirmed low corrosion risk for moderate staging, and high CO near walls for
 deep staging — fully consistent with GA/CFD predictions.
@@ -207,7 +204,6 @@ deep staging — fully consistent with GA/CFD predictions.
 ---
 
 ## Citations
-
 
 ```bibtex
 @Article{DalSecco2015,

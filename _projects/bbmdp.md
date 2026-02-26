@@ -15,6 +15,7 @@ related_publications: true
 **Affiliations:** EDF R&D, ENSTA Paris, CNAM Paris, ISAE-SUPAERO
 
 ---
+
 ### Abstract
 
 <div class="row">
@@ -26,6 +27,7 @@ related_publications: true
     <div class="col-sm mt-3 mt-md-0"> <div> {% include figure.liquid loading="eager" path="assets/img/bbmdp/results.png" title="BBMDP Structure" class="img-fluid rounded z-depth-1" %} </div>
         <div class="caption"> Normalized scores in log scale of IL, RL and random agents across the Ecole benchmark Prouvost et al. [2020]. </div>
     </div>
+
 </div>
 
 ### The Innovation: BBMDP
@@ -43,19 +45,21 @@ Unlike previous approaches that attempted to minimize the size of independent su
 $$π^∗=\displaystyle arg\min_{π} E_{P∼p_0} (∣BB_{(π,ρ)}(P)∣)$$
 
 ### Technical Architecture
+
 Our agent, DQN-BBMDP, uses a problem representation in the form of a bipartite graph (Variables/Constraints) processed by a Graph Convolutional Network (GCN). It overcomes the limitations of TreeMDP models by taking into account the real sequential dynamics of the solver.
 
 <div class="row"> <div class="col-sm mt-3 mt-md-0"> {% include figure.liquid loading="eager" path="assets/img/bbmdp/structure.png" title="BBMDP Structure" class="img-fluid rounded z-depth-1" %} </div> </div> <div class="caption"> Trajectory comparison: When applying TD(0), TreeMDP and BBMDP yield equivalent results, see a, b. However, when minimizing k-step temporal difference, the two methods diverge as exemplified in c, d. </div>
 
 ### Results and Impact
+
 Experiments conducted on standard benchmarks (Set Covering, Auctions, Maximum Independent Set) demonstrate that our approach establishes a new state-of-the-art for RL agents.
 
-* Performance: DQN-BBMDP reduces the number of nodes by 27% and solving time by 38% compared to the previous state-of-the-art (DQN-Retro).
+- Performance: DQN-BBMDP reduces the number of nodes by 27% and solving time by 38% compared to the previous state-of-the-art (DQN-Retro).
 
-* Generalization: The agent shows superior capability to generalize on larger dimension instances (Transfer Learning) compared to methods based on Imitation Learning.
+- Generalization: The agent shows superior capability to generalize on larger dimension instances (Transfer Learning) compared to methods based on Imitation Learning.
 
 | ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:|
-| Benchmarks | **Set Covering** |  | **Comb. Auction** |  | **Max. Ind. Set** |  | **Mult. Knapsack** |  | **Norm. Score** |  |
+| Benchmarks | **Set Covering** | | **Comb. Auction** | | **Max. Ind. Set** | | **Mult. Knapsack** | | **Norm. Score** | |
 | Method | Node | Time | Node | Time | Node | Time | Node | Time | Node | Time |
 | ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:|
 | Presolve | - | 12.3 | - | 2.67 | - | 5.16 | - | 0.46 | - | - |
@@ -82,6 +86,7 @@ Note: Results show a significant reduction in the gap with the expert (Strong Br
 <div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center"> {% include repository/repo.liquid repository="abfariah/bbmdp" %} </div>
 
 ### Citation
+
 If you use this work, please cite our paper:
 
 ```bibtex
@@ -91,4 +96,4 @@ If you use this work, please cite our paper:
   booktitle={Advances in Neural Information Processing Systems (NeurIPS)},
   year={2025}
 }
-````
+```

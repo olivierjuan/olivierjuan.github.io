@@ -75,10 +75,12 @@ where the inverse tree size weighting ensures equal importance across instances.
 <div class="row"> <div class="col-sm mt-3 mt-md-0"> {% include figure.liquid loading="eager" path="assets/img/fmsts/architecture.png" title="Multiplicative Dueling Architecture" class="img-fluid rounded z-depth-1" %} </div> </div> <div class="caption"> The Multiplicative Dueling Architecture (MDA) implements a product between a 1-D output processing static features and a |J|-D output processing both static and dynamic features, enabling the network to capture exponential value scaling. </div>
 
 **State Representation:**
+
 - **Static features**: PCA-reduced instance data (A, b, c)
 - **Dynamic features**: Node depth, primal-dual gap, branching state (one-hot encoded binary variable fixings)
 
 **Multiplicative Dueling Architecture (MDA):**
+
 - Inspired by Dueling DQN but adapted to B&B's multiplicative nature
 - Multiplies scalar output (static features only) with |J|-dimensional output (all features)
 - Linear activation on scalar component captures exponential value variability
@@ -89,6 +91,7 @@ where the inverse tree size weighting ensures equal importance across instances.
 #### Test Problems
 
 Evaluated on two real-world industrial problems from Electricité de France (EDF):
+
 - **P1**: Energy management in microgrid (186 constraints, 120 variables, 54 binary)
 - **P2**: Hydroelectric valley optimization (282 constraints, 207 variables, 96 binary)
 
@@ -96,12 +99,12 @@ Evaluated on two real-world industrial problems from Electricité de France (EDF
 
 100-fold cross-validation with 200 training instances and 500 test instances per fold:
 
-| Architecture | Performance vs Baselines |
-|--------------|--------------------------|
-| **MDA** | Systematically outperforms Strong Branching |
-| **MDA** | Comparable or better than CPLEX default |
-| Dueling | Inferior to MDA (additive architecture limitation) |
-| Dense | Inferior to both MDA and Dueling |
+| Architecture | Performance vs Baselines                           |
+| ------------ | -------------------------------------------------- |
+| **MDA**      | Systematically outperforms Strong Branching        |
+| **MDA**      | Comparable or better than CPLEX default            |
+| Dueling      | Inferior to MDA (additive architecture limitation) |
+| Dense        | Inferior to both MDA and Dueling                   |
 
 #### Key Findings
 

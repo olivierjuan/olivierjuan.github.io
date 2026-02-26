@@ -28,6 +28,7 @@ related_publications: true
         {% include figure.liquid loading="eager" path="assets/img/planbb/teaser.png" title="PlanB&B planning in B&B" class="img-fluid rounded z-depth-1" %}
         <div class="caption">Planning 3 steps ahead in B&B over a learned latent model. The networks h, f, and g enable simulating subtree rollouts from the current node without any LP solve.</div>
     </div>
+
 </div>
 
 ---
@@ -52,11 +53,11 @@ $$\pi^* = \arg\min_{\pi} \; \mathbb{E}_{P \sim p_0} \left[ \left| \mathrm{BB}_{(
 
 PlanB&B is trained on K-step subtree trajectories with four complementary loss terms:
 
-| Loss | Role |
-|------|------|
-| **Policy loss** | Match search-improved policy targets from Gumbel Search |
-| **Value loss** | Predict n-step returns via HL-Gauss classification |
-| **Branchability loss** | Distinguish branchable nodes from pruned ones |
+| Loss                      | Role                                                                                   |
+| ------------------------- | -------------------------------------------------------------------------------------- |
+| **Policy loss**           | Match search-improved policy targets from Gumbel Search                                |
+| **Value loss**            | Predict n-step returns via HL-Gauss classification                                     |
+| **Branchability loss**    | Distinguish branchable nodes from pruned ones                                          |
 | **Tree consistency loss** | Enforce hierarchical consistency between real and imagined subtrees (SimSiam-inspired) |
 
 ---
@@ -65,20 +66,21 @@ PlanB&B is trained on K-step subtree trajectories with four complementary loss t
 
 Evaluated on four standard MILP benchmarks from the Ecole library: **Set Covering (SC)**, **Combinatorial Auctions (CA)**, **Maximum Independent Set (MIS)**, and **Multiple Knapsack (MK)**. Scores are normalized so that **lower is better**, with PlanB&B set as the reference (100).
 
-| Method | Norm. Node Count | Norm. Solving Time |
-|--------|----------------:|-------------------:|
-| **PlanB&B** | **100** | **100** |
-| DQN-tMDP | 207 | 188 |
-| DQN-Retro | 208 | 241 |
-| PG-tMDP | 272 | 254 |
-| **Non-RL** | **Norm. Node Count** | **Norm. Solving Time** |
-| IL★ (strong branching imitation) | 96 | 116 |
-| IL (DFS) | 130 | 131 |
-| SCIP (default) | 58 | 363 |
+| Method                           |     Norm. Node Count |     Norm. Solving Time |
+| -------------------------------- | -------------------: | ---------------------: |
+| **PlanB&B**                      |              **100** |                **100** |
+| DQN-tMDP                         |                  207 |                    188 |
+| DQN-Retro                        |                  208 |                    241 |
+| PG-tMDP                          |                  272 |                    254 |
+| **Non-RL**                       | **Norm. Node Count** | **Norm. Solving Time** |
+| IL★ (strong branching imitation) |                   96 |                    116 |
+| IL (DFS)                         |                  130 |                    131 |
+| SCIP (default)                   |                   58 |                    363 |
 
 > **Note:** SCIP has fewer nodes due to aggressive presolving, but is 3.6× slower in wall time.
 
 Key findings:
+
 - **2–3× improvement over RL baselines** in both tree size and solving time
 - **First RL agent to surpass imitation learning** trained on strong branching (DFS variant)
 - With additional search budget at inference, PlanB&B achieves up to **50% tree size reduction** on transfer instances
