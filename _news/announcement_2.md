@@ -1,33 +1,20 @@
 ---
 layout: post
-title: A long announcement with details
-date: 2015-11-07 16:11:00-0400
+title: "BBMDP accepted at NeurIPS 2025"
+date: 2025-10-22 09:00:00+0100
 inline: false
 related_posts: false
 ---
 
-Announcements and news can be much longer than just quick inline posts. In fact, they can have all the features available for the standard blog posts. See below.
+Our paper **A Markov Decision Process for Variable Selection in Branch & Bound** has been accepted at **NeurIPS 2025**!
 
----
+This work introduces [BBMDP](../projects/bbmdp/), a principled vanilla MDP formulation for the branching problem in branch-and-bound (B&B) solvers. Unlike prior RL approaches that relied on approximate TreeMDP formulations — which do not satisfy standard Markov properties — BBMDP models the full state of the search tree, enabling the use of standard RL algorithms with theoretical convergence guarantees.
 
-Jean shorts raw denim Vice normcore, art party High Life PBR skateboard stumptown vinyl kitsch. Four loko meh 8-bit, tousled banh mi tilde forage Schlitz dreamcatcher twee 3 wolf moon. Chambray asymmetrical paleo salvia, sartorial umami four loko master cleanse drinking vinegar brunch. <a href="https://www.pinterest.com">Pinterest</a> DIY authentic Schlitz, hoodie Intelligentsia butcher trust fund brunch shabby chic Kickstarter forage flexitarian. Direct trade <a href="https://en.wikipedia.org/wiki/Cold-pressed_juice">cold-pressed</a> meggings stumptown plaid, pop-up taxidermy. Hoodie XOXO fingerstache scenester Echo Park. Plaid ugh Wes Anderson, freegan pug selvage fanny pack leggings pickled food truck DIY irony Banksy.
+Our agent, DQN-BBMDP, is evaluated on four standard MILP benchmarks and achieves:
+- **27% reduction** in node count vs. prior RL state-of-the-art (DQN-Retro)
+- **38% reduction** in solving time
+- Strong transfer performance on larger, unseen instances
 
-#### Hipster list
+**Authors:** Paul Strang, Zacharie Alès, Côme Bissuel, Olivier Juan, Safia Kedad-Sidhoum, Emmanuel Rachelson
 
-<ul>
-    <li>brunch</li>
-    <li>fixie</li>
-    <li>raybans</li>
-    <li>messenger bag</li>
-</ul>
-
-Hoodie Thundercats retro, tote bag 8-bit Godard craft beer gastropub. Truffaut Tumblr taxidermy, raw denim Kickstarter sartorial dreamcatcher. Quinoa chambray slow-carb salvia readymade, bicycle rights 90's yr typewriter selfies letterpress cardigan vegan.
-
----
-
-Pug heirloom High Life vinyl swag, single-origin coffee four dollar toast taxidermy reprehenderit fap distillery master cleanse locavore. Est anim sapiente leggings Brooklyn ea. Thundercats locavore excepteur veniam eiusmod. Raw denim Truffaut Schlitz, migas sapiente Portland VHS twee Bushwick Marfa typewriter retro id keytar.
-
-> We do not grow absolutely, chronologically. We grow sometimes in one dimension, and not in another, unevenly. We grow partially. We are relative. We are mature in one realm, childish in another.
-> —Anais Nin
-
-Fap aliqua qui, scenester pug Echo Park polaroid irony shabby chic ex cardigan church-key Odd Future accusamus. Blog stumptown sartorial squid, gastropub duis aesthetic Truffaut vero. Pinterest tilde twee, odio mumblecore jean shorts lumbersexual.
+**Links:** [Project page](../projects/bbmdp/) · [arXiv](https://arxiv.org/abs/2510.19348) · [OpenReview](https://openreview.net/forum?id=05Svr0k5C9) · [Code](https://github.com/abfariah/bbmdp)
