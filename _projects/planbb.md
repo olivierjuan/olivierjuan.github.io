@@ -1,8 +1,8 @@
 ---
 layout: page
 title: "PlanB&B: Model-Based RL for Branch-and-Bound"
-description: "MuZero for CO: First MBRL agent for exact combinatorial optimization, achieving state-of-the-art performance on MILP benchmarks"
-img: /assets/img/planbb/teaser.png
+description: "First model-based RL agent for exact combinatorial optimization — uses MCTS over a learned B&B dynamics model to discover branching strategies that surpass expert heuristics."
+img: assets/img/planbb/teaser.png
 importance: 1
 category: Machine Learning
 related_publications: true
@@ -10,7 +10,7 @@ related_publications: true
 
 **Authors:** Paul Strang, Zacharie Alès, Côme Bissuel, Olivier Juan, Safia Kedad-Sidhoum, Emmanuel Rachelson
 
-**Published:** arXiv:2511.09219v3 [cs.LG] 25 Nov 2025
+**Published:** AAAI 2026 — arXiv:2511.09219
 
 **Affiliations:** EDF R&D, ENSTA Paris, CNAM Paris, ISAE-SUPAERO
 
@@ -18,126 +18,92 @@ related_publications: true
 
 ### Abstract
 
-This work introduces **Plan-and-Branch-and-Bound (PlanB&B)** presented at **AAAI 2026**, a novel model-based reinforcement learning (MBRL) agent designed to improve variable selection strategies in branch-and-bound (B&B) algorithms for solving Mixed-Integer Linear Programming (MILP) problems. Unlike previous approaches that rely on imitation learning or model-free RL, PlanB&B learns an internal model of B&B dynamics and uses Monte Carlo Tree Search (MCTS) to discover improved branching strategies through planning.
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+    Mixed-Integer Linear Programming (MILP) lies at the heart of many critical industrial problems. Modern solvers rely on Branch-and-Bound (B&B), whose performance is tightly coupled to the branching heuristic used to select which variable to split on at each node.<br/><br/>
 
-Using previous results from {% cite Strang2025 %}, 
+    While reinforcement learning (RL) has shown promise for learning branching policies, prior approaches are either limited to imitation learning or use model-free RL, which is sample-inefficient and unable to look ahead. Building on the rigorous MDP formulation introduced in {% cite Strang2025 %}, this work introduces <strong>PlanB&B</strong> {% cite Strang2026 %}, the first <em>model-based</em> RL agent for exact combinatorial optimization.
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/planbb/teaser.png" title="PlanB&B planning in B&B" class="img-fluid rounded z-depth-1" %}
+        <div class="caption">Planning 3 steps ahead in B&B over a learned latent model. The networks h, f, and g enable simulating subtree rollouts from the current node without any LP solve.</div>
+    </div>
+</div>
 
-### Key Contributions
+---
 
-1. **First MBRL Agent for Exact CO**: PlanB&B is the first model-based reinforcement learning agent specifically designed for exact combinatorial optimization problems, extending MCTS-based techniques beyond board games to MILP solving.
+### The Innovation: PlanB&B
 
-2. **Value-Equivalent Dynamics Model**: Rather than explicitly learning to solve linear programs, PlanB&B learns an abstract, value-equivalent MDP that captures only the aspects of B&B essential for policy improvement via planning.
+PlanB&B learns an **internal model of B&B dynamics** and uses **Monte Carlo Tree Search (MCTS)** to plan improved branching decisions — analogous to how MuZero masters board games, but applied for the first time to exact combinatorial optimization.
 
-3. **State-of-the-Art Performance**: Achieves 2× improvements in both tree size and solving time compared to prior RL baselines, and outperforms imitation learning approaches on multiple benchmarks.
+The agent is built around three neural networks:
 
-4. **Novel Strategies Beyond Experts**: Analysis shows PlanB&B discovers genuinely novel branching strategies rather than simply imitating strong branching, actively diverging from expert patterns while achieving superior performance.
+- **Representation network (h)** — encodes a B&B node observation into a compact latent state
+- **Dynamics network (g)** — predicts the latent representation of child nodes after a branching decision, without solving any LP
+- **Prediction network (f)** — outputs a branching policy prior, a subtree value estimate, and a branchability score
 
-### Methodology
+At inference time, **Gumbel Search** (a variant of MCTS) simulates multiple trajectories through this learned model to produce a refined branching policy, all without touching the actual B&B tree.
 
-#### Model Architecture
+$$\pi^* = \arg\min_{\pi} \; \mathbb{E}_{P \sim p_0} \left[ \left| \mathrm{BB}_{(\pi, \rho)}(P) \right| \right]$$
 
-PlanB&B consists of three interconnected neural networks:
+---
 
-- **Representation Network (h)**: Maps B&B node observations to internal latent representations
-- **Dynamics Network (g)**: Predicts internal representations of child nodes after branching decisions
-- **Prediction Network (f)**: Outputs policy priors, subtree value estimates, and branchability scores
+### Training
 
-The model learns to simulate subtree trajectories in latent space, enabling planning without expensive LP solves.
+PlanB&B is trained on K-step subtree trajectories with four complementary loss terms:
 
-<div class="row"> <div class="mx-auto d-block"> {% include figure.liquid loading="eager" path="assets/img/planbb/teaser.png" title="PlanBB Structure" class="img-fluid rounded z-depth-1" %} </div> </div> <div class="caption"> Planning in B&B over a learned model. The combined use of h, f, and g allows simulating subtree rollouts starting from the current B&B node. Here, we show how the planning is done 3 steps ahead. </div>
+| Loss | Role |
+|------|------|
+| **Policy loss** | Match search-improved policy targets from Gumbel Search |
+| **Value loss** | Predict n-step returns via HL-Gauss classification |
+| **Branchability loss** | Distinguish branchable nodes from pruned ones |
+| **Tree consistency loss** | Enforce hierarchical consistency between real and imagined subtrees (SimSiam-inspired) |
 
+---
 
-#### Planning with Gumbel Search
+### Results
 
-PlanB&B integrates Gumbel Search (a variant of MCTS) to generate improved policy targets. At each branching decision, the agent:
+Evaluated on four standard MILP benchmarks from the Ecole library: **Set Covering (SC)**, **Combinatorial Auctions (CA)**, **Maximum Independent Set (MIS)**, and **Multiple Knapsack (MK)**. Scores are normalized so that **lower is better**, with PlanB&B set as the reference (100).
 
-1. Simulates multiple trajectories through the learned model
-2. Balances exploration and exploitation using policy and value estimates
-3. Produces refined branching policies that guide action selection
-
-#### Training Approach
-
-The agent is trained on K-step subtree trajectories with multiple loss components:
-
-- **Policy loss**: Matches search-improved policy targets
-- **Value loss**: Predicts n-step returns using classification (HL-Gauss)
-- **Branchability loss**: Discriminates between branchable and pruned nodes
-- **Tree consistency loss**: Enforces structural consistency between real and imagined subtrees
-
-### Experimental Results
-
-#### Benchmarks
-
-Evaluated on four standard MILP benchmarks from the Ecole library:
-- Set Covering (SC)
-- Combinatorial Auctions (CA)
-- Maximum Independent Set (MIS)
-- Multiple Knapsack (MK)
-
-#### Performance Comparison
-
-On aggregate test instances:
-
-| Method | Normalized Node Count | Normalized Time |
-|--------|----------------------:|-----------------:|
-| PlanB&B | **100** | **100** |
-| DQN-Retro | 208 | 241 |
-| DQN-tMDP | 207 | 188 |
-| PG-tMDP | 272 | 254 |
+| Method | Norm. Node Count | Norm. Solving Time |
+|--------|----------------:|-------------------:|
+| **PlanB&B** | **100** | **100** |
+| IL★ (strong branching imitation) | 96 | 116 |
 | IL (DFS) | 130 | 131 |
-| IL★ | 96 | 116 |
-| SCIP | 58 | 363 |
+| DQN-tMDP | 207 | 188 |
+| DQN-Retro | 208 | 241 |
+| PG-tMDP | 272 | 254 |
+| SCIP (default) | 58 | 363 |
 
-#### Key Findings
+> **Note:** SCIP has fewer nodes due to aggressive presolving, but is 3.6× slower in wall time.
 
-1. **2-3× Improvement over RL Baselines**: PlanB&B achieves substantial reductions in both tree size and solving time compared to previous RL approaches.
-
-2. **Surpasses Imitation Learning**: First RL-based approach to outperform IL agents trained on strong branching under depth-first search.
-
-3. **Planning Enables Further Improvement**: With additional search budget at inference time, PlanB&B achieves up to 20-50% tree size reduction on test/transfer instances.
-
-4. **Superior Generalization**: Demonstrates strong transfer performance on higher-dimensional instances, maintaining competitive solving times.
-
-### Technical Innovations
-
-1. **Local Observation Planning**: Unlike traditional MuZero which requires full state observations, PlanB&B plans using only local node information by recursively predicting child node representations.
-
-2. **Branchability Prediction**: Introduces a novel prediction head to distinguish nodes leading to branching from those destined to be pruned, enabling accurate subtree simulation.
-
-3. **HL-Gauss Value Learning**: Employs histogram-based value representation with Gaussian smoothing, improving scalability and performance in the high-dimensional value space.
-
-4. **Tree Consistency Loss**: Novel self-supervised loss enforces hierarchical consistency between consecutive B&B node representations using SimSiam-inspired architecture.
-
-### Implications
-
-This work demonstrates that:
-
-- Branching dynamics in B&B can be approximated with sufficient fidelity to enable policy improvement through planning
-- MBRL can overcome the sample efficiency and performance limitations of model-free RL in combinatorial optimization
-- Planning-based approaches can discover strategies that surpass expert heuristics like strong branching
-
-The success of PlanB&B opens new avenues for applying model-based reinforcement learning to exact combinatorial optimization and suggests potential for MBRL in broader operational research domains.
-
-### Future Directions
-
-The paper identifies depth-first search as a limitation for higher-dimensional problems, suggesting future work should:
-- Develop scalable observation functions for encoding evolving B&B trees
-- Move beyond local node representations to enable planning with advanced node selection policies
-- Explore applications to other B&B heuristics (node selection, cut selection, primal search)
+Key findings:
+- **2–3× improvement over RL baselines** in both tree size and solving time
+- **First RL agent to surpass imitation learning** trained on strong branching (DFS variant)
+- With additional search budget at inference, PlanB&B achieves up to **50% tree size reduction** on transfer instances
+- Discovers **genuinely novel branching strategies** — actively diverging from expert patterns while achieving superior performance
 
 ---
 
 ### Resources
 
 - **arXiv**: [arXiv:2511.09219](https://arxiv.org/abs/2511.09219)
+- **OpenReview**: [AAAI 2026 paper](https://openreview.net/forum?id=8481hfKVsr)
+- **Predecessor (BBMDP @ NeurIPS 2025)**: [project page](../bbmdp/)
+
+---
 
 ### Citation
 
+If you use this work, please cite:
+
 ```bibtex
-@article{strang2025planning,
-  title={Planning in Branch-and-Bound: Model-Based Reinforcement Learning for Exact Combinatorial Optimization},
-  author={Strang, Paul and Al{\`e}s, Zacharie and Bissuel, C{\^o}me and Juan, Olivier and Kedad-Sidhoum, Safia and Rachelson, Emmanuel},
-  journal={arXiv preprint arXiv:2511.09219},
-  year={2025}
+@inproceedings{strang2026planbb,
+  title     = {Planning in {Branch-and-Bound}: {Model-Based} {Reinforcement Learning}
+               for {Exact Combinatorial Optimization}},
+  author    = {Strang, Paul and Al{\`e}s, Zacharie and Bissuel, C{\^o}me and Juan, Olivier
+               and Kedad-Sidhoum, Safia and Rachelson, Emmanuel},
+  booktitle = {Association for the Advancement of Artificial Intelligence (AAAI)},
+  year      = {2026}
 }
 ```
