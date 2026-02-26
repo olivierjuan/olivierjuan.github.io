@@ -3,7 +3,7 @@ cv:
   label: Research Scientist Expert
   email: olivier.juan@edf.fr
   location: Palaiseau, France
-  image: assets/images/picture.jpg
+  image: https://olivierjuan.github.io/mal-folio.github.io/assets/img/picture-800.webp
   summary: A German-born theoretical physicist, widely ranked among the greatest and most influential scientists of all time
 
   social_networks:
@@ -51,6 +51,7 @@ cv:
 
     Experience:
       - company: EDF Lab
+        url: https://www.edf.fr/en/the-edf-group/innovating-for-the-future/rd-global-expertise/our-activities
         position: Research Scientist Expert
         location: Palaiseau, France
         start_date: 2019
@@ -61,10 +62,12 @@ cv:
           - Smart EV Charging
 
       - company: EDF Lab
+        url: https://www.edf.fr/en/the-edf-group/innovating-for-the-future/rd-global-expertise/our-activities
         position: Research Project Manager
         location: Clamart, France
-        start_date: 2012
+        start_date: 2015
         end_date: 2019
+        summary: I managed a research project on the development for the short term unit commitment problem of new optimization algorithms, more efficient mathematical formulations and addressing new complex evolutions needed by the operational teams. The unit commitment problem consists in determining the optimal schedule of power generating units to meet the electricity demand at minimum cost while satisfying a set of technical and operational constraints. I coordinated a team of researchers and engineers to adapt the existing algorithms to new european rules for balacing the electric system.
         highlights:
           - Short Term Unit Commitment
           - Mixed Integer Programming
@@ -73,11 +76,26 @@ cv:
           - Electric Systems
 
       - company: EDF Lab
+        url: https://www.edf.fr/en/the-edf-group/innovating-for-the-future/rd-global-expertise/our-activities
+        position: Research Project Manager
+        location: Clamart, France
+        start_date: 2012
+        end_date: 2015
+        summary: I managed a research project on the development of optimization algorithms for the short term unit commitment problem. The unit commitment problem consists in determining the optimal schedule of power generating units to meet the electricity demand at minimum cost while satisfying a set of technical and operational constraints. In particular, I coordinated a team of engineers and developpers to do a complete reimplementation in C++ of a legacy Fortran code. I also contributed to the implementation of a CI ensuring no regression errors and showing significant improvements in terms of solution quality and computational time compared to existing methods.
+        highlights:
+          - Short Term Unit Commitment
+          - Mixed Integer Programming
+          - Lagrangian Decomposition
+          - Alternated Direction Method of Multipliers
+          - Electric Systems
+
+      - company: EDF Lab
+        url: https://www.edf.fr/en/the-edf-group/innovating-for-the-future/rd-global-expertise/our-activities
         position: Research Scientist
         location: Clamart, France
         start_date: 2008
         end_date: 2012
-        summary: Teaching at Palmer Physical Laboratory (now 302 Frist Campus Center). While not a professor at Princeton, I associated with the physics professors and continued to give lectures on campus.
+        summary: I worked on the development of optimization algorithms for the short term unit commitment problem. The unit commitment problem consists in determining the optimal schedule of power generating units to meet the electricity demand at minimum cost while satisfying a set of technical and operational constraints. I took part in the implementation of mixed interger programming formulation of hydraulic valley optimization. And I contributed to testing of these algorithms on real-world instances, showing significant improvements in terms of solution quality compared to existing methods.
         highlights:
           - Mixed Integer Programming
           - Lagrangian Decomposition
@@ -91,12 +109,14 @@ cv:
         end_date: 2008
 
       - company: University of Western Ontario
+        url: https://www.csd.uwo.ca/
         position: Post doctoral researcher
         location: London, Ontario, Canada
         start_date: 2006
         end_date: 2007
 
-      - company: INRIA Odyssee Team
+      - company: INRIA Odyssee Team (now Athena Team)
+        url: https://team.inria.fr/athena/team-members/
         position: Master Intern
         location: Sophia-antipolis, France
         start_date: 2002
