@@ -6,7 +6,7 @@ description: >
   PlanB&B learns an internal model of B&B dynamics and uses Gumbel Search (MCTS)
   to discover branching strategies that surpass both prior RL agents and imitation learning.
   AAAI 2026.
-img: assets/img/planbb/teaser.png
+img: assets/img/planbb/results.png
 importance: 1
 category: Machine Learning
 related_publications: strang2026planbb
