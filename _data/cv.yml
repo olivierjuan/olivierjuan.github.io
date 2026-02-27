@@ -284,9 +284,13 @@ cv:
         summary: "Fluent"
 
     Interests:
-      - name: Combinatorial Optimization & Machine Learning
+      - name: Combinatorial Optimization
         icon: fa-solid fa-diagram-project
-        keywords: "Branch & Bound, Reinforcement Learning, Graph Neural Networks, MILP, Metaheuristics"
+        keywords: "Branch & Bound, MILP, Lagrangian Decomposition, ADMM"
+
+      - name: Machine Learning for Optimization
+        icon: fa-solid fa-robot
+        keywords: "Reinforcement Learning, Graph Neural Networks, Model-Based RL, MDPs, Flow Matching"
 
       - name: Energy Systems
         icon: fa-solid fa-bolt
