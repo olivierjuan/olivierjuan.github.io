@@ -7,7 +7,7 @@ description: >
   Multiplicative Dueling Architecture (MDA) for MILP variable selection.
 img: assets/img/fmsts/architecture.png
 importance: 2
-category: Machine Learning & Combinatorial Optimization
+category: Machine Learning
 related_publications: etheve2020reinforcement
 ---
 

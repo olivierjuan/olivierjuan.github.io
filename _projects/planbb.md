@@ -8,7 +8,7 @@ description: >
   AAAI 2026.
 img: assets/img/planbb/teaser.png
 importance: 1
-category: Machine Learning & Combinatorial Optimization
+category: Machine Learning
 related_publications: strang2026planbb
 ---
 

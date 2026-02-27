@@ -7,13 +7,13 @@ description: >
   New state-of-the-art among RL agents on the Ecole benchmark. NeurIPS 2025.
 img: assets/img/bbmdp/results.png
 importance: 1
-category: Machine Learning & Combinatorial Optimization
+category: Machine Learning
 related_publications: strang2025bbmdp
 ---
 
 **Authors:** Paul Strang, Zacharie Alès, Côme Bissuel, Olivier Juan, Safia Kedad-Sidhoum, Emmanuel Rachelson
 
-**Published:** NeurIPS 2025 · arXiv:2510.19348v1 — October 22, 2025
+**Published:** NeurIPS 2025 · [arXiv:2510.19348](https://arxiv.org/abs/2510.19348) — October 22, 2025
 
 **Affiliations:** EDF R&D · ENSTA Paris (Institut Polytechnique de Paris) · CNAM Paris (CEDRIC) · ISAE-SUPAERO
 
