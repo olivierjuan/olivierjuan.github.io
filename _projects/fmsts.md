@@ -1,171 +1,238 @@
 ---
 layout: page
 title: "FMSTS: Reinforcement Learning for Variable Selection in Branch and Bound"
-description: First RL approach to fully optimize branching strategy from scratch. Novel value function using subtree size for learning efficient MILP variable selection.
-img: /assets/img/fmsts/architecture.png
+description: >
+  First RL approach to fully optimize branching strategy in B&B from scratch.
+  Introduces subtree size as a naturally observable Q-function, with a novel
+  Multiplicative Dueling Architecture (MDA) for MILP variable selection.
+img: assets/img/fmsts/architecture.png
 importance: 2
-category: Machine Learning
-related_publications: true
+category: Machine Learning & Combinatorial Optimization
+related_publications: etheve2020reinforcement
 ---
 
 **Authors:** Marc Etheve, Zacharie Alès, Côme Bissuel, Olivier Juan, Safia Kedad-Sidhoum
 
-**Published:** arXiv:2005.10026v1 [cs.LG] 20 May 2020
+**Published:** arXiv:2005.10026v1 — May 20, 2020
 
-**Affiliations:** EDF R&D, ENSTA Paris, CNAM Paris
+**Affiliations:** EDF R&D · ENSTA Paris (Institut Polytechnique de Paris) · CNAM Paris (CEDRIC)
 
 ---
 
-### Abstract
+## Context & Motivation
 
-This work introduces **FMSTS (Fitting for Minimising the SubTree Size)**, a novel Reinforcement Learning approach specifically designed for learning branching strategies in Branch and Bound (B&B) algorithms for Mixed-Integer Linear Programming (MILP). Unlike previous approaches that rely on imitation learning or apply RL with hand-crafted local rewards, FMSTS learns branching policies from scratch by leveraging a natural consistency between local subtree sizes and global tree optimization objectives.
+Mixed-Integer Linear Programming (MILP) underlies a huge range of real-world optimisation
+problems — from energy scheduling to logistics. The dominant solver paradigm is **Branch and
+Bound (B&B)**: a divide-and-conquer tree search guided by heuristics for choosing which
+variable to branch on at each node. The quality of these *branching strategies* has an
+outsized effect on solving time, yet commercial solvers rely on hand-crafted rules that
+are agnostic to the specific structure of recurring industrial problems.
 
-### Key Contributions
+A natural question is: can a learning agent **discover** a better branching strategy for
+a given problem family, purely from experience, without imitating any expert policy?
 
-1. **First RL-Based Branching Optimization**: To the authors' knowledge, this is the first time Reinforcement Learning has been used to fully optimize the branching strategy in B&B from scratch, independent of expert heuristics.
+This paper answers **yes** — and does so rigorously.
 
-2. **Observable Value Function**: Introduces the use of subtree size as a naturally observable Q-function in deterministic B&B environments, eliminating the need for complex temporal difference bootstrapping.
+---
 
-3. **Theoretical Optimality Guarantee**: Proves (Proposition 2) that minimizing subtree sizes at each node guarantees global tree size optimality when using Depth-First Search, providing a principled local-to-global consistency.
+## Problem Setting
 
-4. **Multiplicative Dueling Architecture (MDA)**: Proposes a novel neural network architecture designed to handle the exponential scaling properties of B&B tree sizes, adapting the Dueling architecture concept to multiplicative value functions.
+The work targets a common industrial scenario: a company repeatedly solves instances of
+the *same* MILP problem with fluctuating data drawn from an unknown distribution $$\mathcal{D}$$.
+Formally, each instance shares the structure
 
-5. **Practical Effectiveness**: Demonstrates that learned strategies systematically outperform Strong Branching and achieve comparable or better performance than CPLEX's commercial solver on real-world industrial problems.
+$$
+p \in \mathcal{P} : \quad \min_{x \in \mathbb{R}^n}\ c^\top x
+\quad \text{s.t.} \quad Ax \leq b,\; x_\mathcal{J} \in \{0,1\}^{|\mathcal{J}|}
+$$
 
-### Methodology
+and the goal is to learn a branching policy $$\Pi^*$$ minimising the **expected B&B tree size**:
 
-#### Problem Formulation
+$$
+\Pi^* \in \arg\min_{\Pi}\ \mathbb{E}_{p \sim \mathcal{D}}\bigl[\mu(\Pi(p))\bigr]
+$$
 
-FMSTS addresses the setting where a company repeatedly solves instances of the same MILP problem with fluctuating data drawn from an unknown distribution $D$. The goal is to learn a branching policy $π$ that minimizes the expected tree size:
+Because the MDP is **deterministic** (given an instance and a state, any action leads to the
+same next state), exact Q-values become directly *observable* after tree expansion — a key
+property that FMSTS exploits.
 
-$$Π^* ∈ \displaystyle arg \min_{Π} \mathbb{E}_{p~D} [μ(Π(p))]$$
+---
 
-where μ is the metric of interest (tree size, simplex iterations, etc.).
+## The FMSTS Method
 
-#### Value Function Design
+### 1. Subtree Size as Value Function
 
-The key innovation is defining $Q^π(s, a)$ as the size of the subtree rooted at state $s$ generated by action $a$ and policy $π$. This choice provides:
+The central insight is to define $$Q^\pi(s, a)$$ as the **size of the subtree** rooted at
+state $$s$$, generated by action $$a$$ then following policy $$\pi$$. This choice is:
 
-- **Observability**: Simply count nodes after subtree expansion
-- **No domain knowledge required**: No hand-crafted reward shaping
-- **Optimality guarantee**: Under DFS, local subtree minimization implies global optimality
+- **Observable** — count the nodes once the subtree is fully expanded, no bootstrapping needed.
+- **Principled** — Proposition 2 (proved in the paper) shows that under Depth-First Search,
+  minimising every local subtree size is *equivalent* to minimising the global tree size.
+  This is the key theoretical result that makes local RL training globally meaningful.
 
 The value function satisfies the Bellman equation:
 
-$$V_π(s) = 1 + V^π(D_0^{π(s)}(s)) + V^π(D_1^{π(s)}(s))$$
+$$
+V^\pi(s) = 1 + V^\pi\!\left(D_0^{\pi(s)}(s)\right) + V^\pi\!\left(D_1^{\pi(s)}(s)\right)
+$$
 
-#### Approximate Q-Learning
+> **Why DFS?** Under Breadth-First Search, subtrees interact through shared primal bounds,
+> breaking the local-to-global consistency (Proposition 1). DFS isolates subtrees, making
+> the consistency hold exactly.
 
-Since maintaining exact Q-tables is intractable and transitions are too complex to model, FMSTS uses a Deep Q-Network Q̂(s, a; θ) with the loss:
+### 2. Instance-Normalised Loss
 
-$$L(θ) = \mathbb{E}^{s,a~ρ(.)} [(1/V^{πθ}(r(s))) (Q^{πθ}(s,a) - \hat{Q}(s,a;θ))^2]$$
+The naive squared loss over-weights hard instances (large trees). FMSTS corrects this by
+weighting each experience by the inverse tree size, so every instance contributes equally:
 
-where the inverse tree size weighting ensures equal importance across instances.
+$$
+\mathcal{L}(\theta) = \mathbb{E}_{s,a \sim \rho}\!\left[
+  \frac{1}{V^{\pi_\theta}(r(s))}
+  \Bigl(Q^{\pi_\theta}(s,a) - \hat{Q}(s,a;\theta)\Bigr)^2
+\right]
+$$
 
-#### Training Algorithm
+### 3. Normalised Prioritized Experience Replay
 
-1. Draw random instance p from problem distribution
-2. Solve p following policy π<sub>θ</sub> with ε-greedy exploration
-3. Collect experiences (s, a, Q<sup>πθ</sup>(s,a), Q̂(s,a;θ)) into replay buffer
-4. Update network θ using prioritized experience replay with normalized probabilities
-5. Iterate with updated policy
+Q-values scale **exponentially** along the tree depth and vary strongly across instances.
+Standard prioritized replay (which uses raw TD errors) would be dominated by deep, large
+trees. FMSTS normalises the TD error by the target Q-value before computing sampling
+probabilities:
 
-### Neural Network Architecture
+$$
+p_j \propto \frac{\left|Q^{\pi_{\theta_j}}(s_j, a_j) - \hat{Q}(s_j, a_j; \theta_j)\right|}{Q^{\pi_{\theta_j}}(s_j, a_j)}
+$$
 
-<div class="row"> <div class="col-sm mt-3 mt-md-0"> {% include figure.liquid loading="eager" path="assets/img/fmsts/architecture.png" title="Multiplicative Dueling Architecture" class="img-fluid rounded z-depth-1" %} </div> </div> <div class="caption"> The Multiplicative Dueling Architecture (MDA) implements a product between a 1-D output processing static features and a |J|-D output processing both static and dynamic features, enabling the network to capture exponential value scaling. </div>
+### 4. FMSTS Algorithm
 
-**State Representation:**
-
-- **Static features**: PCA-reduced instance data (A, b, c)
-- **Dynamic features**: Node depth, primal-dual gap, branching state (one-hot encoded binary variable fixings)
-
-**Multiplicative Dueling Architecture (MDA):**
-
-- Inspired by Dueling DQN but adapted to B&B's multiplicative nature
-- Multiplies scalar output (static features only) with |J|-dimensional output (all features)
-- Linear activation on scalar component captures exponential value variability
-- Handles the 2× magnitude changes between parent and child nodes
-
-### Experimental Results
-
-#### Test Problems
-
-Evaluated on two real-world industrial problems from Electricité de France (EDF):
-
-- **P1**: Energy management in microgrid (186 constraints, 120 variables, 54 binary)
-- **P2**: Hydroelectric valley optimization (282 constraints, 207 variables, 96 binary)
-
-#### Performance Comparison
-
-100-fold cross-validation with 200 training instances and 500 test instances per fold:
-
-| Architecture | Performance vs Baselines                           |
-| ------------ | -------------------------------------------------- |
-| **MDA**      | Systematically outperforms Strong Branching        |
-| **MDA**      | Comparable or better than CPLEX default            |
-| Dueling      | Inferior to MDA (additive architecture limitation) |
-| Dense        | Inferior to both MDA and Dueling                   |
-
-#### Key Findings
-
-1. **Learning from Scratch Works**: FMSTS successfully learns effective branching strategies without imitating expert heuristics or using domain knowledge for reward design.
-
-2. **Generalization**: No overfitting observed; agents generalize well to unseen test instances from the same problem distribution.
-
-3. **Computational Efficiency**: Negligible inference time compared to Strong Branching (simple forward pass vs. solving multiple LPs).
-
-4. **Architecture Matters**: MDA's multiplicative design significantly outperforms additive architectures, confirming the importance of matching network structure to value function properties.
-
-### Technical Innovations
-
-1. **Instance-Normalized Loss**: Weighting by inverse tree size ensures equal contribution from each instance regardless of difficulty, directly optimizing the expectation over the instance distribution.
-
-2. **Normalized Prioritized Replay**: Adapts prioritized experience replay by normalizing TD errors by target Q-values to handle exponential scaling across tree depths and instances.
-
-3. **Observable Q-Values in Deterministic MDP**: Exploits determinism to directly observe Q-values rather than bootstrap from Bellman equations, simplifying training and improving stability.
-
-### Limitations and Future Directions
-
-**Current Limitations:**
-
-1. **Depth-First Search Requirement**: Framework relies on DFS for theoretical optimality guarantee, which may be suboptimal for harder problems.
-
-2. **Scalability to Difficult Problems**: Randomly initialized agents produce exponentially large trees on hard instances, making exploration computationally prohibitive.
-
-3. **Limited Feature Engineering**: Initial work uses minimal features; more sophisticated state representations could improve performance.
-
-**Proposed Solutions:**
-
-- **Supervised Pre-training**: Initialize with imitation learning to reduce early exploration cost
-- **Hierarchical Action Spaces**: Learn to select among branching heuristics rather than individual variables
-- **Richer State Representations**: Incorporate graph-based features, strong branching scores, or learned embeddings
-- **Extended Metrics**: Apply framework to other objectives (simplex iterations, wall-clock time)
-- **Branch-and-Cut Extension**: Generalize to include cutting plane decisions
-
-### Implications
-
-This work demonstrates that:
-
-- Reinforcement Learning can successfully learn MILP branching strategies from scratch without expert demonstrations
-- Natural consistency between local subtree objectives and global tree optimization enables effective RL without reward engineering
-- Neural network architecture design matters critically for B&B value function approximation
-- Learned strategies can match or exceed commercial solver performance on specific problem distributions
-
-FMSTS establishes a foundation for applying model-free RL to combinatorial optimization, paving the way for more sophisticated learning-based approaches in MILP solving.
+```
+for t = 0, …, N-1:
+  1. Draw a random instance p from the problem distribution.
+  2. Solve p with ε-greedy policy πθ_t (explore or exploit).
+  3. Collect (s, a, Q^π(s,a), Q̂(s,a;θ_t)) for every node; store in replay buffer B.
+  4. Sample a batch from B using normalised prioritized probabilities.
+  5. Update θ_t → θ_{t+1} by gradient descent on the normalised loss.
+```
 
 ---
 
-### Resources
+## Neural Network Architecture
 
-- **arXiv**: [arXiv:2005.10026](https://arxiv.org/abs/2005.10026)
+### State Representation
 
-### Citation
+| Feature type | Content |
+|---|---|
+| **Static** | PCA reduction of concatenated instance data $$(A, b, c)$$ |
+| **Dynamic** | Node depth · primal–dual gap · branching state (3\|J\|-dim one-hot) |
+
+### Multiplicative Dueling Architecture (MDA)
+
+<div class="row justify-content-sm-center">
+  <div class="col-sm-10 mt-3 mt-md-0">
+    {% include figure.liquid loading="eager"
+       path="assets/img/fmsts/architecture.png"
+       title="Dense vs. Multiplicative Dueling Architecture"
+       class="img-fluid rounded z-depth-1" %}
+  </div>
+</div>
+<div class="caption">
+  Left: standard dense network. Right: Multiplicative Dueling Architecture (MDA).
+  A scalar branch (static features only, <strong>linear</strong> activation) is
+  <em>multiplied</em> by a $$|\mathcal{J}|$$-dimensional branch (all features),
+  allowing the network to capture the exponential variability of subtree sizes.
+</div>
+
+The B&B Q-function is inherently **multiplicative**: each level down the tree, the subtree
+size roughly halves. Additive (summation-based) networks like standard Dueling DQN struggle
+with this. MDA fixes the problem by:
+
+- Using a **product** instead of a sum between the two branches.
+- Using a **linear** (not ReLU) activation on the scalar branch, so the network can represent
+  both growth and decay of value across tree depths.
+
+---
+
+## Experiments
+
+### Benchmark Problems (EDF industrial instances)
+
+| Problem | Constraints | Variables | Binary vars | Domain |
+|---------|-------------|-----------|-------------|--------|
+| **P1** | 186 | 120 | 54 | Microgrid energy management |
+| **P2** | 282 | 207 | 96 | Hydroelectric valley optimisation |
+
+### Evaluation Protocol
+
+100-fold cross-validation · 200 training instances · 500 test instances per fold ·
+metric: **average number of B&B nodes** (log scale) on test set throughout training.
+Baselines: CPLEX 12.7.1 (default branching under DFS, no presolve/cuts) and full
+Strong Branching (SB).
+
+### Results
+
+<div class="row justify-content-sm-center">
+  <div class="col-sm-12 mt-3 mt-md-0">
+    {% include figure.liquid loading="eager"
+       path="assets/img/fmsts/results.png"
+       title="Cross-validated performance on P1 and P2"
+       class="img-fluid rounded z-depth-1" %}
+  </div>
+</div>
+<div class="caption">
+  Averaged number of B&B nodes (log scale) on test instances for P1 (left) and P2 (right)
+  across 10,000 training iterations. MDA consistently outperforms Strong Branching and
+  reaches or beats CPLEX. Shaded regions show Gaussian confidence intervals.
+</div>
+
+Key takeaways:
+
+- **MDA > Dueling > Dense** — architecture design is critical; the multiplicative structure
+  of the value function must be matched by the network.
+- **No overfitting** — agents generalise well to unseen instances from the same distribution.
+- **Negligible inference cost** — selecting a branch requires only a neural network forward
+  pass, vs. solving multiple LP relaxations for Strong Branching.
+
+---
+
+## Theoretical Contributions
+
+**Proposition 1** (negative result): Minimising local subtree sizes is *not* globally optimal
+in general (e.g., under Breadth-First Search). This motivates the DFS requirement.
+
+**Proposition 2** (positive result, proved): Under DFS, a branching policy minimises the
+global B&B tree size **if and only if** it minimises every subtree size locally. This
+establishes that local RL training directly optimises the global objective — no reward
+engineering needed.
+
+---
+
+## Limitations & Future Directions
+
+**Current limitations:**
+- Requires Depth-First Search; other node-selection strategies break the optimality guarantee.
+- Training on hard instances is computationally expensive (random init → exponential trees).
+- Feature set is intentionally minimal; richer representations would likely improve results.
+
+**Promising extensions:**
+- **Supervised pre-training** (warm start from imitation learning) to tame early exploration.
+- **Hierarchical action space** — select among branching heuristics rather than raw variables.
+- **Graph-based state representations** (e.g., bipartite constraint–variable graphs).
+- **Branch-and-Cut** extension, incorporating cut selection into the learned policy.
+- **Alternative metrics** — the framework is metric-agnostic; simplex iterations or wall-clock
+  time are direct drop-in replacements for tree size.
+
+---
+
+## Citation
 
 ```bibtex
 @article{etheve2020reinforcement,
-  title={Reinforcement Learning for Variable Selection in a Branch and Bound Algorithm},
-  author={Etheve, Marc and Al{\`e}s, Zacharie and Bissuel, C{\^o}me and Juan, Olivier and Kedad-Sidhoum, Safia},
-  journal={arXiv preprint arXiv:2005.10026},
-  year={2020}
+  title   = {Reinforcement Learning for Variable Selection in a Branch and Bound Algorithm},
+  author  = {Etheve, Marc and Al{\`e}s, Zacharie and Bissuel, C{\^o}me
+             and Juan, Olivier and Kedad-Sidhoum, Safia},
+  journal = {arXiv preprint arXiv:2005.10026},
+  year    = {2020}
 }
 ```
+
+**arXiv:** [arXiv:2005.10026](https://arxiv.org/abs/2005.10026)
