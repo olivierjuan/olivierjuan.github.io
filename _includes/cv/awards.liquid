@@ -33,6 +33,10 @@
               <h6 class="title font-weight-bold ml-1 ml-md-4">{{ entry.title }}</h6>
             {% endif %}
 
+            {% if entry.authors %}
+              <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">{{ entry.authors | join: ', ' }}</h6>
+            {% endif %}
+
             {% if entry.awarder %}
               <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">{{ entry.awarder }}</h6>
             {% endif %}
@@ -49,6 +53,10 @@
               </h6>
             {% elsif entry.title %}
               <h6 class="title font-weight-bold ml-1 ml-md-4">{{ entry.title }}</h6>
+            {% endif %}
+
+            {% if entry.authors %}
+              <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">{{ entry.authors | join: ', ' }}</h6>
             {% endif %}
 
             {% if entry.awarder %}
