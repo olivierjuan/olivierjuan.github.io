@@ -1,99 +1,221 @@
 ---
 layout: page
-title: A Markov Decision Process for Variable Selection in Branch & Bound
-description: A principled reinforcement learning formulation for learning optimal branching heuristics in MILP solvers.
-img: assets/img/bbmdp/teaser.png
+title: "BBMDP: A Markov Decision Process for Variable Selection in Branch & Bound"
+description: >
+  A principled vanilla MDP formulation for learning optimal branching strategies in MILP solvers,
+  unlocking k-step RL algorithms previously incompatible with the TreeMDP framework.
+  New state-of-the-art among RL agents on the Ecole benchmark. NeurIPS 2025.
+img: assets/img/bbmdp/results.png
 importance: 1
-category: Machine Learning
-related_publications: true
+category: Machine Learning & Combinatorial Optimization
+related_publications: strang2025bbmdp
 ---
 
 **Authors:** Paul Strang, Zacharie Alès, Côme Bissuel, Olivier Juan, Safia Kedad-Sidhoum, Emmanuel Rachelson
 
-**Published:** arXiv:2510.19348v1 [cs.LG] 22 Oct 2025
+**Published:** NeurIPS 2025 · arXiv:2510.19348v1 — October 22, 2025
 
-**Affiliations:** EDF R&D, ENSTA Paris, CNAM Paris, ISAE-SUPAERO
+**Affiliations:** EDF R&D · ENSTA Paris (Institut Polytechnique de Paris) · CNAM Paris (CEDRIC) · ISAE-SUPAERO
 
 ---
 
-### Abstract
+## Context & Motivation
 
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-    Mixed-Integer Linear Programming (MILP) is central to many critical industrial problems, from nuclear reactor management to complex logistics. Modern solvers rely on the Branch & Bound (B&B) algorithm, the performance of which depends crucially on the variable selection heuristic (branching).<br/>
+Reinforcement Learning is a natural fit for Branch and Bound (B&B): branching decisions are sequential, the objective is global, and the agent can improve over time by solving repeated instances of the same problem family. Yet, despite a decade of effort, **RL branching agents have consistently fallen short of Imitation Learning (IL) approaches**, which simply learn to mimic the expensive Strong Branching (SB) expert.
 
-    Until now, Reinforcement Learning (RL) approaches suffered from a major theoretical limitation: the use of approximate formulations like TreeMDP, which do not respect standard Markov properties.
-    </div>
-    <div class="col-sm mt-3 mt-md-0"> <div> {% include figure.liquid loading="eager" path="assets/img/bbmdp/results.png" title="BBMDP Structure" class="img-fluid rounded z-depth-1" %} </div>
-        <div class="caption"> Normalized scores in log scale of IL, RL and random agents across the Ecole benchmark Prouvost et al. [2020]. </div>
-    </div>
+A key reason is theoretical: prior RL approaches relied on **TreeMDP**, an MDP-*inspired* but not MDP-*compliant* formulation. TreeMDP defines a branching action as producing *two* next states (the two child nodes), which violates the fundamental Markov property of standard MDPs. This forces ad hoc Bellman updates and ad hoc convergence proofs, and — more critically — **breaks compatibility with multi-step RL algorithms** that are central to state-of-the-art deep RL.
 
+This paper asks: can we define a *proper* MDP for B&B branching, and does it help in practice?
+
+---
+
+## The Problem with TreeMDP
+
+<div class="row justify-content-sm-center">
+  <div class="col-sm-10 mt-3 mt-md-0">
+    {% include figure.liquid loading="eager"
+       path="assets/img/bbmdp/structure.png"
+       title="BBMDP vs TreeMDP: 1-step and k-step Bellman equations"
+       class="img-fluid rounded z-depth-1" %}
+  </div>
+</div>
+<div class="caption">
+  At 1-step, BBMDP and TreeMDP yield identical Bellman updates (a, b). But for k-step returns,
+  they diverge: BBMDP produces a valid linear trajectory (c), while TreeMDP's k-step target
+  expands into 2<sup>k</sup> pseudo-states (d) that cannot be produced by any real DFS execution.
 </div>
 
-### The Innovation: BBMDP
+In TreeMDP, the state is the current B&B node $$s_i = (P_i, x^*_{LP,i}, \bar{x}_i)$$ and a branching action yields *two* child states $$(s^-_i, s^+_i)$$. This is not a stochastic process on a state variable — it is a tree process — and therefore not a Markov Decision Process. The consequences are concrete:
 
-In our paper **A Markov Decision Process for Variable Selection in Branch & Bound** {% cite Strang2025 %} presented at **NeurIPS 2025**, we introduce BBMDP (Branch & Bound MDP), a "vanilla" and rigorous MDP formulation for the variable selection process.
+- **k-step TD learning is broken**: applying the tree Bellman operator k times yields a target that sums $$2^k$$ pseudo-states, a trajectory that cannot be produced by any actual DFS execution of B&B. The resulting targets are biased approximations of true B&B dynamics.
+- **MCTS is incompatible**: TreeMDP's UCT criterion balances exploration between $$s^-_i$$ and $$s^+_i$$, but since branching on $$a_i$$ *necessarily* adds both children to the tree, this comparison is meaningless.
+- **Ad hoc theory**: every RL algorithm (TD(0), value iteration, policy gradient) requires a custom convergence proof within TreeMDP, limiting reuse of the broader RL literature.
 
-Unlike previous approaches that attempted to minimize the size of independent subtrees, BBMDP models the complete state of the search tree $s_t=(V_t, E_t, x_t)$. This allows us to:
+---
 
-1. Define a theoretically valid value function $Q^π$.
+## BBMDP: A Principled Formulation
 
-1. Use standard RL algorithms (like DQN with k-step returns) without ad-hoc approximations.
+BBMDP defines variable selection as a standard deterministic MDP $$(S, A, \mathcal{T}, p_0, R)$$:
 
-1. Guarantee convergence towards a global optimal policy $π^∗$.
+| Component | BBMDP | TreeMDP |
+|-----------|-------|---------|
+| **State** $$s_t$$ | Full B&B tree $$(V_t, E_t, \bar{x}_t)$$ | Current node $$(P_i, x^*_{LP,i}, \bar{x}_i)$$ |
+| **Action** $$a_t$$ | Integer variable index $$\in \mathcal{I}$$ | Integer variable index $$\in \mathcal{I}$$ |
+| **Transition** | $$s_{t+1} = \kappa_\rho(s_t, a_t)$$ — a single next state | Two child states $$(s^-_i, s^+_i)$$ |
+| **Reward** | $$R(s,a) = -2$$ (two nodes added per branching) | $$-1$$ or $$-2$$ per child |
+| **Is an MDP?** | **Yes** | No |
 
-$$π^∗=\displaystyle arg\min_{π} E_{P∼p_0} (∣BB_{(π,ρ)}(P)∣)$$
+The key insight is that the **state must include the entire B&B tree**, not just the current node. This is the minimal information needed for the Markov property to hold: the future trajectory depends on all open nodes and the current incumbent solution, not just the node being branched on right now.
 
-### Technical Architecture
+### Why DFS is still needed
 
-Our agent, DQN-BBMDP, uses a problem representation in the form of a bipartite graph (Variables/Constraints) processed by a Graph Convolutional Network (GCN). It overcomes the limitations of TreeMDP models by taking into account the real sequential dynamics of the solver.
+Even with a proper MDP, the value of a subtree rooted at open node $$o_i$$ depends on which other subtrees are explored before it (they may improve the incumbent $$\bar{x}$$, enabling earlier pruning). The only node selection policy $$\rho$$ that isolates subtrees from each other — making subtree size predictable from local information — is **Depth-First Search**. This recovers the computational tractability of TreeMDP without sacrificing MDP correctness.
 
-<div class="row"> <div class="col-sm mt-3 mt-md-0"> {% include figure.liquid loading="eager" path="assets/img/bbmdp/structure.png" title="BBMDP Structure" class="img-fluid rounded z-depth-1" %} </div> </div> <div class="caption"> Trajectory comparison: When applying TD(0), TreeMDP and BBMDP yield equivalent results, see a, b. However, when minimizing k-step temporal difference, the two methods diverge as exemplified in c, d. </div>
+Under DFS-BBMDP, **Proposition 3.1** establishes the refined Bellman equation:
 
-### Results and Impact
+$$\bar{V}^\pi(o_1, \bar{x}_{o_1}) = -2 + \bar{V}^\pi(o'_1, \bar{x}_{o'_1}) + \bar{V}^\pi(o'_2, \bar{x}_{o'_2})$$
 
-Experiments conducted on standard benchmarks (Set Covering, Auctions, Maximum Independent Set) demonstrate that our approach establishes a new state-of-the-art for RL agents.
+where $$o'_1$$ and $$o'_2$$ are the two children of the branched node. This is structurally identical to the 1-step TreeMDP equation — explaining why TD(0) TreeMDP and BBMDP are equivalent — but it lives inside a proper MDP, unlocking multi-step extensions:
 
-- Performance: DQN-BBMDP reduces the number of nodes by 27% and solving time by 38% compared to the previous state-of-the-art (DQN-Retro).
+$$\bar{V}^\pi(o_1, \bar{x}_{o_1}) = -2k + \sum_{i=1}^{k+1} \bar{V}^\pi\!\left(o^{(k)}_i, \bar{x}_{o^{(k)}_i}\right)$$
 
-- Generalization: The agent shows superior capability to generalize on larger dimension instances (Transfer Learning) compared to methods based on Imitation Learning.
+This k-step target follows a real DFS trajectory of length $$k$$, visiting $$k+1$$ open nodes — not a fictitious tree of $$2^k$$ branches.
 
-| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:|
-| Benchmarks | **Set Covering** | | **Comb. Auction** | | **Max. Ind. Set** | | **Mult. Knapsack** | | **Norm. Score** | |
-| Method | Node | Time | Node | Time | Node | Time | Node | Time | Node | Time |
-| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:|
-| Presolve | - | 12.3 | - | 2.67 | - | 5.16 | - | 0.46 | - | - |
-| Random | 271632 | 842 | 317235 | 749 | 215879 | 2102 | 93452 | 70.6 | 5555 | 2737 |
-| SB | 672.1 | 398 | 389.6 | 255 | 169.9 | 2172 | <span style="color: red;"><b>1709</b></span> | <span style="color: red;"><b>12.5</b></span> | 9 | 1425 |
-| SCIP | 3309 | 48.4 | 1376 | 14.77 | 3368 | 90.0 | 30620 | 22.1 | 62 | 90 |
-| IL | <span style="color: red;"><b>2610</b></span> | 23.1 | <span style="color: red;"><b>1309</b></span> | <span style="color: red;"><b>9.8</b></span> | <span style="color: red;"><b>1882.0</b></span> | <span style="color: red;"><b>37.6</b></span> | 9747 | 46.5 | <span style="color: red;"><b>39</b></span> | <span style="color: red;"><b>55</b></span> |
-| IL-DFS | 3103 | <span style="color: red;"><b>22.5</b></span> | 1802 | 11.1 | 3501 | 55.5 | 43224 | 177 | 75 | 93 |
-| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:|
-| PG-tMDP | 44649 | 221 | 6001 | 30.7 | <span style="color: blue;"><b>3133</b></span> | <span style="color: blue;"><b>39.5</b></span> | 35614 | 123 | 298 | 223 |
-| DQN-tMDP | 8632 | 71.3 | 20553 | 116 | 45634 | 477 | <span style="color: blue;"><b>22631</b></span> | <span style="color: blue;"><b>65.1</b></span> | 439 | 445 |
-| DQN-Retro | 6100 | 59.4 | 2908 | 18.4 | 119478 | 1863 | 27077 | 79.5 | 494 | 662 |
-| DQN-BBMDP | <span style="color: blue;"><b>5651</b></span> | <span style="color: blue;"><b>46.4</b></span> | <span style="color: blue;"><b>2273</b></span> | <span style="color: blue;"><b>11.8</b></span> | 7168 | 81.3 | 37098 | 109 | <span style="color: blue;"><b>100</b></span> | <span style="color: blue;"><b>100</b></span> |
-| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:| ---:|
+---
 
-Note: Results show a significant reduction in the gap with the expert (Strong Branching), while being much faster to execute.
+## DQN-BBMDP Agent
 
-### Resources
+### State Representation
 
-- **arXiv**: [arXiv:2510.19348](https://arxiv.org/abs/2510.19348)
+Following Gasse et al. [2019], B&B nodes are represented as **bipartite constraint–variable graphs** $$G = (V_G, C_G, E_G)$$, processed by a Graph Convolutional Network (GCN). DQN-BBMDP enriches this with the additional node features introduced by Parsonson et al. [2022].
 
-- **Github repository**: The source code for the implementation and pre-trained models are available to the scientific community to foster reproducibility.
+### HL-Gauss Classification Loss
 
-<div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center"> {% include repository/repo.liquid repository="abfariah/bbmdp" %} </div>
+Drawing on Farebrother et al. [2024], BBMDP replaces the standard MSE regression loss with a **HL-Gauss cross-entropy loss** that encodes Q-values as categorical histogram distributions. This is non-trivial in the B&B setting: value functions span several orders of magnitude ($$Z_v = [-10^6, -2]$$). The solution is to partition the log-scale support $$\psi(Z_v)$$ with $$\psi(z) = \log_2(-z)$$, placing bin centres at $$\zeta_i = i$$ and converting back via $$\psi^{-1}(z) = -2^z$$.
 
-### Citation
+### Training Pipeline (Rainbow-DQN)
 
-If you use this work, please cite our paper:
+The full agent combines:
+- **k-step return** ($$k=3$$) temporal difference
+- **Double DQN** for stable target estimation
+- **Prioritized Experience Replay (PER)**
+- **Boltzmann + ε-greedy** exploration
+
+```
+for t = 0, …, N-1:
+  1. Draw instance P ~ p₀.
+  2. Solve P with ε-greedy / Boltzmann policy qθ_t.
+  3. Collect k-step transitions (sᵢ, aᵢ, Σrᵢ₊ⱼ, sᵢ₊ₖ) → replay buffer.
+  4. Update θ via HL-Gauss loss on batches from the replay buffer.
+```
+
+---
+
+## Experiments
+
+### Benchmarks & Setup
+
+Evaluated on four standard MILP benchmarks from the **Ecole** library, using SCIP 8.0.3 as backend (DFS, no cuts beyond root, no restarts). Models are trained on fixed-dimension instances and evaluated on both same-size **test instances** and larger **transfer instances**.
+
+| Benchmark | Train / Test | Transfer |
+|-----------|-------------|----------|
+| Set Covering | 500 items, 1000 sets | 1000 items, 1000 sets |
+| Combinatorial Auction | 100 items, 500 bids | 200 items, 1000 bids |
+| Maximum Independent Set | 500 nodes | 1000 nodes |
+| Multiple Knapsack | 100 items, 6 knapsacks | 100 items, 12 knapsacks |
+
+### Results
+
+<div class="row justify-content-sm-center">
+  <div class="col-sm-8 mt-3 mt-md-0">
+    {% include figure.liquid loading="eager"
+       path="assets/img/bbmdp/results.png"
+       title="Normalized scores across the Ecole benchmark"
+       class="img-fluid rounded z-depth-1" %}
+  </div>
+</div>
+<div class="caption">
+  Normalized scores (log scale) aggregated across all four benchmarks on transfer instances.
+  DQN-BBMDP (score 100) dominates all prior RL agents and narrows the gap with IL.
+</div>
+
+On **test instances**, DQN-BBMDP achieves best aggregate performance among all RL agents:
+**−27% nodes and −38% solving time** vs. the previous RL state-of-the-art (DQN-Retro).
+
+On **transfer instances** (harder, out-of-distribution size), the advantage is even larger — BBMDP is the **first RL agent to robustly generalise to higher-dimensional instances**, outperforming SCIP on 3 out of 4 benchmarks. This aligns with the theoretical advantage of a principled MDP formulation over TreeMDP.
+
+Full results (geometrical means over 100 test instances, 5 seeds):
+
+| Method | Norm. Score (Test) | Norm. Score (Transfer) |
+|--------|--------------------|------------------------|
+| Random | 995 | 5555 |
+| PG-tMDP | 233 | 298 |
+| DQN-tMDP | 151 | 439 |
+| DQN-Retro | 137 | 494 |
+| **DQN-BBMDP** | **100** | **100** |
+| IL | 82 | 39 |
+
+> Note: normalized scores are relative to DQN-BBMDP (lower is better). IL remains the reference on in-distribution test instances, but BBMDP closes the gap significantly and surpasses IL on transfer for several benchmarks.
+
+### Ablation Study
+
+| Configuration | k=1 nodes | k=3 nodes |
+|---------------|-----------|-----------|
+| DQN-BBMDP (full) | 158.9 | **152.3 (−4%)** |
+| w/o HL-Gauss | 175.8 (+10%) | 172.3 (+8%) |
+| w/o BBMDP (= DQN-TreeMDP) | 158.9 (+0%) | 178.9 (+13%) |
+| w/o DFS | 156.2 (−2%) | 150.1 (−5%) |
+
+Key findings:
+- **HL-Gauss** contributes the largest single gain (+10% without it).
+- **k-step returns improve BBMDP but hurt TreeMDP** (+13% at k=3), directly confirming the theoretical claim that TreeMDP k-step targets are inconsistent with real B&B dynamics.
+- DFS is not restrictive in practice, contrary to prior claims.
+
+---
+
+## Theoretical Contributions
+
+**Proposition 3.1** — Under DFS-BBMDP, the global optimal branching policy $$\pi^*$$ satisfies:
+
+$$\pi^*(s) = \arg\max_{a \in A}\ Q^*(s, a) = \arg\max_{a \in A}\ \bar{Q}^*(o_1, \bar{x}_{o_1}, a)$$
+
+i.e., optimising locally over the current subtree is *equivalent* to global optimality. This result extends the subtree consistency property of Etheve et al. [2020] to the rigorous MDP setting, while also enabling k-step returns, TD(λ), and MCTS-based policy improvement — none of which were compatible with TreeMDP.
+
+---
+
+## Limitations & Future Directions
+
+- **RL still lags IL on pure node count** on some benchmarks; the generalization gap is closing but not yet closed.
+- **DFS requirement**: while shown not to be restrictive in practice here, future work could explore removing this constraint.
+- **Convergence not reached** on multiple knapsack after 200k steps, suggesting further gains with longer training.
+
+Promising extensions opened by the principled BBMDP formulation:
+- **MCTS-based policy improvement** (e.g., AlphaZero-style) — now theoretically compatible.
+- **TD(λ) and full Rainbow** — directly applicable without custom convergence proofs.
+- **Cut selection and primal search** — BBMDP generalises to other B&B heuristics by adapting the action set and reward.
+- **Distribution shift / domain adaptation** — the MDP foundation provides a cleaner basis for addressing out-of-distribution generalisation.
+
+---
+
+## Resources
+
+**arXiv:** [arXiv:2510.19348](https://arxiv.org/abs/2510.19348)
+
+**Code & pretrained models:**
+<div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
+  {% include repository/repo.liquid repository="abfariah/bbmdp" %}
+</div>
+
+---
+
+## Citation
 
 ```bibtex
 @inproceedings{strang2025bbmdp,
-  title={A Markov Decision Process for Variable Selection in Branch & Bound},
-  author={Strang, Paul and Alès, Zacharie and Juan, Olivier and Bissuel, Côme and Kedad-Sidhoum, Safia and Rachelson, Emmanuel},
-  booktitle={Advances in Neural Information Processing Systems (NeurIPS)},
-  year={2025}
+  title     = {A Markov Decision Process for Variable Selection in Branch \& Bound},
+  author    = {Strang, Paul and Al\`es, Zacharie and Bissuel, C\^ome and
+               Juan, Olivier and Kedad-Sidhoum, Safia and Rachelson, Emmanuel},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2025}
 }
 ```
