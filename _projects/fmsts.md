@@ -13,7 +13,7 @@ related_publications: etheve2020reinforcement
 
 **Authors:** Marc Etheve, Zacharie Alès, Côme Bissuel, Olivier Juan, Safia Kedad-Sidhoum
 
-**Published:** arXiv:2005.10026v1 — May 20, 2020
+**Published:** [arXiv:2005.10026](https://arxiv.org/abs/2005.10026) — May 20, 2020
 
 **Affiliations:** EDF R&D · ENSTA Paris (Institut Polytechnique de Paris) · CNAM Paris (CEDRIC)
 
