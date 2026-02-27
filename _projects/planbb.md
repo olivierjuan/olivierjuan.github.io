@@ -26,7 +26,7 @@ related_publications: strang2026planbb
 
 Despite a decade of effort applying machine learning to Branch and Bound (B&B), reinforcement learning agents have consistently underperformed Imitation Learning (IL). IL learns to mimic the expensive Strong Branching (SB) expert at lower cost, but is fundamentally capped by the quality of that expert. RL, in theory, is bounded only by the maximum achievable performance — yet it has never surpassed IL on standard benchmarks.
 
-A key reason is **exploration and credit assignment**: B&B episodes are long, rewards sparse, and the combinatorial complexity of MILP exacerbates sample inefficiency. The analogy with board games is instructive — RL also struggled in Go and Chess until *model-based planning* arrived. AlphaZero and MuZero showed that **learning an internal model of the environment and using it for look-ahead search (MCTS) dramatically improves both sample efficiency and final performance**.
+A key reason is **exploration and credit assignment**: B&B episodes are long, rewards sparse, and the combinatorial complexity of MILP exacerbates sample inefficiency. The analogy with board games is instructive — RL also struggled in Go and Chess until _model-based planning_ arrived. AlphaZero and MuZero showed that **learning an internal model of the environment and using it for look-ahead search (MCTS) dramatically improves both sample efficiency and final performance**.
 
 This paper asks: can the same paradigm be applied to exact combinatorial optimization?
 
@@ -56,15 +56,15 @@ This paper asks: can the same paradigm be applied to exact combinatorial optimiz
 
 PlanB&B adapts the **MuZero** framework to the B&B setting. Its learned model consists of three interconnected networks:
 
-| Network | Input → Output | Role |
-|---------|---------------|------|
-| **Representation** $$h$$ | B&B node $$(o, \bar{x}_t) \rightarrow \hat{o} \in \mathcal{H}$$ | Encode current node into latent space |
-| **Dynamics** $$g$$ | $$(\hat{o}, a) \rightarrow (\hat{o}_l, \hat{o}_r)$$ | Predict child node representations *without solving any LP* |
-| **Prediction** $$f$$ | $$\hat{o} \rightarrow (\hat{p}, \bar{v}, b)$$ | Policy prior, subtree value, branchability score |
+| Network                  | Input → Output                                                  | Role                                                        |
+| ------------------------ | --------------------------------------------------------------- | ----------------------------------------------------------- |
+| **Representation** $$h$$ | B&B node $$(o, \bar{x}_t) \rightarrow \hat{o} \in \mathcal{H}$$ | Encode current node into latent space                       |
+| **Dynamics** $$g$$       | $$(\hat{o}, a) \rightarrow (\hat{o}_l, \hat{o}_r)$$             | Predict child node representations _without solving any LP_ |
+| **Prediction** $$f$$     | $$\hat{o} \rightarrow (\hat{p}, \bar{v}, b)$$                   | Policy prior, subtree value, branchability score            |
 
 The **branchability** head $$b \in \{0,1\}$$ is a novel contribution: it predicts whether a generated node will be pruned or will lead to further branching, allowing the model to simulate realistic subtree rollouts and discard dead branches from the imagined tree $$\hat{\mathcal{T}}$$ early.
 
-> **Key difference with MuZero**: MuZero operates on full state observations. PlanB&B operates exclusively on the current B&B node $$(o, \bar{x}_t)$$ — the minimal local information sufficient for optimal branching under DFS (from BBMDP). The dynamics network $$g$$ must therefore learn to approximate LP resolution in latent space, *without* being explicitly trained to solve LPs.
+> **Key difference with MuZero**: MuZero operates on full state observations. PlanB&B operates exclusively on the current B&B node $$(o, \bar{x}_t)$$ — the minimal local information sufficient for optimal branching under DFS (from BBMDP). The dynamics network $$g$$ must therefore learn to approximate LP resolution in latent space, _without_ being explicitly trained to solve LPs.
 
 ---
 
@@ -96,11 +96,11 @@ PlanB&B is trained over **K-step subtree trajectories** $$(s_t, a_t, \ldots, s_{
 
 $$\mathcal{L}_t(\theta) = \frac{1}{K+1} \sum_{k=0}^{K} \Bigl[\lambda_p \mathcal{L}_p(\pi_{t+k}, \hat{p}^k_t) + \lambda_v \mathcal{L}_v(z_{t+k}, \hat{v}^k_t)\Bigr] + \frac{1}{|\hat{\mathcal{T}}^K|} \sum_{\hat{o} \in \hat{\mathcal{T}}^K} \Bigl[\lambda_b \mathcal{L}_b(b_o, \hat{b}_{\hat{o}}) + \lambda_t \mathcal{L}_t(\check{o}, \hat{o})\Bigr]$$
 
-| Loss | Purpose |
-|------|---------|
-| $$\mathcal{L}_p$$ | Match Gumbel Search policy targets (cross-entropy) |
-| $$\mathcal{L}_v$$ | Predict n-step returns via HL-Gauss classification |
-| $$\mathcal{L}_b$$ | Classify branchable vs. pruned nodes |
+| Loss              | Purpose                                                                                                   |
+| ----------------- | --------------------------------------------------------------------------------------------------------- |
+| $$\mathcal{L}_p$$ | Match Gumbel Search policy targets (cross-entropy)                                                        |
+| $$\mathcal{L}_v$$ | Predict n-step returns via HL-Gauss classification                                                        |
+| $$\mathcal{L}_b$$ | Classify branchable vs. pruned nodes                                                                      |
 | $$\mathcal{L}_t$$ | **Tree consistency** (SimSiam-inspired): align imagined node representations with their real counterparts |
 
 The **tree consistency loss** $$\mathcal{L}_t$$ is a new contribution: it enforces structural coherence between imagined subtrees and real B&B trajectories, constraining $$g$$ to capture only the B&B-relevant aspects of node transitions.
@@ -115,28 +115,28 @@ The **training pipeline** follows the parallelised EfficientZero architecture wi
 
 ### Setup
 
-Four standard Ecole MILP benchmarks · SCIP 8.0.3 backend · DFS node selection · no cuts beyond root · 1h time limit. Results: geometric mean over 100 test and 100 transfer instances, averaged over 5 seeds. **Note:** PlanB&B results use the *policy network alone at evaluation time* (no MCTS budget) for fair comparison.
+Four standard Ecole MILP benchmarks · SCIP 8.0.3 backend · DFS node selection · no cuts beyond root · 1h time limit. Results: geometric mean over 100 test and 100 transfer instances, averaged over 5 seeds. **Note:** PlanB&B results use the _policy network alone at evaluation time_ (no MCTS budget) for fair comparison.
 
 ### Main Results
 
 Aggregate normalized scores (lower is better, PlanB&B = 100):
 
-| Method | Node (Test) | Time (Test) | Node (Transfer) | Time (Transfer) |
-|--------|:-----------:|:-----------:|:---------------:|:---------------:|
-| Random | 1068 | 454 | 8050 | 3870 |
-| PG-tMDP | 272 | 254 | 373 | 290 |
-| DQN-tMDP | 207 | 188 | 787 | 679 |
-| DQN-Retro | 208 | 241 | 1166 | 1254 |
-| **PlanB&B** | **100** | **100** | **100** | **100** |
-| IL-DFS | 130 | 131 | 151 | 136 |
-| IL★ | 96 | 116 | 70 | 83 |
-| SCIP | 58 | 363 | 121 | 132 |
+| Method      | Node (Test) | Time (Test) | Node (Transfer) | Time (Transfer) |
+| ----------- | :---------: | :---------: | :-------------: | :-------------: |
+| Random      |    1068     |     454     |      8050       |      3870       |
+| PG-tMDP     |     272     |     254     |       373       |       290       |
+| DQN-tMDP    |     207     |     188     |       787       |       679       |
+| DQN-Retro   |     208     |     241     |      1166       |      1254       |
+| **PlanB&B** |   **100**   |   **100**   |     **100**     |     **100**     |
+| IL-DFS      |     130     |     131     |       151       |       136       |
+| IL★         |     96      |     116     |       70        |       83        |
+| SCIP        |     58      |     363     |       121       |       132       |
 
 Key findings:
 
 - **2× reduction** in tree size and solving time vs. prior RL state-of-the-art on test instances; **3× on transfer instances**, where the generalization advantage of MBRL is most visible.
 - **First RL agent to outperform IL-DFS** on both test and transfer — the first time any RL branching agent surpasses an IL approach trained on Strong Branching.
-- On test instances, PlanB&B achieves ≈10% lower solving time than IL★ *despite slightly larger trees*, due to DFS warm-start speedups (10–30% faster LP re-solves along diving paths, see Q4 below).
+- On test instances, PlanB&B achieves ≈10% lower solving time than IL★ _despite slightly larger trees_, due to DFS warm-start speedups (10–30% faster LP re-solves along diving paths, see Q4 below).
 - SCIP produces fewer nodes than any ML method due to aggressive presolving, but is **3.6× slower** in total solving time.
 
 ### Policy Improvement via Planning (Q2)
@@ -159,16 +159,16 @@ With additional MCTS budget at inference time, PlanB&B further improves:
 
 ### Does PlanB&B Simply Imitate Strong Branching? (Q3)
 
-A natural question: does look-ahead planning push PlanB&B *closer* to SB, effectively recovering IL? The answer is **no**.
+A natural question: does look-ahead planning push PlanB&B _closer_ to SB, effectively recovering IL? The answer is **no**.
 
-| Policy | SB C-Entropy ↓ | SB Score ↑ | SB Freq. ↑ |
-|--------|:--------------:|:----------:|:----------:|
-| SB (oracle) | 0.00 | 1.00 | 1.00 |
-| IL★ | 0.84 | 0.69 | 0.45 |
-| PlanB&B (N=0) | 1.97 | 0.63 | 0.39 |
-| PlanB&B (N=50) | 2.08 | 0.65 | 0.40 |
+| Policy         | SB C-Entropy ↓ | SB Score ↑ | SB Freq. ↑ |
+| -------------- | :------------: | :--------: | :--------: |
+| SB (oracle)    |      0.00      |    1.00    |    1.00    |
+| IL★            |      0.84      |    0.69    |    0.45    |
+| PlanB&B (N=0)  |      1.97      |    0.63    |    0.39    |
+| PlanB&B (N=50) |      2.08      |    0.65    |    0.40    |
 
-PlanB&B is consistently *further* from SB than IL★ on all three alignment metrics, and adding MCTS iterations does not increase alignment. PlanB&B surpasses IL not by better imitating the expert, but by **discovering genuinely novel branching strategies**. This directly demonstrates RL's potential to go beyond expert-bounded IL.
+PlanB&B is consistently _further_ from SB than IL★ on all three alignment metrics, and adding MCTS iterations does not increase alignment. PlanB&B surpasses IL not by better imitating the expert, but by **discovering genuinely novel branching strategies**. This directly demonstrates RL's potential to go beyond expert-bounded IL.
 
 ### The DFS Trade-off (Q4)
 
@@ -177,13 +177,13 @@ DFS produces larger trees than advanced node selection policies (Best-First, Bes
 - On **test instances**, warm-start gains often compensate for larger trees → PlanB&B beats IL★ in time.
 - On **transfer instances**, closing the primal gap becomes harder at larger scales; DFS trees grow disproportionately, widening the performance gap with non-DFS IL★.
 
-The relative impact of DFS is captured by the *discovery time* $$t_d$$: the B&B step at which the global optimum is first found. Once $$\bar{x} = x^*$$, all node selection policies become equivalent. For MK transfer instances, $$t_r = t_d/T = 1.0$$ — the optimal solution is found only at the very end — making DFS maximally costly.
+The relative impact of DFS is captured by the _discovery time_ $$t_d$$: the B&B step at which the global optimum is first found. Once $$\bar{x} = x^*$$, all node selection policies become equivalent. For MK transfer instances, $$t_r = t_d/T = 1.0$$ — the optimal solution is found only at the very end — making DFS maximally costly.
 
 ---
 
 ## Theoretical Connection: Strong Branching as 1-Step MCTS
 
-The paper establishes a clean theoretical connection: **Strong Branching is exactly a depth-1, full-width MCTS** that maximises immediate dual bound improvement, using LP solvers as a perfect one-step dynamics model. PlanB&B generalises this by learning a multi-step approximate dynamics model, enabling deeper look-ahead at a fraction of the computational cost. This unification clarifies *why* SB is such a strong expert and *how* model-based RL can eventually go beyond it.
+The paper establishes a clean theoretical connection: **Strong Branching is exactly a depth-1, full-width MCTS** that maximises immediate dual bound improvement, using LP solvers as a perfect one-step dynamics model. PlanB&B generalises this by learning a multi-step approximate dynamics model, enabling deeper look-ahead at a fraction of the computational cost. This unification clarifies _why_ SB is such a strong expert and _how_ model-based RL can eventually go beyond it.
 
 ---
 
@@ -194,6 +194,7 @@ The paper establishes a clean theoretical connection: **Strong Branching is exac
 - **Training cost**: several days per benchmark on 4×A100 GPUs.
 
 Directions opened by PlanB&B:
+
 - **Progressive instance curricula** to improve value network OOD generalisation.
 - **Global tree encodings** to move beyond DFS.
 - **MBRL for cut selection, node selection, primal search** — the BBMDP+Gumbel Search framework generalises directly.

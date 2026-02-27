@@ -23,9 +23,9 @@ related_publications: strang2025bbmdp
 
 Reinforcement Learning is a natural fit for Branch and Bound (B&B): branching decisions are sequential, the objective is global, and the agent can improve over time by solving repeated instances of the same problem family. Yet, despite a decade of effort, **RL branching agents have consistently fallen short of Imitation Learning (IL) approaches**, which simply learn to mimic the expensive Strong Branching (SB) expert.
 
-A key reason is theoretical: prior RL approaches relied on **TreeMDP**, an MDP-*inspired* but not MDP-*compliant* formulation. TreeMDP defines a branching action as producing *two* next states (the two child nodes), which violates the fundamental Markov property of standard MDPs. This forces ad hoc Bellman updates and ad hoc convergence proofs, and — more critically — **breaks compatibility with multi-step RL algorithms** that are central to state-of-the-art deep RL.
+A key reason is theoretical: prior RL approaches relied on **TreeMDP**, an MDP-_inspired_ but not MDP-_compliant_ formulation. TreeMDP defines a branching action as producing _two_ next states (the two child nodes), which violates the fundamental Markov property of standard MDPs. This forces ad hoc Bellman updates and ad hoc convergence proofs, and — more critically — **breaks compatibility with multi-step RL algorithms** that are central to state-of-the-art deep RL.
 
-This paper asks: can we define a *proper* MDP for B&B branching, and does it help in practice?
+This paper asks: can we define a _proper_ MDP for B&B branching, and does it help in practice?
 
 ---
 
@@ -45,10 +45,10 @@ This paper asks: can we define a *proper* MDP for B&B branching, and does it hel
   expands into 2<sup>k</sup> pseudo-states (d) that cannot be produced by any real DFS execution.
 </div>
 
-In TreeMDP, the state is the current B&B node $$s_i = (P_i, x^*_{LP,i}, \bar{x}_i)$$ and a branching action yields *two* child states $$(s^-_i, s^+_i)$$. This is not a stochastic process on a state variable — it is a tree process — and therefore not a Markov Decision Process. The consequences are concrete:
+In TreeMDP, the state is the current B&B node $$s_i = (P_i, x^*_{LP,i}, \bar{x}_i)$$ and a branching action yields _two_ child states $$(s^-_i, s^+_i)$$. This is not a stochastic process on a state variable — it is a tree process — and therefore not a Markov Decision Process. The consequences are concrete:
 
 - **k-step TD learning is broken**: applying the tree Bellman operator k times yields a target that sums $$2^k$$ pseudo-states, a trajectory that cannot be produced by any actual DFS execution of B&B. The resulting targets are biased approximations of true B&B dynamics.
-- **MCTS is incompatible**: TreeMDP's UCT criterion balances exploration between $$s^-_i$$ and $$s^+_i$$, but since branching on $$a_i$$ *necessarily* adds both children to the tree, this comparison is meaningless.
+- **MCTS is incompatible**: TreeMDP's UCT criterion balances exploration between $$s^-_i$$ and $$s^+_i$$, but since branching on $$a_i$$ _necessarily_ adds both children to the tree, this comparison is meaningless.
 - **Ad hoc theory**: every RL algorithm (TD(0), value iteration, policy gradient) requires a custom convergence proof within TreeMDP, limiting reuse of the broader RL literature.
 
 ---
@@ -57,13 +57,13 @@ In TreeMDP, the state is the current B&B node $$s_i = (P_i, x^*_{LP,i}, \bar{x}_
 
 BBMDP defines variable selection as a standard deterministic MDP $$(S, A, \mathcal{T}, p_0, R)$$:
 
-| Component | BBMDP | TreeMDP |
-|-----------|-------|---------|
-| **State** $$s_t$$ | Full B&B tree $$(V_t, E_t, \bar{x}_t)$$ | Current node $$(P_i, x^*_{LP,i}, \bar{x}_i)$$ |
-| **Action** $$a_t$$ | Integer variable index $$\in \mathcal{I}$$ | Integer variable index $$\in \mathcal{I}$$ |
-| **Transition** | $$s_{t+1} = \kappa_\rho(s_t, a_t)$$ — a single next state | Two child states $$(s^-_i, s^+_i)$$ |
-| **Reward** | $$R(s,a) = -2$$ (two nodes added per branching) | $$-1$$ or $$-2$$ per child |
-| **Is an MDP?** | **Yes** | No |
+| Component          | BBMDP                                                     | TreeMDP                                       |
+| ------------------ | --------------------------------------------------------- | --------------------------------------------- |
+| **State** $$s_t$$  | Full B&B tree $$(V_t, E_t, \bar{x}_t)$$                   | Current node $$(P_i, x^*_{LP,i}, \bar{x}_i)$$ |
+| **Action** $$a_t$$ | Integer variable index $$\in \mathcal{I}$$                | Integer variable index $$\in \mathcal{I}$$    |
+| **Transition**     | $$s_{t+1} = \kappa_\rho(s_t, a_t)$$ — a single next state | Two child states $$(s^-_i, s^+_i)$$           |
+| **Reward**         | $$R(s,a) = -2$$ (two nodes added per branching)           | $$-1$$ or $$-2$$ per child                    |
+| **Is an MDP?**     | **Yes**                                                   | No                                            |
 
 The key insight is that the **state must include the entire B&B tree**, not just the current node. This is the minimal information needed for the Markov property to hold: the future trajectory depends on all open nodes and the current incumbent solution, not just the node being branched on right now.
 
@@ -96,6 +96,7 @@ Drawing on Farebrother et al. [2024], BBMDP replaces the standard MSE regression
 ### Training Pipeline (Rainbow-DQN)
 
 The full agent combines:
+
 - **k-step return** ($$k=3$$) temporal difference
 - **Double DQN** for stable target estimation
 - **Prioritized Experience Replay (PER)**
@@ -117,12 +118,12 @@ for t = 0, …, N-1:
 
 Evaluated on four standard MILP benchmarks from the **Ecole** library, using SCIP 8.0.3 as backend (DFS, no cuts beyond root, no restarts). Models are trained on fixed-dimension instances and evaluated on both same-size **test instances** and larger **transfer instances**.
 
-| Benchmark | Train / Test | Transfer |
-|-----------|-------------|----------|
-| Set Covering | 500 items, 1000 sets | 1000 items, 1000 sets |
-| Combinatorial Auction | 100 items, 500 bids | 200 items, 1000 bids |
-| Maximum Independent Set | 500 nodes | 1000 nodes |
-| Multiple Knapsack | 100 items, 6 knapsacks | 100 items, 12 knapsacks |
+| Benchmark               | Train / Test           | Transfer                |
+| ----------------------- | ---------------------- | ----------------------- |
+| Set Covering            | 500 items, 1000 sets   | 1000 items, 1000 sets   |
+| Combinatorial Auction   | 100 items, 500 bids    | 200 items, 1000 bids    |
+| Maximum Independent Set | 500 nodes              | 1000 nodes              |
+| Multiple Knapsack       | 100 items, 6 knapsacks | 100 items, 12 knapsacks |
 
 ### Results
 
@@ -146,27 +147,28 @@ On **transfer instances** (harder, out-of-distribution size), the advantage is e
 
 Full results (geometrical means over 100 test instances, 5 seeds):
 
-| Method | Norm. Score (Test) | Norm. Score (Transfer) |
-|--------|--------------------|------------------------|
-| Random | 995 | 5555 |
-| PG-tMDP | 233 | 298 |
-| DQN-tMDP | 151 | 439 |
-| DQN-Retro | 137 | 494 |
-| **DQN-BBMDP** | **100** | **100** |
-| IL | 82 | 39 |
+| Method        | Norm. Score (Test) | Norm. Score (Transfer) |
+| ------------- | ------------------ | ---------------------- |
+| Random        | 995                | 5555                   |
+| PG-tMDP       | 233                | 298                    |
+| DQN-tMDP      | 151                | 439                    |
+| DQN-Retro     | 137                | 494                    |
+| **DQN-BBMDP** | **100**            | **100**                |
+| IL            | 82                 | 39                     |
 
 > Note: normalized scores are relative to DQN-BBMDP (lower is better). IL remains the reference on in-distribution test instances, but BBMDP closes the gap significantly and surpasses IL on transfer for several benchmarks.
 
 ### Ablation Study
 
-| Configuration | k=1 nodes | k=3 nodes |
-|---------------|-----------|-----------|
-| DQN-BBMDP (full) | 158.9 | **152.3 (−4%)** |
-| w/o HL-Gauss | 175.8 (+10%) | 172.3 (+8%) |
-| w/o BBMDP (= DQN-TreeMDP) | 158.9 (+0%) | 178.9 (+13%) |
-| w/o DFS | 156.2 (−2%) | 150.1 (−5%) |
+| Configuration             | k=1 nodes    | k=3 nodes       |
+| ------------------------- | ------------ | --------------- |
+| DQN-BBMDP (full)          | 158.9        | **152.3 (−4%)** |
+| w/o HL-Gauss              | 175.8 (+10%) | 172.3 (+8%)     |
+| w/o BBMDP (= DQN-TreeMDP) | 158.9 (+0%)  | 178.9 (+13%)    |
+| w/o DFS                   | 156.2 (−2%)  | 150.1 (−5%)     |
 
 Key findings:
+
 - **HL-Gauss** contributes the largest single gain (+10% without it).
 - **k-step returns improve BBMDP but hurt TreeMDP** (+13% at k=3), directly confirming the theoretical claim that TreeMDP k-step targets are inconsistent with real B&B dynamics.
 - DFS is not restrictive in practice, contrary to prior claims.
@@ -179,7 +181,7 @@ Key findings:
 
 $$\pi^*(s) = \arg\max_{a \in A}\ Q^*(s, a) = \arg\max_{a \in A}\ \bar{Q}^*(o_1, \bar{x}_{o_1}, a)$$
 
-i.e., optimising locally over the current subtree is *equivalent* to global optimality. This result extends the subtree consistency property of Etheve et al. [2020] to the rigorous MDP setting, while also enabling k-step returns, TD(λ), and MCTS-based policy improvement — none of which were compatible with TreeMDP.
+i.e., optimising locally over the current subtree is _equivalent_ to global optimality. This result extends the subtree consistency property of Etheve et al. [2020] to the rigorous MDP setting, while also enabling k-step returns, TD(λ), and MCTS-based policy improvement — none of which were compatible with TreeMDP.
 
 ---
 
@@ -190,6 +192,7 @@ i.e., optimising locally over the current subtree is *equivalent* to global opti
 - **Convergence not reached** on multiple knapsack after 200k steps, suggesting further gains with longer training.
 
 Promising extensions opened by the principled BBMDP formulation:
+
 - **MCTS-based policy improvement** (e.g., AlphaZero-style) — now theoretically compatible.
 - **TD(λ) and full Rainbow** — directly applicable without custom convergence proofs.
 - **Cut selection and primal search** — BBMDP generalises to other B&B heuristics by adapting the action set and reward.
@@ -202,6 +205,7 @@ Promising extensions opened by the principled BBMDP formulation:
 **arXiv:** [arXiv:2510.19348](https://arxiv.org/abs/2510.19348)
 
 **Code & pretrained models:**
+
 <div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
   {% include repository/repo.liquid repository="abfariah/bbmdp" %}
 </div>
