@@ -14,7 +14,7 @@ related_publications: strang2026planbb
 
 **Authors:** Paul Strang, Zacharie Alès, Côme Bissuel, Olivier Juan, Safia Kedad-Sidhoum, Emmanuel Rachelson
 
-**Published:** AAAI 2026 · arXiv:2511.09219v3 — November 25, 2025
+**Published:** AAAI 2026 · [arXiv:2511.09219](https://arxiv.org/abs/2511.09219) — November 25, 2025
 
 **Affiliations:** EDF R&D · ENSTA Paris (Institut Polytechnique de Paris) · CNAM Paris (CEDRIC) · ISAE-SUPAERO
 
@@ -212,10 +212,8 @@ Directions opened by PlanB&B:
 
 ```bibtex
 @inproceedings{strang2026planbb,
-  title     = {Planning in {Branch-and-Bound}: {Model-Based} {Reinforcement Learning}
-               for {Exact Combinatorial Optimization}},
-  author    = {Strang, Paul and Al\`es, Zacharie and Bissuel, C\^ome and Juan, Olivier
-               and Kedad-Sidhoum, Safia and Rachelson, Emmanuel},
+  title     = {Planning in {Branch-and-Bound}: {Model-Based} {Reinforcement Learning} for {Exact Combinatorial Optimization}},
+  author    = {Strang, Paul and Al\`es, Zacharie and Bissuel, C\^ome and Juan, Olivier and Kedad-Sidhoum, Safia and Rachelson, Emmanuel},
   booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence},
   year      = {2026}
 }
