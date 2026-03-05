@@ -5,7 +5,7 @@ description: >
   MILP formulation and algorithm development for optimal EV fleet dispatch providing
   Frequency Containment Reserve (FCR) services to the French grid. Part of EDF R&D's
   Smart Charging P11L1 program, in collaboration with DREEV (EDF–Nuvve joint venture).
-img:
+img: assets/img/fuel/teaser.png # replace with an actual image path
 importance: 1
 category: Optimization
 ---
