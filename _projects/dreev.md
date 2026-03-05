@@ -28,13 +28,13 @@ The core deliverable was a formal **Mixed Integer Linear Program (MILP)** for di
 
 FCR requires an aggregator to maintain a contracted reserve capacity (upward and downward) continuously available for grid frequency regulation. DREEV aggregates EV charging transactions across multiple business sites and offers the collective flexibility for participation in this market. The dispatch problem is technically demanding on several fronts:
 
-| Challenge | Description |
-|---|---|
-| **Bidirectionality** | V2G chargers can both charge and discharge EVs, but AC/DC conversion efficiency must be modelled in both directions, introducing **binary mode-selection variables** that make the problem mixed-integer. |
+| Challenge                     | Description                                                                                                                                                                                                                          |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Bidirectionality**          | V2G chargers can both charge and discharge EVs, but AC/DC conversion efficiency must be modelled in both directions, introducing **binary mode-selection variables** that make the problem mixed-integer.                            |
 | **SOC feasibility under FCR** | Committing FCR capacity means guaranteeing that _full_ activation for up to 15 minutes will not violate any EV's state-of-charge bounds, requiring dedicated forward-looking constraints on top of the baseline charging trajectory. |
-| **Temporal coupling** | SOC evolves dynamically over a time horizon; decisions at each 15-minute step must anticipate future charging needs while maintaining real-time FCR commitments. |
-| **Dispatch stability** | The algorithm re-executes every 15 minutes in a receding-horizon fashion; successive solutions must be stabilized to avoid rapid oscillations in per-charger setpoints sent to the EVSE hardware. |
-| **Scalability** | The algorithm must remain tractable as the fleet grows from tens of EVs toward thousands. |
+| **Temporal coupling**         | SOC evolves dynamically over a time horizon; decisions at each 15-minute step must anticipate future charging needs while maintaining real-time FCR commitments.                                                                     |
+| **Dispatch stability**        | The algorithm re-executes every 15 minutes in a receding-horizon fashion; successive solutions must be stabilized to avoid rapid oscillations in per-charger setpoints sent to the EVSE hardware.                                    |
+| **Scalability**               | The algorithm must remain tractable as the fleet grows from tens of EVs toward thousands.                                                                                                                                            |
 
 ---
 
@@ -52,14 +52,14 @@ I co-developed a complete mathematical formulation of the FCR dispatch problem a
 
 The objective is a weighted sum of six terms reflecting operational priorities:
 
-| Term | Role |
-|---|---|
-| **Customer mobility need** | Fulfil the user's requested energy need at departure time. |
-| **Customer bill** | Minimise the customer's electricity bill. |
-| **Energy sourcing cost** | Minimise the cost of electricity supply for the producer/supplier. |
-| **FCR penalty** | Enforce the fleet to satisfy the contracted FCR capacity. |
-| **Per-CP baseline stability** | Penalise per-charger setpoint changes from the previous dispatch. |
-| **FCR allocation stability** | Penalise changes in upward/downward FCR capacity allocations to reduce dispatch chatter (absolute values linearized via LP reformulation). |
+| Term                          | Role                                                                                                                                       |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Customer mobility need**    | Fulfil the user's requested energy need at departure time.                                                                                 |
+| **Customer bill**             | Minimise the customer's electricity bill.                                                                                                  |
+| **Energy sourcing cost**      | Minimise the cost of electricity supply for the producer/supplier.                                                                         |
+| **FCR penalty**               | Enforce the fleet to satisfy the contracted FCR capacity.                                                                                  |
+| **Per-CP baseline stability** | Penalise per-charger setpoint changes from the previous dispatch.                                                                          |
+| **FCR allocation stability**  | Penalise changes in upward/downward FCR capacity allocations to reduce dispatch chatter (absolute values linearized via LP reformulation). |
 
 ### 3. Scalability Research
 
