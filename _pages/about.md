@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>EDF Lab OSIRIS</a>. 7 Bd Gaspard Monge 91120 Palaiseau. olivier.juan@edf.fr.
+subtitle: EDF Lab OSIRIS. 7 Bd Gaspard Monge 91120 Palaiseau. olivier.juan@edf.fr.
 
 profile:
   align: right
