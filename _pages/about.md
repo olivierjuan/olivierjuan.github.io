@@ -8,10 +8,6 @@ profile:
   align: right
   image: picture.jpg
   image_circular: false # crops the image to make it circular
-  more_info: >
-    <p>EDF Lab - Osiris R36 - O1DE10 </p>
-    <p>7 boulevard Gaspard Monge</p>
-    <p>91120 Palaiseau</p>
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
