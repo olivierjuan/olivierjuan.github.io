@@ -23,24 +23,32 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-My name is Olivier Juan. I am a Research Engineer Expert at EDF R&D, where I have been working since 2008 in the OSIRIS department, at the intersection of combinatorial optimization, machine learning, and energy systems.
+I am a Research Engineer Expert at [EDF](https://www.edf.fr) R&D, with close to twenty years of experience at the intersection of combinatorial optimization, machine learning, and energy systems. Based in the OSIRIS department (Palaiseau, France), I design and deploy advanced optimization methods that have a direct, measurable impact on how one of Europe's largest utilities operates its power fleet.
 
-Since 2019, my research activities span three main areas:
+**Flagship achievement — Apogene**
 
-- Leading the continuous improvement of Apogène, EDF's flagship short-term unit commitment software
-- Exploring new optimization challenges in smart electric vehicle charging, notably for [DREEV](https://www.dreev.com), a joint venture between EDF and [Nuvve](https://www.nuvve.com). Some published results: [in French](https://www.rte-france.com/actualites/vehicules-electriques-equilibrage-systeme-electrique), [in English (via Google Translate)](https://www-rte--france-com.translate.goog/actualites/vehicules-electriques-equilibrage-systeme-electrique?_x_tr_sl=fr&_x_tr_tl=en&_x_tr_hl=fr&_x_tr_pto=wapp)
-- Conducting research on Combinatorial Optimization and Machine Learning
+My most significant contribution has been leading the development of **Apogene**, EDF's short-term unit commitment software. In 2012, I took on the role of project manager for a complete ground-up redesign. Over several years, I led a team of engineers and researchers through the full lifecycle — from mathematical modeling and algorithm design to software engineering and production deployment. The result, Apogene V2, went live in 2018 and **reduced EDF's overall power plant operating costs by several percent**.
 
-In 2012, I took on the role of project manager to lead a complete redesign of Apogée, EDF's short-term unit commitment software. This ambitious multi-year effort brought together a team of talented engineers and researchers, and culminated in 2018 with the successful commissioning of Apogène V2 — a new version that reduced EDF's overall power plant operating costs by several percent.
+The software has continued to evolve under my lead, with V3 deployed in 2020 and V4 in 2021. In June 2022, the project was awarded the **IndusRO'2022 prize** by the French Operational Research society (ROADEF): [LinkedIn post](https://www.linkedin.com/feed/update/urn:li:activity:6962864243234742273/) · [short video](https://www.youtube.com/watch?v=WJRD5C2Kjug) · [full presentation](https://www.youtube.com/watch?v=tBM6r-B8H8o).
 
-The software has continued to evolve, with Apogène V3 deployed in 2020 and Apogène V4 in 2021. In June 2022, Apogène was awarded the **IndusRO'2022 prize** by the ROADEF society ([LinkedIn post](https://www.linkedin.com/feed/update/urn:li:activity:6962864243234742273/), [short video](https://www.youtube.com/watch?v=WJRD5C2Kjug&ab_channel=ROADEF), [full presentation](https://www.youtube.com/watch?v=tBM6r-B8H8o&ab_channel=ROADEF)).
+**Current research**
 
-In 2008, I joined the OSIRIS department to work on a range of operational research topics, including task scheduling for maintenance planning, LNG terminal planning & scheduling, and combustion and pollutant emission optimization for coal power plants. I later moved on to short-term unit commitment, contributing to the early development of Apogène V1.
+Since 2019, alongside the continuous improvement of Apogene, my research has expanded into two new directions:
 
-From June 2007 to June 2008, I was a postdoctoral fellow at École Centrale de Paris in the computer science department, under the supervision of [Nikos Paragios](http://cvn.ecp.fr/personnel/nikos). My research focused on combinatorial algorithms for medical imaging.
+- **Smart electric vehicle charging** — I develop optimization models for [DREEV](https://www.dreev.com), a joint venture between EDF and [Nuvve](https://www.nuvve.com), exploring how fleets of electric vehicles can participate in grid balancing. Some published results: [RTE article (FR)](https://www.rte-france.com/actualites/vehicules-electriques-equilibrage-systeme-electrique) · [English translation](https://www-rte--france-com.translate.goog/actualites/vehicules-electriques-equilibrage-systeme-electrique?_x_tr_sl=fr&_x_tr_tl=en&_x_tr_hl=fr&_x_tr_pto=wapp).
+- **Combinatorial optimization and machine learning** — I investigate how modern machine learning techniques can enhance classical optimization methods.
 
-From June 2006 to June 2007, I was a postdoctoral fellow at the University of Western Ontario in the computer science department, under the supervision of [Yuri Boykov](https://cs.uwaterloo.ca/~yboykov/) (now at the University of Waterloo). I worked on graph cuts and other combinatorial algorithms for computer vision.
+**Earlier work at EDF (2008–2012)**
 
-In 2006, I defended my PhD thesis in Computer Science and Mathematics with distinction at [École Nationale des Ponts et Chaussées (ENPC)](https://www.enpc.fr). My dissertation, titled _"On Some Extensions of Level Sets and Graph Cuts & Their Applications to Image and Video Segmentation"_, is available [here](https://pastel.archives-ouvertes.fr/pastel-00001855/document).
+I joined EDF R&D in 2008 and initially worked on a variety of operational research problems: task scheduling for maintenance planning, LNG terminal planning and scheduling, and combustion and pollutant emission optimization for coal power plants. This broad exposure deepened my expertise in mathematical programming before I shifted focus to short-term unit commitment and the early development of Apogene V1.
 
-In 2002, I obtained my Master's degree in [Mathématiques, Vision et Apprentissage (MVA)](https://www.master-mva.com/) from École Normale Supérieure de Cachan (ENS Cachan), now [ENS Paris-Saclay](https://ens-paris-saclay.fr/).
+**Academic background**
+
+Before joining EDF, I completed two postdoctoral fellowships in computer science:
+
+- At **Ecole Centrale de Paris** (2007–2008), with [Nikos Paragios](http://cvn.ecp.fr/personnel/nikos), working on combinatorial algorithms for medical imaging.
+- At the **University of Western Ontario** (2006–2007), with [Yuri Boykov](https://cs.uwaterloo.ca/~yboykov/) (now at the University of Waterloo), working on graph cuts and combinatorial algorithms for computer vision.
+
+I hold a **PhD in Computer Science and Mathematics** from [Ecole Nationale des Ponts et Chaussees (ENPC)](https://www.enpc.fr), defended with distinction in 2006. My dissertation, _"On Some Extensions of Level Sets and Graph Cuts & Their Applications to Image and Video Segmentation,"_ is available [here](https://pastel.archives-ouvertes.fr/pastel-00001855/document).
+
+I graduated in 2002 from the [MVA (Mathematiques, Vision et Apprentissage)](https://www.master-mva.com/) Master's program at Ecole Normale Superieure de Cachan, now [ENS Paris-Saclay](https://ens-paris-saclay.fr/).
