@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-02-23'
+  last_updated: '2026-03-25'
 papers:
   Ay-ul4AAAAAJ:0EnyYjriUFMC:
     citations: 0
@@ -12,7 +12,7 @@ papers:
   Ay-ul4AAAAAJ:3fE2CSJIrl8C:
     citations: 0
     title: 'Planning in Branch-and-Bound: Model-Based Reinforcement Learning for Exact Combinatorial Optimization'
-    year: '2025'
+    year: '2026'
   Ay-ul4AAAAAJ:5nxA0vEk-isC:
     citations: 1
     title: A Markov Decision Process for Variable Selection in Branch & Bound
@@ -82,7 +82,7 @@ papers:
     title: Trimap segmentation for fast and user-friendly alpha matting
     year: '2005'
   Ay-ul4AAAAAJ:eQOLeE2rZwMC:
-    citations: 72
+    citations: 73
     title: Using a genetic algorithm and CFD to identify low NOx configurations in an industrial boiler
     year: '2015'
   Ay-ul4AAAAAJ:hqOjcs7Dif8C:
