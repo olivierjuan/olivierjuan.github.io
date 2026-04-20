@@ -5,6 +5,7 @@ description: A pure-Python reinforcement learning library for combinatorial opti
 img: assets/img/gyozas/gyozas.png
 importance: 2
 category: Machine Learning
+related_publications: true
 ---
 
 **Gyozas** is an open-source reinforcement learning framework designed for combinatorial optimization research. It provides a clean, Gymnasium-compatible interface to train RL agents that make decisions inside SCIP's branch-and-bound solver — specifically **variable selection** (branching) and **node selection**.
@@ -19,7 +20,7 @@ pip install gyozas
 
 ## Motivation
 
-State-of-the-art MILP solvers like SCIP rely on hand-crafted heuristics for branching and node selection. Recent research — including [PlanB&B](planbb) and [BBMDP](bbmdp) — has shown that learned policies can outperform these defaults. Gyozas provides the environment infrastructure needed to run those experiments without the friction of compiling C++ bindings or reimplementing standard RL wrappers.
+State-of-the-art MILP solvers like SCIP rely on hand-crafted heuristics for branching and node selection. Recent research — including [PlanB&B](https://github.com/abfariah/planbb) {% cite Strang2026 %} and [BBMDP](https://github.com/abfariah/bbmdp) {% cite Strang2025 %} — has shown that learned policies can outperform these defaults. Gyozas provides the environment infrastructure needed to run those experiments without the friction of compiling C++ bindings or reimplementing standard RL wrappers.
 
 Unlike [Ecole](https://github.com/ds4dm/ecole) (last updated 2023), Gyozas is actively maintained and targets Python 3.10+ with SCIP 8+.
 
@@ -74,3 +75,7 @@ while not done:
 - [GitHub](https://github.com/olivierjuan/gyozas)
 - [Documentation](https://olivierjuan.github.io/gyozas)
 - [PyPI](https://pypi.org/project/gyozas)
+
+<div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
+  {% include repository/repo.liquid repository="olivierjuan/gyozas" %}
+</div>
