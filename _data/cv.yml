@@ -11,13 +11,6 @@ cv:
     - network: LinkedIn
       username: olivier-juan-732a07ba
 
-  address:
-    street: 7 boulevard Gaspard Monge
-    city: Palaiseau
-    region: Île-de-France
-    postalCode: "91120"
-    countryCode: FR
-
   sections:
     Experience:
       - position: Research Engineer Expert
