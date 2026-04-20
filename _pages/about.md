@@ -17,6 +17,10 @@ profile:
 news: true
 selected_papers: true
 social: true
+announcements:
+  enabled: true # includes a list of news items
+  scrollable: true # adds a vertical scroll bar if there are more than 3 news items
+  limit: 5 # leave blank to include all the news in the `_news` folder
 ---
 
 I am a **Research Engineer Expert** at [EDF R&D](https://www.edf.fr) (OSIRIS department, Palaiseau), with nearly twenty years of experience at the intersection of combinatorial optimization, machine learning, and large-scale energy systems. I design, implement, and deploy optimization algorithms — in **C++** and **Python** — that have a direct, measurable impact on how one of Europe's largest utilities operates its power fleet.
