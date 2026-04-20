@@ -62,36 +62,16 @@ cv:
       - title: "PlanB&B: Planning in Branch-and-Bound via Model-Based RL"
         publisher: AAAI 2026
         date: "2026"
-        authors:
-          - Paul Strang
-          - Zacharie Alès
-          - Côme Bissuel
-          - Olivier Juan
-          - Safia Kedad-Sidhoum
-          - Emmanuel Rachelson
         summary: "Strang, Alès, Bissuel, Juan, Kedad-Sidhoum, Rachelson."
         url: https://arxiv.org/abs/2511.09219
       - title: "BBMDP: A Markov Decision Process for Variable Selection in B&B"
         publisher: NeurIPS 2025
         date: "2025"
-        authors:
-          - Paul Strang
-          - Zacharie Alès
-          - Côme Bissuel
-          - Olivier Juan
-          - Safia Kedad-Sidhoum
-          - Emmanuel Rachelson
         summary: "Strang, Alès, Bissuel, Juan, Kedad-Sidhoum, Rachelson."
         url: https://arxiv.org/abs/2510.19348
       - title: "Reinforcement Learning for Variable Selection in a Branch and Bound Algorithm"
         publisher: CPAIOR 2020
         date: "2020"
-        authors:
-          - Marc Etheve
-          - Zacharie Alès
-          - Côme Bissuel
-          - Olivier Juan
-          - Safia Kedad-Sidhoum
         summary: "Etheve, Alès, Bissuel, Juan, Kedad-Sidhoum."
         url: https://doi.org/10.1007/978-3-030-58942-4_12
 
