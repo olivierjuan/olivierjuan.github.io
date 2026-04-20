@@ -1,4 +1,29 @@
 cv:
+  name: Olivier Juan
+  label: Research Engineer Expert
+  email: olivier.juan@edf.fr
+  location: Palaiseau, France
+  image: https://olivierjuan.github.io/mal-folio.github.io/assets/img/picture-800.webp
+  summary: >
+    Research Engineer Expert at EDF R&D (OSIRIS department) with over 15 years of experience
+    at the intersection of combinatorial optimization, machine learning, and energy systems.
+    Architect of Apogène, EDF's short-term unit commitment software (IndusRO'2022 prize).
+    PhD in Computer Science and Mathematics from École des Ponts ParisTech, with postdoctoral
+    experience in computer vision at the University of Western Ontario and École Centrale de Paris.
+
+  social_networks:
+    - network: GitHub
+      username: olivierjuan
+    - network: LinkedIn
+      username: olivier-juan-732a07ba
+
+  address:
+    street: 7 boulevard Gaspard Monge
+    city: Palaiseau
+    region: Île-de-France
+    postalCode: "91120"
+    countryCode: FR
+
   sections:
     Experience:
       - position: Research Engineer Expert
