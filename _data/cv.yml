@@ -122,14 +122,14 @@ cv:
 
     Skills:
       - name: Optimization
-        keywords: "MILP, Branch-and-bound, Cutting planes, RCSPP, ADMM, Min Cost Flow, Constraint programming, Decomposition methods, Heuristics, Genetic Algorithm"
+        details: "MILP, Branch-and-bound, Cutting planes, RCSPP, ADMM, Min Cost Flow, Constraint programming, Decomposition methods, Heuristics, Genetic Algorithm"
       - name: Solvers
-        keywords: "CPLEX, GUROBI, SCIP, FICO Xpress, COIN-OR, HiGHS, Interior Point Methods"
+        details: "CPLEX, GUROBI, SCIP, FICO Xpress, COIN-OR, HiGHS, Interior Point Methods"
       - name: Machine Learning
-        keywords: "Reinforcement learning, Graph Neural Networks, ML for combinatorial optimization"
+        details: "Reinforcement learning, Graph Neural Networks, ML for combinatorial optimization"
       - name: Frameworks
-        keywords: "PyTorch, PyG, RLLib, Ray"
+        details: "PyTorch, PyG, RLLib, Ray"
       - name: Languages
-        keywords: "C++, Python, TBB, Julia"
+        details: "C++, Python, TBB, Julia"
       - name: Engineering
-        keywords: "GitLab CI/CD, Docker, HPC / Slurm, Singularity, CMake, Conan"
+        details: "GitLab CI/CD, Docker, HPC / Slurm, Singularity, CMake, Conan"
