@@ -74,7 +74,7 @@ cv:
       - title: "Reinforcement Learning for Variable Selection in a Branch and Bound Algorithm"
         publisher: CPAIOR 2020
         date: "2020"
-        authors: "Marc Etheve, Zacharie Alès, Côme Bissuel, Olivier Juan, Safia Kedad-Sidhoum"
+        authors: ["Marc Etheve", "Zacharie Alès", "Côme Bissuel", "Olivier Juan", "Safia Kedad-Sidhoum"]
         summary: "Etheve, Alès, Bissuel, Juan, Kedad-Sidhoum."
         url: https://doi.org/10.1007/978-3-030-58942-4_12
 
