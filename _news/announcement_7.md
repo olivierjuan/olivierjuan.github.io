@@ -14,4 +14,4 @@ Gyozas provides a clean, Gymnasium-compatible interface to train RL agents that 
 pip install gyozas
 ```
 
-**Links:** [GitHub](https://github.com/olivierjuan/gyozas) · [Documentation](https://olivierjuan.github.io/gyozas) · [PyPI](https://pypi.org/project/gyozas)
+**Links:** [GitHub](https://github.com/olivierjuan/gyozas) · [Documentation](https://olivierjuan.github.io/gyozas) · [PyPI](https://pypi.org/project/gyozas) · [Project](../../projects/gyozas/)
