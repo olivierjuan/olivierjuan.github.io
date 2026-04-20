@@ -12,4 +12,4 @@ MIPcc23, organized on the occasion of the **20th anniversary of the Mixed Intege
 
 **Authors:** Paul Strang, Zacharie Alès, Côme Bissuel, Olivier Juan, Safia Kedad-Sidhoum, Emmanuel Rachelson
 
-**Links:** [Competition page](https://github.com/ambros-gleixner/MIPcc23) · [arXiv](https://arxiv.org/abs/2510.04273)
+**Links:** [Competition page](https://github.com/ambros-gleixner/MIPcc23) · [arXiv](https://arxiv.org/abs/2510.04273) · [Code](https://github.com/abfariah/planbb)
