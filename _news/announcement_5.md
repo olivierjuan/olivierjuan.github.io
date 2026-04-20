@@ -1,13 +1,21 @@
 ---
 layout: post
-title: "DREEV becomes first French EV aggregator accredited for FCR by RTE"
-date: 2022-02-01 09:00:00+0100
+title: "BBMDP accepted at NeurIPS 2025"
+date: 2025-10-22 09:00:00+0100
 inline: false
 related_posts: false
 ---
 
-[DREEV](https://www.dreev.com), the joint venture between EDF and [Nuvve](https://www.nuvve.com), has become the first French electric vehicle aggregator to receive accreditation for **Frequency Containment Reserve (FCR)** regulation in France by [RTE](https://www.rte-france.com).
+Our paper **A Markov Decision Process for Variable Selection in Branch & Bound** has been accepted at **NeurIPS 2025**!
 
-FCR is a critical ancillary service of the European electricity grid, requiring fast automatic response to deviations in grid frequency. By aggregating a fleet of electric vehicles and leveraging vehicle-to-grid (V2G) technology, DREEV is able to use EV batteries as a distributed flexibility resource to provide this grid service — while vehicles are parked and charging. This milestone validates that EV fleets can reliably support grid stability, opening the door to large-scale deployment of smart EV charging for ancillary services in France.
+This work introduces [BBMDP](../../projects/bbmdp/), a principled vanilla MDP formulation for the branching problem in branch-and-bound (B&B) solvers. Unlike prior RL approaches that relied on approximate TreeMDP formulations — which do not satisfy standard Markov properties — BBMDP models the full state of the search tree, enabling the use of standard RL algorithms with theoretical convergence guarantees.
 
-**Links:** [DREEV](https://www.dreev.com) · [RTE article](https://www.rte-france.com/actualites/vehicules-electriques-equilibrage-systeme-electrique)
+Our agent, DQN-BBMDP, is evaluated on four standard MILP benchmarks and achieves:
+
+- **27% reduction** in node count vs. prior RL state-of-the-art (DQN-Retro)
+- **38% reduction** in solving time
+- Strong transfer performance on larger, unseen instances
+
+**Authors:** Paul Strang, Zacharie Alès, Côme Bissuel, Olivier Juan, Safia Kedad-Sidhoum, Emmanuel Rachelson
+
+**Links:** [Project page](../../projects/bbmdp/) · [arXiv](https://arxiv.org/abs/2510.19348) · [OpenReview](https://openreview.net/forum?id=05Svr0k5C9) · [Code](https://github.com/abfariah/bbmdp)

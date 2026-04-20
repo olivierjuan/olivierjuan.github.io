@@ -1,13 +1,15 @@
 ---
 layout: post
-title: "Apogène awarded the IndusRO'2022 prize"
-date: 2022-06-01 09:00:00+0100
+title: "FMSTS accepted at CPAIOR 2020"
+date: 2020-09-21 09:00:00+0100
 inline: false
 related_posts: false
 ---
 
-**Apogène**, EDF's short-term unit commitment software, has been awarded the **IndusRO'2022 prize** by the [ROADEF](https://www.roadef.org) society!
+Our paper **Reinforcement Learning for Variable Selection in a Branch and Bound Algorithm** has been accepted at **CPAIOR 2020**!
 
-This prize recognises the industrial impact of Apogène, a large-scale combinatorial optimization software developed at EDF R&D over more than a decade. Built on mixed-integer linear programming and fine-tuned heuristics, Apogène optimises the short-term scheduling of EDF's power plant portfolio, reducing overall operating costs by several percent. The project involved a complete redesign initiated in 2012, culminating in successive deployments of Apogène V2 (2018), V3 (2020), and V4 (2021).
+This work introduces [FMSTS](../../projects/fmsts/), a novel Reinforcement Learning approach specifically designed for branching in Branch and Bound solvers. By leveraging patterns in real-world instances, FMSTS learns from scratch a branching strategy optimised for a given problem. The method is grounded in a consistency between a local value function and a global metric of interest, and features a new neural network architecture. To our knowledge, this is the first time RL has been used to fully optimise the branching strategy.
 
-**Links:** [LinkedIn post](https://www.linkedin.com/feed/update/urn:li:activity:6962864243234742273/) · [Short video](https://www.youtube.com/watch?v=WJRD5C2Kjug&ab_channel=ROADEF) · [Full presentation](https://www.youtube.com/watch?v=tBM6r-B8H8o&ab_channel=ROADEF)
+**Authors:** Marc Etheve, Zacharie Alès, Côme Bissuel, Olivier Juan, Safia Kedad-Sidhoum
+
+**Links:** [Project page](../../projects/fmsts/) · [arXiv](https://arxiv.org/abs/2005.10026) · [HAL](https://hal.science/hal-02987320) · [Springer](https://doi.org/10.1007/978-3-030-58942-4_12)
