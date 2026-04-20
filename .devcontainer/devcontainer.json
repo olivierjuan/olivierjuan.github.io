@@ -1,34 +1,44 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the
-// README at: https://github.com/devcontainers/templates/tree/main/src/jekyll
+// For format details, see https://aka.ms/devcontainer.json
 {
-  "name": "Jekyll",
-  // Using a Dockerfile to fix the broken Yarn repository. See issue #3487.
-  "build": {
-    "dockerfile": "Dockerfile"
-  },
+  "name": "al-folio Jekyll",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "jekyll",
+  "workspaceFolder": "/srv/jekyll",
 
-  // Features to add to the dev container. More info: https://containers.dev/features.
-  "features": {
-    "ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
-      "packages": "build-essential,imagemagick,inotify-tools,jupyter-nbconvert,procps,ruby-full,zlib1g-dev"
+  "forwardPorts": [8080, 35729],
+  "portsAttributes": {
+    "8080": {
+      "label": "Jekyll Site",
+      "onAutoForward": "openBrowser"
     },
-    "ghcr.io/devcontainers-extra/features/prettier:1.0.2": {}
+    "35729": {
+      "label": "LiveReload"
+    }
   },
 
-  // Optionally: run jekyll serve automatically on container entering using the Docker entrypoint
-  "postAttachCommand": "./bin/entry_point.sh",
+  "remoteEnv": {
+    "JEKYLL_ENV": "development"
+  },
 
   "customizations": {
     "vscode": {
-      "extensions": ["esbenp.prettier-vscode", "sissel.shopify-liquid", "yzhang.markdown-all-in-one"],
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "sissel.shopify-liquid",
+        "yzhang.markdown-all-in-one",
+        "redhat.vscode-yaml",
+        "streetsidesoftware.code-spell-checker"
+      ],
       "settings": {
-        // use prettier code formatter as default formatter
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "prettier.configPath": ".prettierrc",
-        "editor.formatOnSave": true
+        "editor.formatOnSave": true,
+        "files.associations": {
+          "*.html": "liquid"
+        }
       }
     }
   },
 
-  "remoteUser": "vscode"
+  "remoteUser": "root"
 }

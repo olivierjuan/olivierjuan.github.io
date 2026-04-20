@@ -203,7 +203,15 @@ Directions opened by PlanB&B:
 
 ## Resources
 
-**arXiv:** [arXiv:2511.09219](https://arxiv.org/abs/2511.09219) · **OpenReview:** [AAAI 2026](https://openreview.net/forum?id=8481hfKVsr)
+**arXiv:** [arXiv:2511.09219](https://arxiv.org/abs/2511.09219) ·
+
+**OpenReview:** [AAAI 2026](https://openreview.net/forum?id=8481hfKVsr)
+
+**Code & pretrained models:**
+
+<div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
+  {% include repository/repo.liquid repository="abfariah/planbb" %}
+</div>
 
 **Predecessor (BBMDP @ NeurIPS 2025):** [project page](../bbmdp/)
 
