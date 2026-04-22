@@ -4,7 +4,9 @@
   "dockerComposeFile": "../docker-compose.yml",
   "service": "jekyll",
   "workspaceFolder": "/srv/jekyll",
-
+  "features": {
+    "nexus.retd.edf.fr/osiris-r36-docker/edf-corporate-setup:1": {}
+  },
   "forwardPorts": [8080, 35729],
   "portsAttributes": {
     "8080": {
