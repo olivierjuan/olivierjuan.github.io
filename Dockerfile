@@ -31,6 +31,7 @@ RUN apt-get update -y && \
         nodejs \
         procps \
         python3-pip \
+        python3-certifi \
         zlib1g-dev && \
         python3 -c "import certifi ; print(certifi.where())" \
         md5sum /etc/ssl/certs/ca-certificates.crt \
