@@ -32,6 +32,8 @@ RUN apt-get update -y && \
         procps \
         python3-pip \
         zlib1g-dev && \
+        python3 -c "import certifi ; print(certifi.where())" \
+        md5sum /etc/ssl/certs/ca-certificates.crt \
     pip --no-cache-dir install --upgrade --break-system-packages nbconvert
 
 # clean up
