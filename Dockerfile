@@ -18,7 +18,7 @@ LABEL authors="Amir Pourmand,George Araújo" \
 # add a non-root user to the image with a specific group and user id to avoid permission issues
 # RUN groupadd -r $GROUPNAME -g $GROUPID && \
 #     useradd -u $USERID -m -g $GROUPNAME $USERNAME
-RUN set | grep -i proxy
+
 # install system dependencies
 RUN apt-get update -y && \
     apt-get install -y --no-install-recommends \
