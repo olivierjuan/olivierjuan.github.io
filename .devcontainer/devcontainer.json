@@ -5,7 +5,7 @@
   "service": "jekyll",
   "workspaceFolder": "/srv/jekyll",
   "features": {
-    "nexus.retd.edf.fr:5145/osiris-r36-docker/edf-corporate-setup:1.0.4": {}
+    "nexus.retd.edf.fr:5145/osiris-r36-docker/edf-corporate-setup:1.0.8": {}
   },
   "forwardPorts": [8080, 35729],
   "portsAttributes": {
