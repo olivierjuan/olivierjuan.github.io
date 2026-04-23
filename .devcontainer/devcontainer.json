@@ -42,5 +42,7 @@
     }
   },
 
-  "remoteUser": "root"
+  "remoteUser": "jekyll",
+  "containerUser": "jekyll",
+  "updateRemoteUserUID": true
 }
