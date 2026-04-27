@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Gyozas
-description: A pure-Python reinforcement learning library for combinatorial optimization, built on PySCIPOpt and Gymnasium.
+description: An open-source RL framework for MILP. Ecole-style API with SCIP 8+ support and a Gymnasium-compatible interface.
 img: assets/img/gyozas/gyozas.png
 importance: 3
 category: Machine Learning
@@ -15,9 +15,7 @@ stack: "Python · PySCIPOpt · Gymnasium · SCIP"
 
 **Gyozas** is an open-source reinforcement learning framework designed for combinatorial optimization research. It provides a clean, Gymnasium-compatible interface to train RL agents that make decisions inside SCIP's branch-and-bound solver — specifically **variable selection** (branching) and **node selection**.
 
-The version 1.0 was released in April 2026.
-
-The library is intentionally lightweight, pip-installable in one line:
+v1.0 was released in April 2026, after a year of private development. The library is intentionally lightweight, pip-installable in one line:
 
 ```bash
 pip install gyozas
@@ -27,7 +25,7 @@ pip install gyozas
 
 ## My role
 
-Creator and Lead Developer. The need came from internal EDF work at the intersection of GenAI and optimization, where Ecole was a blocker — difficult to install in a corporate environment and no longer compatible with recent SCIP releases. I wanted to keep Ecole's user-facing surface (observations, rewards, instance generators), so I reimplemented an Ecole-equivalent in pure Python on top of PySCIPOpt.
+Creator and Lead Developer, with minor contributions from Paul Strang. The need came from internal EDF work at the intersection of GenAI and optimization, where Ecole was a blocker — difficult to install in a corporate environment and no longer compatible with recent SCIP releases. I wanted to keep Ecole's user-facing surface (observations, rewards, instance generators), so I reimplemented an Ecole-equivalent in pure Python on top of PySCIPOpt.
 
 ---
 
@@ -37,18 +35,18 @@ Leading open-source MILP solvers like SCIP rely on hand-crafted heuristics for b
 
 Until 2023, [Ecole](https://github.com/ds4dm/ecole) was the de facto environment for this line of work. Its last release predates SCIP 8, and running BBMDP and PlanB&B made the consequences concrete: incompatibility with current SCIP releases, and friction whenever a new observation or reward had to be prototyped through Ecole's C++ layer.
 
-Gyozas is the response to that experience. It is designed as a **near drop-in replacement for Ecole** — existing scripts typically port over with a handful of line changes — while keeping the user-facing layer in Python, so observation functions, rewards, and instance generators can be customized without touching C++. SCIP 8+ is supported out of the box, and the library exposes **both the Ecole-style interface and a standard Gymnasium interface** from the same environment.
+Gyozas is the response to that experience. It provides an **Ecole-style API** — existing Ecole scripts port over with minor refactoring — while keeping the user-facing layer in Python, so observation functions, rewards, and instance generators can be customized without touching C++. SCIP 8+ is supported out of the box, and the library exposes **both the Ecole-style interface and a standard Gymnasium interface** from the same environment.
 
 ---
 
 ## Key features
 
-- **Dual API** — Ecole-compatible interface for porting existing codebases _and_ a standard Gymnasium `reset()`/`step()` interface for new work
+- **Dual API** — Ecole-style interface for porting existing codebases _and_ a standard Gymnasium `reset()`/`step()` interface for new work
 - **SCIP 8+ support** — tracks current SCIP / PySCIPOpt releases, where Ecole stopped at SCIP 7
 - **Variable selection or node selection** — one decision type per environment (combined mode on the roadmap)
 - **Bipartite graph observations** — LP-feature-based observations following Gasse et al. (2019)
 - **Pluggable components** — swap reward functions, observation generators, and instance generators in pure Python, no recompilation
-- **Built-in problem generators** — Set Cover, Independent Set, Combinatorial Auction, Facility Location (Ecole-compatible signatures)
+- **Built-in problem generators** — Set Cover, Independent Set, Combinatorial Auction, Facility Location (Ecole-style signatures)
 - **B&B tree visualization** — inspect solver behavior during and after training
 
 ---
@@ -56,7 +54,7 @@ Gyozas is the response to that experience. It is designed as a **near drop-in re
 ## Future work
 
 - Performance comparison with Ecole
-- Performance tuning (cffi or numba) where profiling identifies bottlenecks
+- Maintain performance parity with Ecole; apply cffi or numba where measurements warrant
 - Port BBMDP and PlanB&B onto Gyozas as reference use cases
 - Provide simultaneous Branching and Node selection environment
 - Adding more realistic instance generators
@@ -65,7 +63,7 @@ Gyozas is the response to that experience. It is designed as a **near drop-in re
 
 ## Quick start
 
-**Ecole-compatible API** — drop-in for existing Ecole pipelines:
+**Ecole-style API** — port existing Ecole pipelines with minor refactoring:
 
 ```python
 import gyozas
@@ -90,7 +88,7 @@ A standard Gymnasium interface is also exposed by the same environment — see t
 ## Technical stack
 
 **Dynamics**
-: Configuring, PrimalSearch, Branching selection, Node Selection
+: Configuration, PrimalSearch, Branching selection, Node Selection
 
 **Reward functions**
 : Node count · Solving time · LP iterations · Bound integrals (primal, dual, primal/dual)
@@ -105,6 +103,7 @@ A standard Gymnasium interface is also exposed by the same environment — see t
 - [GitHub](https://github.com/olivierjuan/gyozas)
 - [Documentation](https://olivierjuan.github.io/gyozas)
 - [PyPI](https://pypi.org/project/gyozas)
+- License: MIT
 
 <div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
   {% include repository/repo.liquid repository="olivierjuan/gyozas" %}
