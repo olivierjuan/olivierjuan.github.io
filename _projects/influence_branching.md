@@ -53,14 +53,14 @@ The branching rule selects, at each node within the first $$k$$ levels of the B&
 
 Six formulas quantify how constraint $$l$$ contributes to the local influence of the pair $$(i,j)$$:
 
-| Model | Formula | Intuition |
-|-------|---------|-----------|
-| **Count** | $$\mathbf{1}_{A_{li}} \cdot \mathbf{1}_{A_{lj}}$$ | Raw co-occurrence in constraints |
-| **Binary** | Normalized count by total co-occurrences | Scale-invariant co-occurrence |
-| **Dual** | Count weighted by dual value $$\vert y_l^*\vert$$ | Active, tight constraints matter more |
-| **Countdual** | Count restricted to active dual constraints | Sparse dual-guided selection |
-| **Auxiliary** | Weighted by distance to variable bounds | Prefers fractional, near-bound variables |
-| **Adversarial** | Coefficient ratio weighted by dual activity | Captures adversarial variable interactions |
+| Model           | Formula                                           | Intuition                                  |
+| --------------- | ------------------------------------------------- | ------------------------------------------ |
+| **Count**       | $$\mathbf{1}_{A_{li}} \cdot \mathbf{1}_{A_{lj}}$$ | Raw co-occurrence in constraints           |
+| **Binary**      | Normalized count by total co-occurrences          | Scale-invariant co-occurrence              |
+| **Dual**        | Count weighted by dual value $$\vert y_l^*\vert$$ | Active, tight constraints matter more      |
+| **Countdual**   | Count restricted to active dual constraints       | Sparse dual-guided selection               |
+| **Auxiliary**   | Weighted by distance to variable bounds           | Prefers fractional, near-bound variables   |
+| **Adversarial** | Coefficient ratio weighted by dual activity       | Captures adversarial variable interactions |
 
 ### Normalization
 
@@ -98,14 +98,14 @@ On 10,000 shuffled trial runs, Thompson sampling converges to the oracle arm fas
 
 Results averaged over 2,000 simulated runs on the public competition series (negative = faster than SCIP):
 
-| Series | Speedup |
-|--------|---------|
-| bnd series 1 | −0.031 ± 0.009 |
-| bnd series 2 | −0.037 ± 0.020 |
-| obj series 1 | −0.022 ± 0.006 |
-| obj series 2 | **−0.052 ± 0.022** |
-| rhs series 1 | −0.048 ± 0.027 |
-| rhs series 2 | +0.001 ± 0.000 |
+| Series                   | Speedup            |
+| ------------------------ | ------------------ |
+| bnd series 1             | −0.031 ± 0.009     |
+| bnd series 2             | −0.037 ± 0.020     |
+| obj series 1             | −0.022 ± 0.006     |
+| obj series 2             | **−0.052 ± 0.022** |
+| rhs series 1             | −0.048 ± 0.027     |
+| rhs series 2             | +0.001 ± 0.000     |
 | mat rhs bnd obj series 1 | **−0.061 ± 0.021** |
 
 **Key findings:**
@@ -121,11 +121,11 @@ Results averaged over 2,000 simulated runs on the public competition series (neg
 
 This paper is the earliest in a series of EDF CIFRE contributions applying machine learning to Branch & Bound:
 
-| Paper | Venue | Key contribution |
-|-------|-------|-----------------|
-| **Influence Branching** (this work) | arXiv 2025 | Online bandits + graph heuristic for MIPcc23 |
-| [BBMDP](../bbmdp/) | NeurIPS 2025 | Principled MDP formulation for B&B, enabling multi-step RL |
-| [PlanB&B](../planbb/) | AAAI 2026 | Model-based RL with MCTS for B&B |
+| Paper                               | Venue        | Key contribution                                           |
+| ----------------------------------- | ------------ | ---------------------------------------------------------- |
+| **Influence Branching** (this work) | arXiv 2025   | Online bandits + graph heuristic for MIPcc23               |
+| [BBMDP](../bbmdp/)                  | NeurIPS 2025 | Principled MDP formulation for B&B, enabling multi-step RL |
+| [PlanB&B](../planbb/)               | AAAI 2026    | Model-based RL with MCTS for B&B                           |
 
 Influence branching can be seen as a fast, interpretable heuristic baseline — one that does not require neural networks, GPU training, or offline datasets — against which the heavier RL agents of BBMDP and PlanB&B are benchmarked.
 

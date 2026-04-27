@@ -15,42 +15,42 @@ layout: default
   </header>
 
   {% if page.years or page.role or page.team_size or page.impact or page.stack %}
-  <div class="card project-id-card mb-4">
-    <div class="card-body py-3">
-      <div class="row row-cols-2 row-cols-sm-3 row-cols-md-5 g-3 text-center">
-        {% if page.years %}
-        <div class="col">
-          <div class="small text-muted fw-semibold text-uppercase">Years</div>
-          <div class="mt-1">{{ page.years }}</div>
+    <div class="card project-id-card mb-4">
+      <div class="card-body py-3">
+        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-5 g-3 text-center">
+          {% if page.years %}
+            <div class="col">
+              <div class="small text-muted fw-semibold text-uppercase">Years</div>
+              <div class="mt-1">{{ page.years }}</div>
+            </div>
+          {% endif %}
+          {% if page.role %}
+            <div class="col">
+              <div class="small text-muted fw-semibold text-uppercase">Role</div>
+              <div class="mt-1">{{ page.role }}</div>
+            </div>
+          {% endif %}
+          {% if page.team_size %}
+            <div class="col">
+              <div class="small text-muted fw-semibold text-uppercase">Team</div>
+              <div class="mt-1">{{ page.team_size }}</div>
+            </div>
+          {% endif %}
+          {% if page.impact %}
+            <div class="col">
+              <div class="small text-muted fw-semibold text-uppercase">Impact</div>
+              <div class="mt-1">{{ page.impact }}</div>
+            </div>
+          {% endif %}
+          {% if page.stack %}
+            <div class="col">
+              <div class="small text-muted fw-semibold text-uppercase">Stack</div>
+              <div class="mt-1">{{ page.stack }}</div>
+            </div>
+          {% endif %}
         </div>
-        {% endif %}
-        {% if page.role %}
-        <div class="col">
-          <div class="small text-muted fw-semibold text-uppercase">Role</div>
-          <div class="mt-1">{{ page.role }}</div>
-        </div>
-        {% endif %}
-        {% if page.team_size %}
-        <div class="col">
-          <div class="small text-muted fw-semibold text-uppercase">Team</div>
-          <div class="mt-1">{{ page.team_size }}</div>
-        </div>
-        {% endif %}
-        {% if page.impact %}
-        <div class="col">
-          <div class="small text-muted fw-semibold text-uppercase">Impact</div>
-          <div class="mt-1">{{ page.impact }}</div>
-        </div>
-        {% endif %}
-        {% if page.stack %}
-        <div class="col">
-          <div class="small text-muted fw-semibold text-uppercase">Stack</div>
-          <div class="mt-1">{{ page.stack }}</div>
-        </div>
-        {% endif %}
       </div>
     </div>
-  </div>
   {% endif %}
 
   <article>

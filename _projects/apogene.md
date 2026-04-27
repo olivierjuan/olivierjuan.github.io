@@ -21,7 +21,7 @@ Today, Apogène is deployed and used at 3 different time horizons: Weekly (4 wee
 
 ## My role
 
-In 2012, I took on the project management of a complete ground-up redesign. I led the team through the full software lifecycle:
+In 2012, I led a complete ground-up redesign of Apogène, driving the full software lifecycle:
 
 - Mathematical modeling of the unit commitment problem as a **MILP**
 - Algorithm design: **branch-and-bound**, cutting planes, decomposition methods, **ADMM**, **Resource Constrained Shortest Path** (RCSP), **Min Cost Flow**
@@ -38,14 +38,14 @@ In 2012, I took on the project management of a complete ground-up redesign. I le
 | Year      | Milestone                                                                                                       |
 | --------- | --------------------------------------------------------------------------------------------------------------- |
 | 2008–2012 | Early contributions to Apogène V1; parallel work on LNG scheduling, maintenance planning, emission optimization |
-| 2012      | Took over as project manager; started ground-up redesign of mathematical model and solver architecture          |
+| 2012      | Led the ground-up redesign of the mathematical model and solver architecture                                    |
 | 2018      | **V2 deployed in production** — significant reduction in operating costs vs. V1                                 |
 | 2020      | **V3 deployed** — improved decomposition, RCSPP integration, Complete C++ migration.                            |
 | 2021      | **V4 deployed** — improved performances, asymmetrical ancillary services integration                            |
 | 2022      | **IndusRO'2022 prize** awarded by ROADEF for industrial impact                                                  |
 | 2024      | **Intraday Deployment** - Adaptation for the intraday unit-commitment optimization.                             |
 | 2025      | **V5 deployed** - improved decomposition algorithm, performance improvement for timestep refinement             |
-| 2025      | **Hebdo Deployment** - Adaptation for the weekly unit-commitment optimization.                                  |
+| 2025      | **Weekly Deployment** - Adaptation for the weekly unit-commitment optimization.                                 |
 | 2025-     | Batteries integration, ongoing integration of ML-based branching heuristics (RL, GNN)                           |
 
 ---
@@ -89,10 +89,10 @@ In 2012, I took on the project management of a complete ground-up redesign. I le
 : CPLEX · Gurobi · SCIP · FICO Xpress · COIN-OR · HiGHS
 
 **Languages**
-: C++ · Python · Conan · TBB
+: C++ · Python
 
 **Engineering & infrastructure**
-: GitLab CI/CD · Docker · HPC / Slurm · Singularity
+: Conan · TBB · GitLab CI/CD · Docker · HPC / Slurm · Singularity
 
 **ML (ongoing integration)**
 : PyTorch · PyG · RLLib · Reinforcement learning · Graph Neural Networks

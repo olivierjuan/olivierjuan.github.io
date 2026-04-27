@@ -10,7 +10,7 @@ importance: 2
 category: Optimization
 years: "2019 – 2026"
 role: "Research Engineer"
-team_size: "Multi-org (EDF R&D, DREEV, RTE)"
+team_size: "Multi-org (EDF R&D, DREEV)"
 impact: "V2G RTE certification; 50 MW fleet target"
 stack: "MILP · Python · Rolling Horizon MPC"
 ---
@@ -39,13 +39,13 @@ FCR requires an aggregator to maintain a contracted reserve capacity (upward and
 
 The dispatch problem is technically demanding on several fronts:
 
-| Challenge | Description |
-| --------- | ----------- |
-| **Bidirectionality** | V2G chargers can both charge and discharge EVs. AC/DC efficiency in both directions introduces **binary mode-selection variables**, making the problem mixed-integer. |
+| Challenge                     | Description                                                                                                                                                                                                                            |
+| ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Bidirectionality**          | V2G chargers can both charge and discharge EVs. AC/DC efficiency in both directions introduces **binary mode-selection variables**, making the problem mixed-integer.                                                                  |
 | **SOC feasibility under FCR** | Committing FCR capacity means guaranteeing that full activation for up to 15 minutes will not violate any EV's state-of-charge bounds. This requires dedicated forward-looking constraints on top of the baseline charging trajectory. |
-| **Temporal coupling** | SOC evolves dynamically over the horizon; decisions at each 15-minute step must anticipate future needs while maintaining real-time FCR commitments. |
-| **Dispatch stability** | The algorithm re-executes every 15 minutes in a receding-horizon fashion; successive solutions must be stabilized to avoid rapid oscillations in per-charger setpoints. |
-| **Scalability** | The algorithm must remain tractable as the fleet grows from tens of EVs toward thousands. |
+| **Temporal coupling**         | SOC evolves dynamically over the horizon; decisions at each 15-minute step must anticipate future needs while maintaining real-time FCR commitments.                                                                                   |
+| **Dispatch stability**        | The algorithm re-executes every 15 minutes in a receding-horizon fashion; successive solutions must be stabilized to avoid rapid oscillations in per-charger setpoints.                                                                |
+| **Scalability**               | The algorithm must remain tractable as the fleet grows from tens of EVs toward thousands.                                                                                                                                              |
 
 ---
 
@@ -65,12 +65,12 @@ The model captures three families of constraints:
 
 The objective is a weighted sum of six terms reflecting operational priorities:
 
-| Term | Role |
-| ---- | ---- |
-| **Customer mobility need** | Fulfil the user's requested energy need at departure time. |
-| **Customer bill** | Minimise the customer's electricity bill. |
-| **Energy sourcing cost** | Minimise the cost of electricity supply for the producer/supplier. |
-| **FCR penalty** | Enforce the fleet to satisfy the contracted FCR capacity. |
+| Term                       | Role                                                               |
+| -------------------------- | ------------------------------------------------------------------ |
+| **Customer mobility need** | Fulfil the user's requested energy need at departure time.         |
+| **Customer bill**          | Minimise the customer's electricity bill.                          |
+| **Energy sourcing cost**   | Minimise the cost of electricity supply for the producer/supplier. |
+| **FCR penalty**            | Enforce the fleet to satisfy the contracted FCR capacity.          |
 
 ### 3. Scalability Research — Frank-Wolfe Decomposition
 
@@ -104,16 +104,17 @@ Results were communicated through several channels:
 ## Skills Demonstrated
 
 **Optimization & Modeling**
+
 - Mixed Integer Linear Programming formulation and LP reformulation techniques (piecewise-linear functions, absolute values, big-M)
 - Rolling horizon / Model Predictive Control for real-time energy dispatch
 - Algorithm scalability research for large-scale fleet optimization
 
 **Domain Knowledge**
+
 - Vehicle-to-grid physics: AC/DC converter modeling, SOC dynamics, efficiency constraints
 - Ancillary services markets: FCR and aFFR mechanics, aggregator architecture, EDF Agregio interface
 
 **Engineering & Collaboration**
+
 - Algorithm specification for industrial deployment in an operational charging platform
 - Cross-functional collaboration across EDF R&D departments (OSIRIS, TREE, EFESE, MIRE) and industrial partners
-
----

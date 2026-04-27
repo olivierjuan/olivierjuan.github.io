@@ -1,7 +1,7 @@
 cv:
   name: Olivier Juan
   headline: Research Engineer Expert
-  email: olivier.juan@edf.fr
+  email: olivier.juan@edf.fr<br>olivier.juan@gmail.com
   location: Palaiseau, France
   photo: https://olivierjuan.github.io/mal-folio.github.io/assets/img/picture-800.webp
   website: https://olivierjuan.github.io
@@ -10,6 +10,10 @@ cv:
       username: olivierjuan
     - network: LinkedIn
       username: olivier-juan-732a07ba
+    - network: Google Scholar
+      username: Ay-ul4AAAAAJ #
+    - network: ORCID
+      username: 0000-0003-3445-4847
 
   sections:
     Experience:
@@ -164,8 +168,8 @@ cv:
       - label: Frameworks
         details: "PyTorch, PyG, RLLib, Ray"
       - label: Programming Languages
-        details: "C++, Python, TBB, Julia"
+        details: "C++, Python, Julia"
       - label: Spoken Languages
         details: "French (native), English (fluent)"
       - label: Engineering
-        details: "GitLab CI/CD, Docker, HPC / Slurm, Singularity, CMake, Conan"
+        details: "GitLab CI/CD, Docker, TBB, HPC / Slurm, Singularity, CMake, Conan"
