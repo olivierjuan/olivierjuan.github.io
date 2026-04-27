@@ -8,7 +8,7 @@ description: >
 img: assets/img/dreev/teaser.png
 importance: 2
 category: Optimization
-years: "2019 – 2022"
+years: "2019 – 2026"
 role: "Research Engineer"
 team_size: "Multi-org (EDF R&D, DREEV, RTE)"
 impact: "V2G RTE certification; 50 MW fleet target"

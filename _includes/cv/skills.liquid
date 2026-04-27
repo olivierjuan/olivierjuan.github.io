@@ -8,8 +8,9 @@
       {% if entry.icon %}
         <i class="{{ entry.icon }}"></i>
       {% endif %}
+      {% assign skill_label = entry.name | default: entry.label %}
       <strong>
-        {{- entry.name -}}
+        {{- skill_label -}}
         {%- if entry.level %} ({{ entry.level }}){% endif %}:</strong
       >
       {% if entry.keywords %}
@@ -20,6 +21,8 @@
             {{ keyword }},
           {% endif %}
         {% endfor %}
+      {% elsif entry.details %}
+        {{ entry.details }}
       {% endif %}
     </div>
   {% endfor %}
