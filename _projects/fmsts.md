@@ -6,9 +6,14 @@ description: >
   Introduces subtree size as a naturally observable Q-function, with a novel
   Multiplicative Dueling Architecture (MDA) for MILP variable selection.
 img: assets/img/fmsts/architecture.png
-importance: 2
+importance: 4
 category: Machine Learning
 related_publications: etheve2020reinforcement
+years: "2018 – 2020"
+role: "Industrial Supervisor (CIFRE EDF)"
+team_size: "5 co-authors"
+impact: "CPAIOR 2020 · First full RL-optimized B&B"
+stack: "RL · Python · SCIP · CPLEX"
 ---
 
 **Authors:** Marc Etheve, Zacharie Alès, Côme Bissuel, Olivier Juan, Safia Kedad-Sidhoum
@@ -16,6 +21,12 @@ related_publications: etheve2020reinforcement
 **Published:** [arXiv:2005.10026](https://arxiv.org/abs/2005.10026) — May 20, 2020
 
 **Affiliations:** EDF R&D · ENSTA Paris (Institut Polytechnique de Paris) · CNAM Paris (CEDRIC)
+
+---
+
+## My role
+
+Senior researcher and industrial problem setter. I provided the EDF unit commitment use case, defined the research direction, and contributed to algorithm design.
 
 ---
 

@@ -6,6 +6,11 @@ img: assets/img/apogene/eod.png
 importance: 1
 category: Optimization
 related_publications: true
+years: "2012 – present"
+role: "Project Manager & Tech Lead"
+team_size: "10–25 people"
+impact: "Tens of millions €/year in cost savings"
+stack: "MILP · C++ · Python · CPLEX · Gurobi · HPC"
 ---
 
 **Apogène** is EDF's short-term unit commitment software, used to schedule a fleet of power plants over a short horizon (2-3 days ahead) to meet electricity demand at minimum cost, subject to complex operational constraints (ramp rates, minimum up/down times, fuel limits, reserve requirements). At EDF's scale, even marginal efficiency gains translate to tens of millions of euros annually.
@@ -36,29 +41,49 @@ In 2012, I took on the project management of a complete ground-up redesign. I le
 | 2012      | Took over as project manager; started ground-up redesign of mathematical model and solver architecture          |
 | 2018      | **V2 deployed in production** — significant reduction in operating costs vs. V1                                 |
 | 2020      | **V3 deployed** — improved decomposition, RCSPP integration, Complete C++ migration.                            |
-| 2021      | **V4 deployed** —                                                                                               |
+| 2021      | **V4 deployed** — improved performances, asymmetrical ancillary services integration                            |
 | 2022      | **IndusRO'2022 prize** awarded by ROADEF for industrial impact                                                  |
 | 2024      | **Intraday Deployment** - Adaptation for the intraday unit-commitment optimization.                             |
 | 2025      | **V5 deployed** - improved decomposition algorithm, performance improvement for timestep refinement             |
 | 2025      | **Hebdo Deployment** - Adaptation for the weekly unit-commitment optimization.                                  |
-| 2025-     | Batteries, ongoing integration of ML-based branching heuristics (RL, GNN)                                       |
+| 2025-     | Batteries integration, ongoing integration of ML-based branching heuristics (RL, GNN)                           |
 
 ---
 
 ## Impact
 
-- Reduced EDF's overall power plant operating costs by **several percent**
+- Savings of **several tens of millions of euros per major release**, and a few tens of millions per year through intermediate improvements
 - **4 production versions** deployed over 10+ years
 - covers **3 different time horizons** and rationalizes optimization toolchain into a unified platform
 - Team of **10–25 engineers and researchers** led across the full lifecycle
-- Awarded the **IndusRO'2022 prize** by the French Operational Research Society (ROADEF): [short video](https://www.youtube.com/watch?v=WJRD5C2Kjug) · [full presentation](https://www.youtube.com/watch?v=tBM6r-B8H8o)
+- Awarded the **IndusRO'2022 prize** by the French Operational Research Society (ROADEF)
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="ratio ratio-16x9">
+      <iframe width="435" height="245" src="https://www.youtube.com/embed/WJRD5C2Kjug"
+              title="IndusRO'2022 — Short video" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <p class="caption text-center mt-1">Short video (2 min)</p>
+  </div>
+  <div class="col-md-6">
+    <div class="ratio ratio-16x9">
+      <iframe width="435" height="245" src="https://www.youtube.com/embed/tBM6r-B8H8o"
+              title="IndusRO'2022 — Full ROADEF presentation" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <p class="caption text-center mt-1">Full ROADEF presentation</p>
+  </div>
+</div>
 
 ---
 
 ## Technical stack
 
 **Optimization & algorithms**
-: MILP · Branch-and-bound · Cutting planes · Decomposition methods · ADMM · Resource Constrained Shortest Path (RCSP) · Min Cost Flow · Heuristics · Genetic Algorithm
+: MILP · Branch-and-bound · Cutting planes · Decomposition methods · ADMM · Resource Constrained Shortest Path Problem (RCSPP) · Min Cost Flow · Heuristics · Genetic Algorithm, Interior point method, Bundle method
 
 **Solvers**
 : CPLEX · Gurobi · SCIP · FICO Xpress · COIN-OR · HiGHS

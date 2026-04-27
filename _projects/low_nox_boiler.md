@@ -6,9 +6,14 @@ description: >
   optimal operating configurations for a 600 MW tangentially-fired pulverized-coal boiler,
   minimizing NOx emissions while controlling corrosion risk.
 img: assets/img/fuel/teaser.png # replace with an actual image path
-importance: 2
-category: Optimization # adapt to your own categories
-related_publications: DalSecco2015, DalSecco2010 # must match your BibTeX key in _bibliography/papers.bib
+importance: 3
+category: Optimization
+related_publications: DalSecco2015, DalSecco2010
+years: "2010 – 2015"
+role: "Research Contributor"
+team_size: "6 co-authors"
+impact: "60% NOx reduction; 47% ammonia saving (on-site)"
+stack: "Genetic Algorithm · CFD · Code_Saturne · HPC"
 ---
 
 ## Overview

@@ -6,9 +6,14 @@ description: >
   unlocking k-step RL algorithms previously incompatible with the TreeMDP framework.
   New state-of-the-art among RL agents on the Ecole benchmark. NeurIPS 2025.
 img: assets/img/bbmdp/results.png
-importance: 1
+importance: 2
 category: Machine Learning
 related_publications: strang2025bbmdp
+years: "2023 – 2025"
+role: "Industrial Supervisor (CIFRE EDF)"
+team_size: "6 co-authors"
+impact: "NeurIPS 2025 · SOTA on Ecole benchmark"
+stack: "RL · Python · PyTorch · PySCIPOpt · SCIP"
 ---
 
 **Authors:** Paul Strang, Zacharie Alès, Côme Bissuel, Olivier Juan, Safia Kedad-Sidhoum, Emmanuel Rachelson
@@ -16,6 +21,12 @@ related_publications: strang2025bbmdp
 **Published:** NeurIPS 2025 · [arXiv:2510.19348](https://arxiv.org/abs/2510.19348) — October 22, 2025
 
 **Affiliations:** EDF R&D · ENSTA Paris (Institut Polytechnique de Paris) · CNAM Paris (CEDRIC) · ISAE-SUPAERO
+
+---
+
+## My role
+
+Industrial co-supervisor (CIFRE EDF) and problem setter. I defined the EDF application context and research direction, and provided support to the implementation.
 
 ---
 

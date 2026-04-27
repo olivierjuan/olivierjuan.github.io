@@ -10,6 +10,11 @@ img: assets/img/planbb/results.png
 importance: 1
 category: Machine Learning
 related_publications: strang2026planbb
+years: "2024 – 2026"
+role: "Industrial Supervisor (CIFRE EDF)"
+team_size: "6 co-authors"
+impact: "AAAI 2026 · Surpasses IL & prior RL agents"
+stack: "MCTS · RL · Python · PyTorch · SCIP"
 ---
 
 **Authors:** Paul Strang, Zacharie Alès, Côme Bissuel, Olivier Juan, Safia Kedad-Sidhoum, Emmanuel Rachelson
@@ -19,6 +24,12 @@ related_publications: strang2026planbb
 **Affiliations:** EDF R&D · ENSTA Paris (Institut Polytechnique de Paris) · CNAM Paris (CEDRIC) · ISAE-SUPAERO
 
 **Predecessor:** This work builds directly on the BBMDP formulation introduced at [NeurIPS 2025](../bbmdp/).
+
+---
+
+## My role
+
+Industrial co-supervisor (CIFRE EDF) and problem setter. I defined the EDF application context and research direction, and provided support to the implementation.
 
 ---
 

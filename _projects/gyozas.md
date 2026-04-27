@@ -3,9 +3,14 @@ layout: page
 title: Gyozas
 description: A pure-Python reinforcement learning library for combinatorial optimization, built on PySCIPOpt and Gymnasium.
 img: assets/img/gyozas/gyozas.png
-importance: 2
+importance: 3
 category: Machine Learning
 related_publications: true
+years: "2024 – present"
+role: "Creator & Lead Developer"
+team_size: "1–2 people"
+impact: "Open-source RL framework for MILP research"
+stack: "Python · PySCIPOpt · Gymnasium · SCIP"
 ---
 
 **Gyozas** is an open-source reinforcement learning framework designed for combinatorial optimization research. It provides a clean, Gymnasium-compatible interface to train RL agents that make decisions inside SCIP's branch-and-bound solver — specifically **variable selection** (branching) and **node selection**.

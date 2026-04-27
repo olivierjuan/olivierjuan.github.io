@@ -22,17 +22,19 @@ cv:
             Led the ground-up redesign and production deployment of **Apogène**,
             EDF's short-term unit commitment software (MILP, branch-and-bound, ADMM, RCSPP, Min Cost Flow).
             4 versions deployed in production (V2 2018, V3 2020, V4 2021, V5 2025),
-            reducing overall plant operating costs by several percent.
+            saving several tens of millions of euros per major release.
           - >
-            Managed a team of 10–25 engineers and researchers across the full lifecycle:
+            Managed a team of 10–20 engineers and researchers across the full lifecycle:
             mathematical modeling, algorithm design, C++ implementation,
             CI/CD (GitLab), HPC deployment (Slurm, Singularity).
           - >
             Integrated ML-based branching heuristics (RL, GNN) into the solver loop;
             results published at NeurIPS 2025 and AAAI 2026.
           - >
-            Developed optimization models for smart EV charging (DREEV joint venture, EDF × Nuvve).
+            Designed and built the optimization platform for DREEV (EDF × Nuvve joint venture):
+            EV fleet dispatch across NEBEF, Spot, Intraday, and FCR markets (MILP, Lagrangian decomposition).
             DREEV became first French EV aggregator accredited for FCR by RTE (2022).
+            Ongoing research on Frank-Wolfe decomposition methods as a replacement for Lagrangian decomposition in legacy algorithms.
           - >
             Earlier work (2008–2012): task scheduling for maintenance planning,
             LNG terminal planning & scheduling, combustion and emission optimization
@@ -69,6 +71,51 @@ cv:
         awarder: ROADEF — French Operational Research Society
         date: "2022"
         summary: Awarded for the industrial impact of Apogène on EDF's power plant operations.
+
+    Teaching:
+      - title: "From Long-term to Short-term Unit Commitment at EDF"
+        publisher: "European Electricity System Planning for 2050 — École des Ponts / UPM / PSL, Paris"
+        date: "2023, 2024"
+        summary: >
+          Co-architect and lecturer (courses + practical sessions) for a 5-day master-level intensive program
+          on electricity system planning. Module covers unit commitment optimization across all EDF horizons
+          (weekly, daily, intraday), from MILP modeling to production deployment.
+      - title: "Game Theory Applied to Electricity System Problems"
+        publisher: "CentraleSupélec — Course «Game Theory for Smart Cities»"
+        date: "2020"
+        summary: >
+          Guest lecture on game-theoretic models for electricity markets and smart grid problems,
+          within the master-level course on game theory for smart cities.
+
+    Supervision:
+      - title: "Paul Strang — CIFRE PhD"
+        publisher: "EDF R&D · CNAM · ISAE-SUPAERO"
+        date: "2023"
+        summary: >
+          Co-supervision of a CIFRE industrial PhD on reinforcement learning and model-based planning
+          for branching strategies in branch-and-bound solvers (BBMDP @ NeurIPS 2025, PlanB&B @ AAAI 2026).
+          Expected graduation: 2026.
+      - title: "Marc Etheve — CIFRE PhD"
+        publisher: "EDF R&D · CNAM"
+        date: "2018"
+        summary: >
+          Co-supervision of a CIFRE industrial PhD on reinforcement learning for variable selection
+          in branch-and-bound (FMSTS @ CPAIOR 2020). Graduated 2021.
+
+    Talks:
+      - title: "Apprentissage par renforcement pour l'apprentissage de stratégies de branchement"
+        publisher: "Journée Industrielle GDR ROD — Rencontres académiques-industriels, Jussieu, Paris"
+        date: "2024-10-02"
+        summary: >
+          Invited talk on reinforcement learning for branching strategy optimization in branch-and-bound solvers,
+          based on joint work with CNAM and ISAE-SUPAERO at EDF R&D.
+      - title: "EV Flexibility for the Electric System: The FCR Case"
+        publisher: "Webinar — Electric Mobilities and Territories, IRT SystemX"
+        date: "2021-04-08"
+        url: "assets/pdf/IRT_systemX_EV_flexibility_for_electric_system.pdf"
+        summary: >
+          Invited talk on smart EV charging optimization and participation of EV fleets
+          in the Frequency Containment Reserve (FCR) market, in the context of the DREEV joint venture (EDF × Nuvve).
 
     Publications:
       - title: "PlanB&B: Planning in Branch-and-Bound via Model-Based RL"
@@ -116,7 +163,9 @@ cv:
         details: "Reinforcement learning, Graph Neural Networks, ML for combinatorial optimization"
       - label: Frameworks
         details: "PyTorch, PyG, RLLib, Ray"
-      - label: Languages
+      - label: Programming Languages
         details: "C++, Python, TBB, Julia"
+      - label: Spoken Languages
+        details: "French (native), English (fluent)"
       - label: Engineering
         details: "GitLab CI/CD, Docker, HPC / Slurm, Singularity, CMake, Conan"
