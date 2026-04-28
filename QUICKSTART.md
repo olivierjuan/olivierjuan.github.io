@@ -104,3 +104,4 @@ See [CUSTOMIZE.md § GitHub Copilot Customization Agent](CUSTOMIZE.md#github-cop
 - Write a short bio in `_pages/about.md`
 
 Happy customizing! 🎉
+
