@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/rendercv/rendercv/refs/tags/v2.8/schema.json
 cv:
   name: Olivier Juan
   headline: Research Engineer Expert
@@ -81,6 +82,7 @@ cv:
     Teaching:
       - title: "From Long-term to Short-term Unit Commitment at EDF"
         publisher: "European Electricity System Planning for 2050 — École des Ponts / UPM / PSL, Paris"
+        authors: [Olivier Beaude, Olivier Juan]
         date: "2023, 2024"
         summary: >
           Co-architect and lecturer (courses + practical sessions) for a 5-day master-level intensive program
@@ -88,6 +90,7 @@ cv:
           (weekly, daily, intraday), from MILP modeling to production deployment.
       - title: "Game Theory Applied to Electricity System Problems"
         publisher: "CentraleSupélec — Course «Game Theory for Smart Cities»"
+        authors: [Olivier Beaude, Olivier Juan]
         date: "2020"
         summary: >
           Guest lecture on game-theoretic models for electricity markets and smart grid problems,
@@ -96,6 +99,7 @@ cv:
     Supervision:
       - title: "Paul Strang — CIFRE PhD"
         publisher: "EDF R&D · CNAM · ISAE-SUPAERO"
+        authors: [Olivier Juan, Come Bissuel, Emmanuel Rachelson, Safia Kedad-Sidhoum, Zacharie Ales]
         date: "2023"
         summary: >
           Co-supervision of a CIFRE industrial PhD on reinforcement learning and model-based planning
@@ -103,6 +107,7 @@ cv:
           Expected graduation: 2026.
       - title: "Marc Etheve — CIFRE PhD"
         publisher: "EDF R&D · CNAM"
+        authors: [Come Bissuel, Olivier Juan, Safia Kedad-Sidhoum, Zacharie Ales]
         date: "2018"
         summary: >
           Co-supervision of a CIFRE industrial PhD on reinforcement learning for variable selection
@@ -112,18 +117,20 @@ cv:
       - title: "Apprentissage par renforcement pour l'apprentissage de stratégies de branchement"
         publisher: "Journée Industrielle GDR ROD — Rencontres académiques-industriels, Jussieu, Paris"
         date: "2024-10-02"
+        authors: [Olivier JUAN]
         summary: >
           Invited talk on reinforcement learning for branching strategy optimization in branch-and-bound solvers,
           based on joint work with CNAM and ISAE-SUPAERO at EDF R&D.
       - title: "EV Flexibility for the Electric System: The FCR Case"
         publisher: "Webinar — Electric Mobilities and Territories, IRT SystemX"
+        authors: [Olivier JUAN]
         date: "2021-04-08"
-        url: "assets/pdf/IRT_systemX_EV_flexibility_for_electric_system.pdf"
+        url: https://olivierjuan.github.io/mal-folio.github.io/assets/pdf/IRT_systemX_EV_flexibility_for_electric_system.pdf
         summary: >
           Invited talk on smart EV charging optimization and participation of EV fleets
           in the Frequency Containment Reserve (FCR) market, in the context of the DREEV joint venture (EDF × Nuvve).
 
-    Publications:
+    Recent Publications:
       - title: "PlanB&B: Planning in Branch-and-Bound via Model-Based RL"
         publisher: AAAI 2026
         date: "2026"
@@ -162,7 +169,7 @@ cv:
 
     Skills:
       - label: Optimization
-        details: "MILP, Branch-and-bound, Cutting planes, RCSPP, ADMM, Min Cost Flow, Constraint programming, Decomposition methods, Heuristics, Genetic Algorithm"
+        details: "MILP, Branch-and-bound, Cutting planes, RCSPP, ADMM, Min Cost Flow, Constraint programming, Decomposition methods, Heuristics, Genetic Algorithm, Bundle methods, Frank-Wolfe decomposition"
       - label: Solvers
         details: "CPLEX, GUROBI, SCIP, FICO Xpress, COIN-OR, HiGHS, Interior Point Methods"
       - label: Machine Learning
