@@ -24,9 +24,9 @@ announcements:
   limit: 5 # leave blank to include all the news in the `_news` folder
 ---
 
-<div id="open-to-work-banner" markdown="1">
+<!-- <div id="open-to-work-banner" markdown="1">
 > **Open to new opportunities** — I am actively looking for a research position at the cutting edge of machine learning and combinatorial optimization (academic lab, industrial research center, or advanced R&D team).
-</div>
+</div>-->
 
 **Research Engineer Expert** at [EDF R&D](https://www.edf.fr) (OSIRIS — the optimization & operations research division, Palaiseau). For nearly twenty years, I have **shipped** combinatorial optimization software — in **C++** and **Python** — that runs Europe's largest electric utilities. I **led** teams of up to **20 engineers and researchers** and **delivered four production releases** of EDF's flagship short-term unit-commitment solver, **saving tens of millions of euros per release**. I **built** the optimization platform behind the **first French EV aggregator accredited for FCR by RTE** (2022). My recent research on **ML for branch-and-bound** has been published at **NeurIPS 2025** and **AAAI 2026**.
 
