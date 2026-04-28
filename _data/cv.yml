@@ -6,7 +6,7 @@ cv:
     - olivier.juan@edf.fr
     - olivier.juan@gmail.com
   location: Palaiseau, France
-  photo: https://olivierjuan.github.io/mal-folio.github.io/assets/img/picture-800.webp
+  photo: https://olivierjuan.github.io/assets/img/picture-800.webp
   website: https://olivierjuan.github.io
   social_networks:
     - network: GitHub
@@ -125,7 +125,7 @@ cv:
         publisher: "Webinar — Electric Mobilities and Territories, IRT SystemX"
         authors: []
         date: "2021-04-08"
-        url: https://olivierjuan.github.io/mal-folio.github.io/assets/pdf/IRT_systemX_EV_flexibility_for_electric_system.pdf
+        url: https://olivierjuan.github.io/assets/pdf/IRT_systemX_EV_flexibility_for_electric_system.pdf
         summary: >
           Invited talk on smart EV charging optimization and participation of EV fleets
           in the Frequency Containment Reserve (FCR) market, in the context of the DREEV joint venture (EDF × Nuvve).
