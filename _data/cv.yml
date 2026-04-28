@@ -1,7 +1,9 @@
 cv:
   name: Olivier Juan
   headline: Research Engineer Expert
-  email: olivier.juan@edf.fr<br>olivier.juan@gmail.com
+  email:
+    - olivier.juan@edf.fr
+    - olivier.juan@gmail.com
   location: Palaiseau, France
   photo: https://olivierjuan.github.io/mal-folio.github.io/assets/img/picture-800.webp
   website: https://olivierjuan.github.io
@@ -173,3 +175,6 @@ cv:
         details: "French (native), English (fluent)"
       - label: Engineering
         details: "GitLab CI/CD, Docker, TBB, HPC / Slurm, Singularity, CMake, Conan"
+
+design:
+  theme: moderncv
