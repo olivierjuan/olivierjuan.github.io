@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-05-06'
+  last_updated: '2026-05-11'
 papers:
   Ay-ul4AAAAAJ:0EnyYjriUFMC:
     citations: 0
@@ -15,8 +15,8 @@ papers:
     year: '2026'
   Ay-ul4AAAAAJ:5nxA0vEk-isC:
     citations: 1
-    title: A Markov Decision Process for Variable Selection in Branch & Bound
-    year: '2025'
+    title: A markov decision process for variable selection in branch & bound
+    year: '2026'
   Ay-ul4AAAAAJ:8k81kl-MbHgC:
     citations: 0
     title: Simulating Classic Mosaics with Graph Cuts
