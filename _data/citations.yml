@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-05-20'
+  last_updated: '2026-05-27'
 papers:
   Ay-ul4AAAAAJ:0EnyYjriUFMC:
     citations: 0
@@ -34,7 +34,7 @@ papers:
     title: Planning in branch-and-bound
     year: Unknown Year
   Ay-ul4AAAAAJ:LkGwnXOMwfcC:
-    citations: 96
+    citations: 97
     title: Reinforcement learning for variable selection in a branch and bound algorithm
     year: '2020'
   Ay-ul4AAAAAJ:MXK_kJrjxJIC:
