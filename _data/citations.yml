@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-05-27'
+  last_updated: '2026-06-08'
 papers:
   Ay-ul4AAAAAJ:0EnyYjriUFMC:
     citations: 0
@@ -34,7 +34,7 @@ papers:
     title: Planning in branch-and-bound
     year: Unknown Year
   Ay-ul4AAAAAJ:LkGwnXOMwfcC:
-    citations: 97
+    citations: 98
     title: Reinforcement learning for variable selection in a branch and bound algorithm
     year: '2020'
   Ay-ul4AAAAAJ:MXK_kJrjxJIC:
@@ -82,7 +82,7 @@ papers:
     title: Trimap segmentation for fast and user-friendly alpha matting
     year: '2005'
   Ay-ul4AAAAAJ:eQOLeE2rZwMC:
-    citations: 73
+    citations: 74
     title: Using a genetic algorithm and CFD to identify low NOx configurations in an industrial boiler
     year: '2015'
   Ay-ul4AAAAAJ:hqOjcs7Dif8C:
