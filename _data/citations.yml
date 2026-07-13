@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-06-26'
+  last_updated: '2026-07-13'
 papers:
   Ay-ul4AAAAAJ:0EnyYjriUFMC:
     citations: 0
@@ -34,7 +34,7 @@ papers:
     title: Planning in branch-and-bound
     year: Unknown Year
   Ay-ul4AAAAAJ:LkGwnXOMwfcC:
-    citations: 99
+    citations: 100
     title: Reinforcement learning for variable selection in a branch and bound algorithm
     year: '2020'
   Ay-ul4AAAAAJ:MXK_kJrjxJIC:
@@ -62,7 +62,7 @@ papers:
     title: On some extensions of the level sets and the graph cuts towards their application to image and video segmentation
     year: '2006'
   Ay-ul4AAAAAJ:WF5omc3nYNoC:
-    citations: 32
+    citations: 33
     title: 'Challenge ROADEF/EURO 2010: A large-scale energy management problem with varied constraints'
     year: '2010'
   Ay-ul4AAAAAJ:Y0pCki6q_DkC:
@@ -98,11 +98,11 @@ papers:
     title: Generating classic mosaics with graph cuts
     year: '2010'
   Ay-ul4AAAAAJ:u-x6o8ySG0sC:
-    citations: 98
+    citations: 99
     title: 'Stochastic Motion and the Level Set Method in Computer Vision: Stochastic Active Contours'
     year: '2006'
   Ay-ul4AAAAAJ:u5HHmVD_uO8C:
-    citations: 187
+    citations: 188
     title: Active graph cuts
     year: '2006'
   Ay-ul4AAAAAJ:ufrVoPGSRksC:
